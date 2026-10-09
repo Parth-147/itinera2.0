@@ -1,0 +1,1993 @@
+[
+  {
+    "id": "trip-kyoto-001",
+    "title": "5-Day Imperial Kyoto & Arashiyama Sanctuary",
+    "destination": "Kyoto, Japan",
+    "destinationCoords": {
+      "name": "Kyoto Station Central",
+      "lat": 34.9858,
+      "lng": 135.7588
+    },
+    "startDate": "2026-11-10",
+    "endDate": "2026-11-15",
+    "durationDays": 5,
+    "totalCost": 1680,
+    "currency": "USD",
+    "travelerId": "traveler-user-1",
+    "travelerName": "Alex Mercer",
+    "travelerEmail": "alex.mercer@itinera.travel",
+    "tasteProfile": {
+      "adventure": 65,
+      "culture": 92,
+      "relaxation": 75,
+      "budgetConscious": 60,
+      "favoriteStyles": [
+        "Historic Shrines",
+        "Matcha Workshops",
+        "Zen Gardens"
+      ]
+    },
+    "status": "active",
+    "createdAt": "2026-10-09T17:16:22.984Z",
+    "updatedAt": "2026-10-09T17:16:22.992Z",
+    "disruptions": [
+      {
+        "id": "disrupt-kyoto-01",
+        "componentId": "kyoto-comp-3",
+        "cause": "weather",
+        "description": "Localized torrential rain in Arashiyama valley triggered safety suspension of outdoor river punting.",
+        "severity": "medium",
+        "affectedDownstream": [
+          "kyoto-comp-4"
+        ],
+        "timestamp": "2026-10-09T17:16:22.985Z",
+        "resolved": false
+      }
+    ],
+    "components": [
+      {
+        "id": "kyoto-comp-1",
+        "name": "Gion Machiya Heritage Boutique Hotel (Check-in)",
+        "type": "stay",
+        "day": 1,
+        "time": "02:00 PM",
+        "duration": "Overnight",
+        "location": {
+          "name": "Gion District",
+          "lat": 35.0037,
+          "lng": 135.7772
+        },
+        "cost": 260,
+        "currency": "USD",
+        "vendor": "Kiyomizu Stays",
+        "vendorRating": 4.95,
+        "dependsOn": [],
+        "status": "confirmed",
+        "description": "Restored 120-year-old traditional cedar townhouse with modern acoustic insulation and private rock garden.",
+        "tags": [
+          "stay",
+          "boutique",
+          "heritage"
+        ],
+        "bookingRef": "BKG-KYOTO-RES-1",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "kyoto-comp-2",
+        "name": "Scenic Sagano Romantic Scenic Railway",
+        "type": "transport",
+        "day": 2,
+        "time": "09:00 AM",
+        "duration": "1 hour",
+        "location": {
+          "name": "Torokko Saga Station",
+          "lat": 35.0182,
+          "lng": 135.6812
+        },
+        "cost": 45,
+        "currency": "USD",
+        "vendor": "Sagano Scenic Railway",
+        "vendorRating": 4.8,
+        "dependsOn": [
+          "kyoto-comp-1"
+        ],
+        "status": "confirmed",
+        "description": "Open-air vintage diesel locomotive tracing the Hozugawa River ravine during peak foliage.",
+        "tags": [
+          "transport",
+          "scenic",
+          "rail"
+        ],
+        "bookingRef": "BKG-KYOTO-RES-2",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "kyoto-comp-3",
+        "name": "Hozugawa Traditional River Boat Descent",
+        "type": "activity",
+        "day": 2,
+        "time": "10:30 AM",
+        "duration": "2 hours",
+        "location": {
+          "name": "Kameoka Pier",
+          "lat": 35.0135,
+          "lng": 135.582
+        },
+        "cost": 95,
+        "currency": "USD",
+        "vendor": "Hozu Rapids Boatmen Union",
+        "vendorRating": 4.75,
+        "dependsOn": [
+          "kyoto-comp-2"
+        ],
+        "status": "disrupted",
+        "description": "16km river navigation steered with bamboo poles through roaring gorges and tranquil pools.",
+        "tags": [
+          "activity",
+          "water",
+          "outdoor",
+          "adventure"
+        ],
+        "bookingRef": "BKG-KYOTO-RES-3",
+        "paymentStatus": "pending"
+      },
+      {
+        "id": "kyoto-comp-4",
+        "name": "Riverside Kaiseki Lunch at Arashiyama Waterfront",
+        "type": "dining",
+        "day": 2,
+        "time": "01:00 PM",
+        "duration": "1.5 hours",
+        "location": {
+          "name": "Togetsukyo South Bank",
+          "lat": 35.0118,
+          "lng": 135.6775
+        },
+        "cost": 80,
+        "currency": "USD",
+        "vendor": "Shoraian Bamboo Dining",
+        "vendorRating": 4.9,
+        "dependsOn": [
+          "kyoto-comp-3"
+        ],
+        "status": "disrupted",
+        "description": "Handmade yudofu tofu tasting menu overlooking the mist rising over Mount Ogura.",
+        "tags": [
+          "dining",
+          "culinary",
+          "kaiseki"
+        ],
+        "bookingRef": "BKG-KYOTO-RES-4",
+        "paymentStatus": "pending"
+      },
+      {
+        "id": "kyoto-comp-5",
+        "name": "Private Tenryu-ji Sogenchi Garden Meditation Session",
+        "type": "activity",
+        "day": 3,
+        "time": "08:30 AM",
+        "duration": "2.5 hours",
+        "location": {
+          "name": "Tenryu-ji Temple",
+          "lat": 35.0158,
+          "lng": 135.6777
+        },
+        "cost": 110,
+        "currency": "USD",
+        "vendor": "Zen Masters Cultural Council",
+        "vendorRating": 4.98,
+        "dependsOn": [
+          "kyoto-comp-1"
+        ],
+        "status": "confirmed",
+        "description": "Early-morning entrance before general gates open. Guided breathwork and historic iconography lecture.",
+        "tags": [
+          "activity",
+          "culture",
+          "zen",
+          "exclusive"
+        ],
+        "bookingRef": "BKG-KYOTO-RES-5",
+        "paymentStatus": "paid"
+      }
+    ]
+  },
+  {
+    "id": "trip-swiss-002",
+    "title": "4-Day Bernese Oberland Alpine Traverse",
+    "destination": "Interlaken, Switzerland",
+    "destinationCoords": {
+      "name": "Interlaken Ost",
+      "lat": 46.6908,
+      "lng": 7.8696
+    },
+    "startDate": "2026-12-05",
+    "endDate": "2026-12-09",
+    "durationDays": 4,
+    "totalCost": 2150,
+    "currency": "USD",
+    "travelerId": "traveler-user-2",
+    "travelerName": "Elena Rostova",
+    "travelerEmail": "elena.rostova@itinera.travel",
+    "tasteProfile": {
+      "adventure": 90,
+      "culture": 55,
+      "relaxation": 50,
+      "budgetConscious": 40,
+      "favoriteStyles": [
+        "Glacier Trekking",
+        "Panoramic Rail",
+        "Alpine Chalets"
+      ]
+    },
+    "status": "confirmed",
+    "createdAt": "2026-10-09T17:16:22.985Z",
+    "updatedAt": "2026-10-09T17:16:22.995Z",
+    "disruptions": [],
+    "components": [
+      {
+        "id": "swiss-comp-1",
+        "name": "Alpine Panoramic Chalet & Spa (Check-in)",
+        "type": "stay",
+        "day": 1,
+        "time": "03:00 PM",
+        "duration": "Overnight",
+        "location": {
+          "name": "Grindelwald First",
+          "lat": 46.6242,
+          "lng": 8.0414
+        },
+        "cost": 380,
+        "currency": "USD",
+        "vendor": "Eiger Grand Resorts",
+        "vendorRating": 4.92,
+        "dependsOn": [],
+        "status": "confirmed",
+        "description": "Direct views of the North Face of the Eiger with Finnish outdoor heated thermal pools.",
+        "tags": [
+          "stay",
+          "chalet",
+          "alpine"
+        ],
+        "bookingRef": "BKG-SWISS-RES-1",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "swiss-comp-2",
+        "name": "Eiger Express Tricable Gondola Flight",
+        "type": "transport",
+        "day": 2,
+        "time": "08:15 AM",
+        "duration": "20 mins",
+        "location": {
+          "name": "Grindelwald Terminal",
+          "lat": 46.6267,
+          "lng": 8.0261
+        },
+        "cost": 75,
+        "currency": "USD",
+        "vendor": "Jungfrau Railways AG",
+        "vendorRating": 4.88,
+        "dependsOn": [
+          "swiss-comp-1"
+        ],
+        "status": "confirmed",
+        "description": "High-speed 3S cableway climbing 1,400 meters in 15 minutes straight to the Eiger Glacier station.",
+        "tags": [
+          "transport",
+          "cableway",
+          "scenic"
+        ],
+        "bookingRef": "BKG-SWISS-RES-2",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "swiss-comp-3",
+        "name": "Jungfraujoch Top of Europe & Ice Palace Discovery",
+        "type": "activity",
+        "day": 2,
+        "time": "09:30 AM",
+        "duration": "4 hours",
+        "location": {
+          "name": "Jungfraujoch Sphinx",
+          "lat": 46.5475,
+          "lng": 7.9822
+        },
+        "cost": 190,
+        "currency": "USD",
+        "vendor": "High Altitude Guides Federation",
+        "vendorRating": 4.96,
+        "dependsOn": [
+          "swiss-comp-2"
+        ],
+        "status": "confirmed",
+        "description": "Highest railway station in Europe at 3,454m with guided glacier walking and Ice Palace tunnel.",
+        "tags": [
+          "activity",
+          "glacier",
+          "adventure"
+        ],
+        "bookingRef": "BKG-SWISS-RES-3",
+        "paymentStatus": "paid"
+      }
+    ]
+  },
+  {
+    "id": "trip-1791565374992",
+    "title": "3-Day Curated Journey: Amalfi Coast, Italy",
+    "destination": "Amalfi Coast, Italy",
+    "destinationCoords": {
+      "name": "Amalfi Coast, Italy City Center",
+      "lat": 48.8566,
+      "lng": 2.3522
+    },
+    "startDate": "2026-10-16",
+    "endDate": "2026-10-19",
+    "durationDays": 3,
+    "totalCost": 1665,
+    "currency": "USD",
+    "travelerId": "traveler-user-1",
+    "travelerName": "Sophia Laurent",
+    "travelerEmail": "alex.mercer@itinera.travel",
+    "tasteProfile": {
+      "adventure": 78,
+      "culture": 88,
+      "relaxation": 65,
+      "budgetConscious": 70,
+      "favoriteStyles": [
+        "Scenic Rail",
+        "Artisan Cuisine",
+        "Historic Sanctuaries"
+      ]
+    },
+    "components": [
+      {
+        "id": "comp-1",
+        "name": "Alpine Panorama Grand Hotel (Night 1)",
+        "type": "stay",
+        "day": 1,
+        "time": "02:00 PM",
+        "duration": "Overnight",
+        "location": {
+          "name": "Amalfi Coast, Italy Historic District",
+          "lat": 48.8586,
+          "lng": 2.3541999999999996
+        },
+        "cost": 220,
+        "currency": "USD",
+        "vendor": "Aura Luxury Stays",
+        "vendorRating": 4.9,
+        "dependsOn": [],
+        "status": "confirmed",
+        "description": "Selected for tranquil acoustic insulation, locally crafted furnishings, and walking distance to transit.",
+        "tags": [
+          "stay",
+          "boutique",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-1",
+        "paymentStatus": "escrow"
+      },
+      {
+        "id": "comp-2",
+        "name": "Day 1 Morning Express Transfer",
+        "type": "transport",
+        "day": 1,
+        "time": "08:45 AM",
+        "duration": "45 mins",
+        "location": {
+          "name": "Amalfi Coast, Italy City Center",
+          "lat": 48.8566,
+          "lng": 2.3522
+        },
+        "cost": 35,
+        "currency": "USD",
+        "vendor": "Apex Regional Transit",
+        "vendorRating": 4.8,
+        "dependsOn": [
+          "comp-1"
+        ],
+        "status": "confirmed",
+        "description": "Reserved executive transfer connecting the accommodation directly to morning excursion grounds.",
+        "tags": [
+          "transit",
+          "rail",
+          "punctual"
+        ],
+        "bookingRef": "BKG-RES-2",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-3",
+        "name": "Jungfrau High Alpine Ascent & Glacier Walk",
+        "type": "activity",
+        "day": 1,
+        "time": "10:00 AM",
+        "duration": "3.5 hours",
+        "location": {
+          "name": "Amalfi Coast, Italy Sanctuary Area",
+          "lat": 48.8716,
+          "lng": 2.3642
+        },
+        "cost": 140,
+        "currency": "USD",
+        "vendor": "Elysian Expeditions",
+        "vendorRating": 4.95,
+        "dependsOn": [
+          "comp-2"
+        ],
+        "status": "confirmed",
+        "description": "Small group private docent access before general public admission hours.",
+        "tags": [
+          "culture",
+          "nature",
+          "highlight"
+        ],
+        "bookingRef": "BKG-RES-3",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-4",
+        "name": "Artisanal Chef's Tasting Table",
+        "type": "dining",
+        "day": 1,
+        "time": "01:30 PM",
+        "duration": "1.5 hours",
+        "location": {
+          "name": "Amalfi Coast, Italy Gastronomy Quarter",
+          "lat": 48.8646,
+          "lng": 2.3611999999999997
+        },
+        "cost": 75,
+        "currency": "USD",
+        "vendor": "Terra & Hearth Dining",
+        "vendorRating": 4.85,
+        "dependsOn": [
+          "comp-3"
+        ],
+        "status": "confirmed",
+        "description": "Multi-course farm-to-table lunch highlighting seasonal harvests and paired infusions.",
+        "tags": [
+          "dining",
+          "culinary",
+          "artisan"
+        ],
+        "bookingRef": "BKG-RES-4",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-5",
+        "name": "Valley Sunset Funicular & Alpine Horn Recital",
+        "type": "activity",
+        "day": 1,
+        "time": "05:00 PM",
+        "duration": "2 hours",
+        "location": {
+          "name": "Amalfi Coast, Italy Scenic Overlook",
+          "lat": 48.8466,
+          "lng": 2.3672
+        },
+        "cost": 85,
+        "currency": "USD",
+        "vendor": "Twilight Horizons Co.",
+        "vendorRating": 4.9,
+        "dependsOn": [
+          "comp-4"
+        ],
+        "status": "confirmed",
+        "description": "Uncrowded golden hour access tailored for breathtaking viewpoints and photography.",
+        "tags": [
+          "sunset",
+          "sightseeing",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-5",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-6",
+        "name": "Alpine Panorama Grand Hotel (Night 2)",
+        "type": "stay",
+        "day": 2,
+        "time": "02:00 PM",
+        "duration": "Overnight",
+        "location": {
+          "name": "Amalfi Coast, Italy Historic District",
+          "lat": 48.8606,
+          "lng": 2.3562
+        },
+        "cost": 220,
+        "currency": "USD",
+        "vendor": "Aura Luxury Stays",
+        "vendorRating": 4.9,
+        "dependsOn": [],
+        "status": "confirmed",
+        "description": "Selected for tranquil acoustic insulation, locally crafted furnishings, and walking distance to transit.",
+        "tags": [
+          "stay",
+          "boutique",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-6",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-7",
+        "name": "Day 2 Morning Express Transfer",
+        "type": "transport",
+        "day": 2,
+        "time": "08:45 AM",
+        "duration": "45 mins",
+        "location": {
+          "name": "Amalfi Coast, Italy City Center",
+          "lat": 48.8566,
+          "lng": 2.3522
+        },
+        "cost": 35,
+        "currency": "USD",
+        "vendor": "Apex Regional Transit",
+        "vendorRating": 4.8,
+        "dependsOn": [
+          "comp-6"
+        ],
+        "status": "confirmed",
+        "description": "Reserved executive transfer connecting the accommodation directly to morning excursion grounds.",
+        "tags": [
+          "transit",
+          "rail",
+          "punctual"
+        ],
+        "bookingRef": "BKG-RES-7",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-8",
+        "name": "Jungfrau High Alpine Ascent & Glacier Walk",
+        "type": "activity",
+        "day": 2,
+        "time": "10:00 AM",
+        "duration": "3.5 hours",
+        "location": {
+          "name": "Amalfi Coast, Italy Sanctuary Area",
+          "lat": 48.8716,
+          "lng": 2.3642
+        },
+        "cost": 140,
+        "currency": "USD",
+        "vendor": "Elysian Expeditions",
+        "vendorRating": 4.95,
+        "dependsOn": [
+          "comp-7"
+        ],
+        "status": "confirmed",
+        "description": "Small group private docent access before general public admission hours.",
+        "tags": [
+          "culture",
+          "nature",
+          "highlight"
+        ],
+        "bookingRef": "BKG-RES-8",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-9",
+        "name": "Artisanal Chef's Tasting Table",
+        "type": "dining",
+        "day": 2,
+        "time": "01:30 PM",
+        "duration": "1.5 hours",
+        "location": {
+          "name": "Amalfi Coast, Italy Gastronomy Quarter",
+          "lat": 48.8646,
+          "lng": 2.3611999999999997
+        },
+        "cost": 75,
+        "currency": "USD",
+        "vendor": "Terra & Hearth Dining",
+        "vendorRating": 4.85,
+        "dependsOn": [
+          "comp-8"
+        ],
+        "status": "confirmed",
+        "description": "Multi-course farm-to-table lunch highlighting seasonal harvests and paired infusions.",
+        "tags": [
+          "dining",
+          "culinary",
+          "artisan"
+        ],
+        "bookingRef": "BKG-RES-9",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-10",
+        "name": "Valley Sunset Funicular & Alpine Horn Recital",
+        "type": "activity",
+        "day": 2,
+        "time": "05:00 PM",
+        "duration": "2 hours",
+        "location": {
+          "name": "Amalfi Coast, Italy Scenic Overlook",
+          "lat": 48.8466,
+          "lng": 2.3672
+        },
+        "cost": 85,
+        "currency": "USD",
+        "vendor": "Twilight Horizons Co.",
+        "vendorRating": 4.9,
+        "dependsOn": [
+          "comp-9"
+        ],
+        "status": "confirmed",
+        "description": "Uncrowded golden hour access tailored for breathtaking viewpoints and photography.",
+        "tags": [
+          "sunset",
+          "sightseeing",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-10",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-11",
+        "name": "Alpine Panorama Grand Hotel (Night 3)",
+        "type": "stay",
+        "day": 3,
+        "time": "02:00 PM",
+        "duration": "Overnight",
+        "location": {
+          "name": "Amalfi Coast, Italy Historic District",
+          "lat": 48.8626,
+          "lng": 2.3581999999999996
+        },
+        "cost": 220,
+        "currency": "USD",
+        "vendor": "Aura Luxury Stays",
+        "vendorRating": 4.9,
+        "dependsOn": [],
+        "status": "confirmed",
+        "description": "Selected for tranquil acoustic insulation, locally crafted furnishings, and walking distance to transit.",
+        "tags": [
+          "stay",
+          "boutique",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-11",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-12",
+        "name": "Day 3 Morning Express Transfer",
+        "type": "transport",
+        "day": 3,
+        "time": "08:45 AM",
+        "duration": "45 mins",
+        "location": {
+          "name": "Amalfi Coast, Italy City Center",
+          "lat": 48.8566,
+          "lng": 2.3522
+        },
+        "cost": 35,
+        "currency": "USD",
+        "vendor": "Apex Regional Transit",
+        "vendorRating": 4.8,
+        "dependsOn": [
+          "comp-11"
+        ],
+        "status": "confirmed",
+        "description": "Reserved executive transfer connecting the accommodation directly to morning excursion grounds.",
+        "tags": [
+          "transit",
+          "rail",
+          "punctual"
+        ],
+        "bookingRef": "BKG-RES-12",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-13",
+        "name": "Jungfrau High Alpine Ascent & Glacier Walk",
+        "type": "activity",
+        "day": 3,
+        "time": "10:00 AM",
+        "duration": "3.5 hours",
+        "location": {
+          "name": "Amalfi Coast, Italy Sanctuary Area",
+          "lat": 48.8716,
+          "lng": 2.3642
+        },
+        "cost": 140,
+        "currency": "USD",
+        "vendor": "Elysian Expeditions",
+        "vendorRating": 4.95,
+        "dependsOn": [
+          "comp-12"
+        ],
+        "status": "confirmed",
+        "description": "Small group private docent access before general public admission hours.",
+        "tags": [
+          "culture",
+          "nature",
+          "highlight"
+        ],
+        "bookingRef": "BKG-RES-13",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-14",
+        "name": "Artisanal Chef's Tasting Table",
+        "type": "dining",
+        "day": 3,
+        "time": "01:30 PM",
+        "duration": "1.5 hours",
+        "location": {
+          "name": "Amalfi Coast, Italy Gastronomy Quarter",
+          "lat": 48.8646,
+          "lng": 2.3611999999999997
+        },
+        "cost": 75,
+        "currency": "USD",
+        "vendor": "Terra & Hearth Dining",
+        "vendorRating": 4.85,
+        "dependsOn": [
+          "comp-13"
+        ],
+        "status": "confirmed",
+        "description": "Multi-course farm-to-table lunch highlighting seasonal harvests and paired infusions.",
+        "tags": [
+          "dining",
+          "culinary",
+          "artisan"
+        ],
+        "bookingRef": "BKG-RES-14",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-15",
+        "name": "Valley Sunset Funicular & Alpine Horn Recital",
+        "type": "activity",
+        "day": 3,
+        "time": "05:00 PM",
+        "duration": "2 hours",
+        "location": {
+          "name": "Amalfi Coast, Italy Scenic Overlook",
+          "lat": 48.8466,
+          "lng": 2.3672
+        },
+        "cost": 85,
+        "currency": "USD",
+        "vendor": "Twilight Horizons Co.",
+        "vendorRating": 4.9,
+        "dependsOn": [
+          "comp-14"
+        ],
+        "status": "confirmed",
+        "description": "Uncrowded golden hour access tailored for breathtaking viewpoints and photography.",
+        "tags": [
+          "sunset",
+          "sightseeing",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-15",
+        "paymentStatus": "paid"
+      }
+    ],
+    "disruptions": [],
+    "status": "confirmed",
+    "createdAt": "2026-10-09T17:02:54.992Z",
+    "updatedAt": "2026-10-09T17:03:37.287Z"
+  },
+  {
+    "id": "trip-1791565614177",
+    "title": "4-Day Curated Journey: Santorini, Greece",
+    "destination": "Santorini, Greece",
+    "destinationCoords": {
+      "name": "Santorini, Greece City Center",
+      "lat": 48.8566,
+      "lng": 2.3522
+    },
+    "startDate": "2026-10-16",
+    "endDate": "2026-10-20",
+    "durationDays": 4,
+    "totalCost": 2220,
+    "currency": "USD",
+    "travelerId": "traveler-user-1",
+    "travelerName": "Marcus Vance",
+    "travelerEmail": "alex.mercer@itinera.travel",
+    "tasteProfile": {
+      "adventure": 78,
+      "culture": 88,
+      "relaxation": 65,
+      "budgetConscious": 70,
+      "favoriteStyles": [
+        "Scenic Rail",
+        "Artisan Cuisine",
+        "Historic Sanctuaries"
+      ]
+    },
+    "components": [
+      {
+        "id": "comp-1",
+        "name": "Alpine Panorama Grand Hotel (Night 1)",
+        "type": "stay",
+        "day": 1,
+        "time": "02:00 PM",
+        "duration": "Overnight",
+        "location": {
+          "name": "Santorini, Greece Historic District",
+          "lat": 48.8586,
+          "lng": 2.3541999999999996
+        },
+        "cost": 220,
+        "currency": "USD",
+        "vendor": "Aura Luxury Stays",
+        "vendorRating": 4.9,
+        "dependsOn": [],
+        "status": "confirmed",
+        "description": "Selected for tranquil acoustic insulation, locally crafted furnishings, and walking distance to transit.",
+        "tags": [
+          "stay",
+          "boutique",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-1",
+        "paymentStatus": "escrow"
+      },
+      {
+        "id": "comp-2",
+        "name": "Day 1 Morning Express Transfer",
+        "type": "transport",
+        "day": 1,
+        "time": "08:45 AM",
+        "duration": "45 mins",
+        "location": {
+          "name": "Santorini, Greece City Center",
+          "lat": 48.8566,
+          "lng": 2.3522
+        },
+        "cost": 35,
+        "currency": "USD",
+        "vendor": "Apex Regional Transit",
+        "vendorRating": 4.8,
+        "dependsOn": [
+          "comp-1"
+        ],
+        "status": "confirmed",
+        "description": "Reserved executive transfer connecting the accommodation directly to morning excursion grounds.",
+        "tags": [
+          "transit",
+          "rail",
+          "punctual"
+        ],
+        "bookingRef": "BKG-RES-2",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-3",
+        "name": "Jungfrau High Alpine Ascent & Glacier Walk",
+        "type": "activity",
+        "day": 1,
+        "time": "10:00 AM",
+        "duration": "3.5 hours",
+        "location": {
+          "name": "Santorini, Greece Sanctuary Area",
+          "lat": 48.8716,
+          "lng": 2.3642
+        },
+        "cost": 140,
+        "currency": "USD",
+        "vendor": "Elysian Expeditions",
+        "vendorRating": 4.95,
+        "dependsOn": [
+          "comp-2"
+        ],
+        "status": "confirmed",
+        "description": "Small group private docent access before general public admission hours.",
+        "tags": [
+          "culture",
+          "nature",
+          "highlight"
+        ],
+        "bookingRef": "BKG-RES-3",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-4",
+        "name": "Artisanal Chef's Tasting Table",
+        "type": "dining",
+        "day": 1,
+        "time": "01:30 PM",
+        "duration": "1.5 hours",
+        "location": {
+          "name": "Santorini, Greece Gastronomy Quarter",
+          "lat": 48.8646,
+          "lng": 2.3611999999999997
+        },
+        "cost": 75,
+        "currency": "USD",
+        "vendor": "Terra & Hearth Dining",
+        "vendorRating": 4.85,
+        "dependsOn": [
+          "comp-3"
+        ],
+        "status": "confirmed",
+        "description": "Multi-course farm-to-table lunch highlighting seasonal harvests and paired infusions.",
+        "tags": [
+          "dining",
+          "culinary",
+          "artisan"
+        ],
+        "bookingRef": "BKG-RES-4",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-5",
+        "name": "Valley Sunset Funicular & Alpine Horn Recital",
+        "type": "activity",
+        "day": 1,
+        "time": "05:00 PM",
+        "duration": "2 hours",
+        "location": {
+          "name": "Santorini, Greece Scenic Overlook",
+          "lat": 48.8466,
+          "lng": 2.3672
+        },
+        "cost": 85,
+        "currency": "USD",
+        "vendor": "Twilight Horizons Co.",
+        "vendorRating": 4.9,
+        "dependsOn": [
+          "comp-4"
+        ],
+        "status": "confirmed",
+        "description": "Uncrowded golden hour access tailored for breathtaking viewpoints and photography.",
+        "tags": [
+          "sunset",
+          "sightseeing",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-5",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-6",
+        "name": "Alpine Panorama Grand Hotel (Night 2)",
+        "type": "stay",
+        "day": 2,
+        "time": "02:00 PM",
+        "duration": "Overnight",
+        "location": {
+          "name": "Santorini, Greece Historic District",
+          "lat": 48.8606,
+          "lng": 2.3562
+        },
+        "cost": 220,
+        "currency": "USD",
+        "vendor": "Aura Luxury Stays",
+        "vendorRating": 4.9,
+        "dependsOn": [],
+        "status": "confirmed",
+        "description": "Selected for tranquil acoustic insulation, locally crafted furnishings, and walking distance to transit.",
+        "tags": [
+          "stay",
+          "boutique",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-6",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-7",
+        "name": "Day 2 Morning Express Transfer",
+        "type": "transport",
+        "day": 2,
+        "time": "08:45 AM",
+        "duration": "45 mins",
+        "location": {
+          "name": "Santorini, Greece City Center",
+          "lat": 48.8566,
+          "lng": 2.3522
+        },
+        "cost": 35,
+        "currency": "USD",
+        "vendor": "Apex Regional Transit",
+        "vendorRating": 4.8,
+        "dependsOn": [
+          "comp-6"
+        ],
+        "status": "confirmed",
+        "description": "Reserved executive transfer connecting the accommodation directly to morning excursion grounds.",
+        "tags": [
+          "transit",
+          "rail",
+          "punctual"
+        ],
+        "bookingRef": "BKG-RES-7",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-8",
+        "name": "Jungfrau High Alpine Ascent & Glacier Walk",
+        "type": "activity",
+        "day": 2,
+        "time": "10:00 AM",
+        "duration": "3.5 hours",
+        "location": {
+          "name": "Santorini, Greece Sanctuary Area",
+          "lat": 48.8716,
+          "lng": 2.3642
+        },
+        "cost": 140,
+        "currency": "USD",
+        "vendor": "Elysian Expeditions",
+        "vendorRating": 4.95,
+        "dependsOn": [
+          "comp-7"
+        ],
+        "status": "confirmed",
+        "description": "Small group private docent access before general public admission hours.",
+        "tags": [
+          "culture",
+          "nature",
+          "highlight"
+        ],
+        "bookingRef": "BKG-RES-8",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-9",
+        "name": "Artisanal Chef's Tasting Table",
+        "type": "dining",
+        "day": 2,
+        "time": "01:30 PM",
+        "duration": "1.5 hours",
+        "location": {
+          "name": "Santorini, Greece Gastronomy Quarter",
+          "lat": 48.8646,
+          "lng": 2.3611999999999997
+        },
+        "cost": 75,
+        "currency": "USD",
+        "vendor": "Terra & Hearth Dining",
+        "vendorRating": 4.85,
+        "dependsOn": [
+          "comp-8"
+        ],
+        "status": "confirmed",
+        "description": "Multi-course farm-to-table lunch highlighting seasonal harvests and paired infusions.",
+        "tags": [
+          "dining",
+          "culinary",
+          "artisan"
+        ],
+        "bookingRef": "BKG-RES-9",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-10",
+        "name": "Valley Sunset Funicular & Alpine Horn Recital",
+        "type": "activity",
+        "day": 2,
+        "time": "05:00 PM",
+        "duration": "2 hours",
+        "location": {
+          "name": "Santorini, Greece Scenic Overlook",
+          "lat": 48.8466,
+          "lng": 2.3672
+        },
+        "cost": 85,
+        "currency": "USD",
+        "vendor": "Twilight Horizons Co.",
+        "vendorRating": 4.9,
+        "dependsOn": [
+          "comp-9"
+        ],
+        "status": "confirmed",
+        "description": "Uncrowded golden hour access tailored for breathtaking viewpoints and photography.",
+        "tags": [
+          "sunset",
+          "sightseeing",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-10",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-11",
+        "name": "Alpine Panorama Grand Hotel (Night 3)",
+        "type": "stay",
+        "day": 3,
+        "time": "02:00 PM",
+        "duration": "Overnight",
+        "location": {
+          "name": "Santorini, Greece Historic District",
+          "lat": 48.8626,
+          "lng": 2.3581999999999996
+        },
+        "cost": 220,
+        "currency": "USD",
+        "vendor": "Aura Luxury Stays",
+        "vendorRating": 4.9,
+        "dependsOn": [],
+        "status": "confirmed",
+        "description": "Selected for tranquil acoustic insulation, locally crafted furnishings, and walking distance to transit.",
+        "tags": [
+          "stay",
+          "boutique",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-11",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-12",
+        "name": "Day 3 Morning Express Transfer",
+        "type": "transport",
+        "day": 3,
+        "time": "08:45 AM",
+        "duration": "45 mins",
+        "location": {
+          "name": "Santorini, Greece City Center",
+          "lat": 48.8566,
+          "lng": 2.3522
+        },
+        "cost": 35,
+        "currency": "USD",
+        "vendor": "Apex Regional Transit",
+        "vendorRating": 4.8,
+        "dependsOn": [
+          "comp-11"
+        ],
+        "status": "confirmed",
+        "description": "Reserved executive transfer connecting the accommodation directly to morning excursion grounds.",
+        "tags": [
+          "transit",
+          "rail",
+          "punctual"
+        ],
+        "bookingRef": "BKG-RES-12",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-13",
+        "name": "Jungfrau High Alpine Ascent & Glacier Walk",
+        "type": "activity",
+        "day": 3,
+        "time": "10:00 AM",
+        "duration": "3.5 hours",
+        "location": {
+          "name": "Santorini, Greece Sanctuary Area",
+          "lat": 48.8716,
+          "lng": 2.3642
+        },
+        "cost": 140,
+        "currency": "USD",
+        "vendor": "Elysian Expeditions",
+        "vendorRating": 4.95,
+        "dependsOn": [
+          "comp-12"
+        ],
+        "status": "confirmed",
+        "description": "Small group private docent access before general public admission hours.",
+        "tags": [
+          "culture",
+          "nature",
+          "highlight"
+        ],
+        "bookingRef": "BKG-RES-13",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-14",
+        "name": "Artisanal Chef's Tasting Table",
+        "type": "dining",
+        "day": 3,
+        "time": "01:30 PM",
+        "duration": "1.5 hours",
+        "location": {
+          "name": "Santorini, Greece Gastronomy Quarter",
+          "lat": 48.8646,
+          "lng": 2.3611999999999997
+        },
+        "cost": 75,
+        "currency": "USD",
+        "vendor": "Terra & Hearth Dining",
+        "vendorRating": 4.85,
+        "dependsOn": [
+          "comp-13"
+        ],
+        "status": "confirmed",
+        "description": "Multi-course farm-to-table lunch highlighting seasonal harvests and paired infusions.",
+        "tags": [
+          "dining",
+          "culinary",
+          "artisan"
+        ],
+        "bookingRef": "BKG-RES-14",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-15",
+        "name": "Valley Sunset Funicular & Alpine Horn Recital",
+        "type": "activity",
+        "day": 3,
+        "time": "05:00 PM",
+        "duration": "2 hours",
+        "location": {
+          "name": "Santorini, Greece Scenic Overlook",
+          "lat": 48.8466,
+          "lng": 2.3672
+        },
+        "cost": 85,
+        "currency": "USD",
+        "vendor": "Twilight Horizons Co.",
+        "vendorRating": 4.9,
+        "dependsOn": [
+          "comp-14"
+        ],
+        "status": "confirmed",
+        "description": "Uncrowded golden hour access tailored for breathtaking viewpoints and photography.",
+        "tags": [
+          "sunset",
+          "sightseeing",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-15",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-16",
+        "name": "Alpine Panorama Grand Hotel (Night 4)",
+        "type": "stay",
+        "day": 4,
+        "time": "02:00 PM",
+        "duration": "Overnight",
+        "location": {
+          "name": "Santorini, Greece Historic District",
+          "lat": 48.8646,
+          "lng": 2.3602
+        },
+        "cost": 220,
+        "currency": "USD",
+        "vendor": "Aura Luxury Stays",
+        "vendorRating": 4.9,
+        "dependsOn": [],
+        "status": "confirmed",
+        "description": "Selected for tranquil acoustic insulation, locally crafted furnishings, and walking distance to transit.",
+        "tags": [
+          "stay",
+          "boutique",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-16",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-17",
+        "name": "Day 4 Morning Express Transfer",
+        "type": "transport",
+        "day": 4,
+        "time": "08:45 AM",
+        "duration": "45 mins",
+        "location": {
+          "name": "Santorini, Greece City Center",
+          "lat": 48.8566,
+          "lng": 2.3522
+        },
+        "cost": 35,
+        "currency": "USD",
+        "vendor": "Apex Regional Transit",
+        "vendorRating": 4.8,
+        "dependsOn": [
+          "comp-16"
+        ],
+        "status": "confirmed",
+        "description": "Reserved executive transfer connecting the accommodation directly to morning excursion grounds.",
+        "tags": [
+          "transit",
+          "rail",
+          "punctual"
+        ],
+        "bookingRef": "BKG-RES-17",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-18",
+        "name": "Jungfrau High Alpine Ascent & Glacier Walk",
+        "type": "activity",
+        "day": 4,
+        "time": "10:00 AM",
+        "duration": "3.5 hours",
+        "location": {
+          "name": "Santorini, Greece Sanctuary Area",
+          "lat": 48.8716,
+          "lng": 2.3642
+        },
+        "cost": 140,
+        "currency": "USD",
+        "vendor": "Elysian Expeditions",
+        "vendorRating": 4.95,
+        "dependsOn": [
+          "comp-17"
+        ],
+        "status": "confirmed",
+        "description": "Small group private docent access before general public admission hours.",
+        "tags": [
+          "culture",
+          "nature",
+          "highlight"
+        ],
+        "bookingRef": "BKG-RES-18",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-19",
+        "name": "Artisanal Chef's Tasting Table",
+        "type": "dining",
+        "day": 4,
+        "time": "01:30 PM",
+        "duration": "1.5 hours",
+        "location": {
+          "name": "Santorini, Greece Gastronomy Quarter",
+          "lat": 48.8646,
+          "lng": 2.3611999999999997
+        },
+        "cost": 75,
+        "currency": "USD",
+        "vendor": "Terra & Hearth Dining",
+        "vendorRating": 4.85,
+        "dependsOn": [
+          "comp-18"
+        ],
+        "status": "confirmed",
+        "description": "Multi-course farm-to-table lunch highlighting seasonal harvests and paired infusions.",
+        "tags": [
+          "dining",
+          "culinary",
+          "artisan"
+        ],
+        "bookingRef": "BKG-RES-19",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-20",
+        "name": "Valley Sunset Funicular & Alpine Horn Recital",
+        "type": "activity",
+        "day": 4,
+        "time": "05:00 PM",
+        "duration": "2 hours",
+        "location": {
+          "name": "Santorini, Greece Scenic Overlook",
+          "lat": 48.8466,
+          "lng": 2.3672
+        },
+        "cost": 85,
+        "currency": "USD",
+        "vendor": "Twilight Horizons Co.",
+        "vendorRating": 4.9,
+        "dependsOn": [
+          "comp-19"
+        ],
+        "status": "confirmed",
+        "description": "Uncrowded golden hour access tailored for breathtaking viewpoints and photography.",
+        "tags": [
+          "sunset",
+          "sightseeing",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-20",
+        "paymentStatus": "paid"
+      }
+    ],
+    "disruptions": [],
+    "status": "confirmed",
+    "createdAt": "2026-10-09T17:06:54.177Z",
+    "updatedAt": "2026-10-09T17:06:54.192Z"
+  },
+  {
+    "id": "trip-1791566113353",
+    "title": "4-Day Curated Journey: Santorini, Greece",
+    "destination": "Santorini, Greece",
+    "destinationCoords": {
+      "name": "Santorini, Greece City Center",
+      "lat": 48.8566,
+      "lng": 2.3522
+    },
+    "startDate": "2026-10-16",
+    "endDate": "2026-10-20",
+    "durationDays": 4,
+    "totalCost": 2220,
+    "currency": "USD",
+    "travelerId": "traveler-user-1",
+    "travelerName": "Marcus Vance",
+    "travelerEmail": "alex.mercer@itinera.travel",
+    "tasteProfile": {
+      "adventure": 78,
+      "culture": 88,
+      "relaxation": 65,
+      "budgetConscious": 70,
+      "favoriteStyles": [
+        "Scenic Rail",
+        "Artisan Cuisine",
+        "Historic Sanctuaries"
+      ]
+    },
+    "components": [
+      {
+        "id": "comp-1",
+        "name": "Alpine Panorama Grand Hotel (Night 1)",
+        "type": "stay",
+        "day": 1,
+        "time": "02:00 PM",
+        "duration": "Overnight",
+        "location": {
+          "name": "Santorini, Greece Historic District",
+          "lat": 48.8586,
+          "lng": 2.3541999999999996
+        },
+        "cost": 220,
+        "currency": "USD",
+        "vendor": "Aura Luxury Stays",
+        "vendorRating": 4.9,
+        "dependsOn": [],
+        "status": "confirmed",
+        "description": "Selected for tranquil acoustic insulation, locally crafted furnishings, and walking distance to transit.",
+        "tags": [
+          "stay",
+          "boutique",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-1",
+        "paymentStatus": "escrow"
+      },
+      {
+        "id": "comp-2",
+        "name": "Day 1 Morning Express Transfer",
+        "type": "transport",
+        "day": 1,
+        "time": "08:45 AM",
+        "duration": "45 mins",
+        "location": {
+          "name": "Santorini, Greece City Center",
+          "lat": 48.8566,
+          "lng": 2.3522
+        },
+        "cost": 35,
+        "currency": "USD",
+        "vendor": "Apex Regional Transit",
+        "vendorRating": 4.8,
+        "dependsOn": [
+          "comp-1"
+        ],
+        "status": "confirmed",
+        "description": "Reserved executive transfer connecting the accommodation directly to morning excursion grounds.",
+        "tags": [
+          "transit",
+          "rail",
+          "punctual"
+        ],
+        "bookingRef": "BKG-RES-2",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-3",
+        "name": "Jungfrau High Alpine Ascent & Glacier Walk",
+        "type": "activity",
+        "day": 1,
+        "time": "10:00 AM",
+        "duration": "3.5 hours",
+        "location": {
+          "name": "Santorini, Greece Sanctuary Area",
+          "lat": 48.8716,
+          "lng": 2.3642
+        },
+        "cost": 140,
+        "currency": "USD",
+        "vendor": "Elysian Expeditions",
+        "vendorRating": 4.95,
+        "dependsOn": [
+          "comp-2"
+        ],
+        "status": "confirmed",
+        "description": "Small group private docent access before general public admission hours.",
+        "tags": [
+          "culture",
+          "nature",
+          "highlight"
+        ],
+        "bookingRef": "BKG-RES-3",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-4",
+        "name": "Artisanal Chef's Tasting Table",
+        "type": "dining",
+        "day": 1,
+        "time": "01:30 PM",
+        "duration": "1.5 hours",
+        "location": {
+          "name": "Santorini, Greece Gastronomy Quarter",
+          "lat": 48.8646,
+          "lng": 2.3611999999999997
+        },
+        "cost": 75,
+        "currency": "USD",
+        "vendor": "Terra & Hearth Dining",
+        "vendorRating": 4.85,
+        "dependsOn": [
+          "comp-3"
+        ],
+        "status": "confirmed",
+        "description": "Multi-course farm-to-table lunch highlighting seasonal harvests and paired infusions.",
+        "tags": [
+          "dining",
+          "culinary",
+          "artisan"
+        ],
+        "bookingRef": "BKG-RES-4",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-5",
+        "name": "Valley Sunset Funicular & Alpine Horn Recital",
+        "type": "activity",
+        "day": 1,
+        "time": "05:00 PM",
+        "duration": "2 hours",
+        "location": {
+          "name": "Santorini, Greece Scenic Overlook",
+          "lat": 48.8466,
+          "lng": 2.3672
+        },
+        "cost": 85,
+        "currency": "USD",
+        "vendor": "Twilight Horizons Co.",
+        "vendorRating": 4.9,
+        "dependsOn": [
+          "comp-4"
+        ],
+        "status": "confirmed",
+        "description": "Uncrowded golden hour access tailored for breathtaking viewpoints and photography.",
+        "tags": [
+          "sunset",
+          "sightseeing",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-5",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-6",
+        "name": "Alpine Panorama Grand Hotel (Night 2)",
+        "type": "stay",
+        "day": 2,
+        "time": "02:00 PM",
+        "duration": "Overnight",
+        "location": {
+          "name": "Santorini, Greece Historic District",
+          "lat": 48.8606,
+          "lng": 2.3562
+        },
+        "cost": 220,
+        "currency": "USD",
+        "vendor": "Aura Luxury Stays",
+        "vendorRating": 4.9,
+        "dependsOn": [],
+        "status": "confirmed",
+        "description": "Selected for tranquil acoustic insulation, locally crafted furnishings, and walking distance to transit.",
+        "tags": [
+          "stay",
+          "boutique",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-6",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-7",
+        "name": "Day 2 Morning Express Transfer",
+        "type": "transport",
+        "day": 2,
+        "time": "08:45 AM",
+        "duration": "45 mins",
+        "location": {
+          "name": "Santorini, Greece City Center",
+          "lat": 48.8566,
+          "lng": 2.3522
+        },
+        "cost": 35,
+        "currency": "USD",
+        "vendor": "Apex Regional Transit",
+        "vendorRating": 4.8,
+        "dependsOn": [
+          "comp-6"
+        ],
+        "status": "confirmed",
+        "description": "Reserved executive transfer connecting the accommodation directly to morning excursion grounds.",
+        "tags": [
+          "transit",
+          "rail",
+          "punctual"
+        ],
+        "bookingRef": "BKG-RES-7",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-8",
+        "name": "Jungfrau High Alpine Ascent & Glacier Walk",
+        "type": "activity",
+        "day": 2,
+        "time": "10:00 AM",
+        "duration": "3.5 hours",
+        "location": {
+          "name": "Santorini, Greece Sanctuary Area",
+          "lat": 48.8716,
+          "lng": 2.3642
+        },
+        "cost": 140,
+        "currency": "USD",
+        "vendor": "Elysian Expeditions",
+        "vendorRating": 4.95,
+        "dependsOn": [
+          "comp-7"
+        ],
+        "status": "confirmed",
+        "description": "Small group private docent access before general public admission hours.",
+        "tags": [
+          "culture",
+          "nature",
+          "highlight"
+        ],
+        "bookingRef": "BKG-RES-8",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-9",
+        "name": "Artisanal Chef's Tasting Table",
+        "type": "dining",
+        "day": 2,
+        "time": "01:30 PM",
+        "duration": "1.5 hours",
+        "location": {
+          "name": "Santorini, Greece Gastronomy Quarter",
+          "lat": 48.8646,
+          "lng": 2.3611999999999997
+        },
+        "cost": 75,
+        "currency": "USD",
+        "vendor": "Terra & Hearth Dining",
+        "vendorRating": 4.85,
+        "dependsOn": [
+          "comp-8"
+        ],
+        "status": "confirmed",
+        "description": "Multi-course farm-to-table lunch highlighting seasonal harvests and paired infusions.",
+        "tags": [
+          "dining",
+          "culinary",
+          "artisan"
+        ],
+        "bookingRef": "BKG-RES-9",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-10",
+        "name": "Valley Sunset Funicular & Alpine Horn Recital",
+        "type": "activity",
+        "day": 2,
+        "time": "05:00 PM",
+        "duration": "2 hours",
+        "location": {
+          "name": "Santorini, Greece Scenic Overlook",
+          "lat": 48.8466,
+          "lng": 2.3672
+        },
+        "cost": 85,
+        "currency": "USD",
+        "vendor": "Twilight Horizons Co.",
+        "vendorRating": 4.9,
+        "dependsOn": [
+          "comp-9"
+        ],
+        "status": "confirmed",
+        "description": "Uncrowded golden hour access tailored for breathtaking viewpoints and photography.",
+        "tags": [
+          "sunset",
+          "sightseeing",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-10",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-11",
+        "name": "Alpine Panorama Grand Hotel (Night 3)",
+        "type": "stay",
+        "day": 3,
+        "time": "02:00 PM",
+        "duration": "Overnight",
+        "location": {
+          "name": "Santorini, Greece Historic District",
+          "lat": 48.8626,
+          "lng": 2.3581999999999996
+        },
+        "cost": 220,
+        "currency": "USD",
+        "vendor": "Aura Luxury Stays",
+        "vendorRating": 4.9,
+        "dependsOn": [],
+        "status": "confirmed",
+        "description": "Selected for tranquil acoustic insulation, locally crafted furnishings, and walking distance to transit.",
+        "tags": [
+          "stay",
+          "boutique",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-11",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-12",
+        "name": "Day 3 Morning Express Transfer",
+        "type": "transport",
+        "day": 3,
+        "time": "08:45 AM",
+        "duration": "45 mins",
+        "location": {
+          "name": "Santorini, Greece City Center",
+          "lat": 48.8566,
+          "lng": 2.3522
+        },
+        "cost": 35,
+        "currency": "USD",
+        "vendor": "Apex Regional Transit",
+        "vendorRating": 4.8,
+        "dependsOn": [
+          "comp-11"
+        ],
+        "status": "confirmed",
+        "description": "Reserved executive transfer connecting the accommodation directly to morning excursion grounds.",
+        "tags": [
+          "transit",
+          "rail",
+          "punctual"
+        ],
+        "bookingRef": "BKG-RES-12",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-13",
+        "name": "Jungfrau High Alpine Ascent & Glacier Walk",
+        "type": "activity",
+        "day": 3,
+        "time": "10:00 AM",
+        "duration": "3.5 hours",
+        "location": {
+          "name": "Santorini, Greece Sanctuary Area",
+          "lat": 48.8716,
+          "lng": 2.3642
+        },
+        "cost": 140,
+        "currency": "USD",
+        "vendor": "Elysian Expeditions",
+        "vendorRating": 4.95,
+        "dependsOn": [
+          "comp-12"
+        ],
+        "status": "confirmed",
+        "description": "Small group private docent access before general public admission hours.",
+        "tags": [
+          "culture",
+          "nature",
+          "highlight"
+        ],
+        "bookingRef": "BKG-RES-13",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-14",
+        "name": "Artisanal Chef's Tasting Table",
+        "type": "dining",
+        "day": 3,
+        "time": "01:30 PM",
+        "duration": "1.5 hours",
+        "location": {
+          "name": "Santorini, Greece Gastronomy Quarter",
+          "lat": 48.8646,
+          "lng": 2.3611999999999997
+        },
+        "cost": 75,
+        "currency": "USD",
+        "vendor": "Terra & Hearth Dining",
+        "vendorRating": 4.85,
+        "dependsOn": [
+          "comp-13"
+        ],
+        "status": "confirmed",
+        "description": "Multi-course farm-to-table lunch highlighting seasonal harvests and paired infusions.",
+        "tags": [
+          "dining",
+          "culinary",
+          "artisan"
+        ],
+        "bookingRef": "BKG-RES-14",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-15",
+        "name": "Valley Sunset Funicular & Alpine Horn Recital",
+        "type": "activity",
+        "day": 3,
+        "time": "05:00 PM",
+        "duration": "2 hours",
+        "location": {
+          "name": "Santorini, Greece Scenic Overlook",
+          "lat": 48.8466,
+          "lng": 2.3672
+        },
+        "cost": 85,
+        "currency": "USD",
+        "vendor": "Twilight Horizons Co.",
+        "vendorRating": 4.9,
+        "dependsOn": [
+          "comp-14"
+        ],
+        "status": "confirmed",
+        "description": "Uncrowded golden hour access tailored for breathtaking viewpoints and photography.",
+        "tags": [
+          "sunset",
+          "sightseeing",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-15",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-16",
+        "name": "Alpine Panorama Grand Hotel (Night 4)",
+        "type": "stay",
+        "day": 4,
+        "time": "02:00 PM",
+        "duration": "Overnight",
+        "location": {
+          "name": "Santorini, Greece Historic District",
+          "lat": 48.8646,
+          "lng": 2.3602
+        },
+        "cost": 220,
+        "currency": "USD",
+        "vendor": "Aura Luxury Stays",
+        "vendorRating": 4.9,
+        "dependsOn": [],
+        "status": "confirmed",
+        "description": "Selected for tranquil acoustic insulation, locally crafted furnishings, and walking distance to transit.",
+        "tags": [
+          "stay",
+          "boutique",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-16",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-17",
+        "name": "Day 4 Morning Express Transfer",
+        "type": "transport",
+        "day": 4,
+        "time": "08:45 AM",
+        "duration": "45 mins",
+        "location": {
+          "name": "Santorini, Greece City Center",
+          "lat": 48.8566,
+          "lng": 2.3522
+        },
+        "cost": 35,
+        "currency": "USD",
+        "vendor": "Apex Regional Transit",
+        "vendorRating": 4.8,
+        "dependsOn": [
+          "comp-16"
+        ],
+        "status": "confirmed",
+        "description": "Reserved executive transfer connecting the accommodation directly to morning excursion grounds.",
+        "tags": [
+          "transit",
+          "rail",
+          "punctual"
+        ],
+        "bookingRef": "BKG-RES-17",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-18",
+        "name": "Jungfrau High Alpine Ascent & Glacier Walk",
+        "type": "activity",
+        "day": 4,
+        "time": "10:00 AM",
+        "duration": "3.5 hours",
+        "location": {
+          "name": "Santorini, Greece Sanctuary Area",
+          "lat": 48.8716,
+          "lng": 2.3642
+        },
+        "cost": 140,
+        "currency": "USD",
+        "vendor": "Elysian Expeditions",
+        "vendorRating": 4.95,
+        "dependsOn": [
+          "comp-17"
+        ],
+        "status": "confirmed",
+        "description": "Small group private docent access before general public admission hours.",
+        "tags": [
+          "culture",
+          "nature",
+          "highlight"
+        ],
+        "bookingRef": "BKG-RES-18",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-19",
+        "name": "Artisanal Chef's Tasting Table",
+        "type": "dining",
+        "day": 4,
+        "time": "01:30 PM",
+        "duration": "1.5 hours",
+        "location": {
+          "name": "Santorini, Greece Gastronomy Quarter",
+          "lat": 48.8646,
+          "lng": 2.3611999999999997
+        },
+        "cost": 75,
+        "currency": "USD",
+        "vendor": "Terra & Hearth Dining",
+        "vendorRating": 4.85,
+        "dependsOn": [
+          "comp-18"
+        ],
+        "status": "confirmed",
+        "description": "Multi-course farm-to-table lunch highlighting seasonal harvests and paired infusions.",
+        "tags": [
+          "dining",
+          "culinary",
+          "artisan"
+        ],
+        "bookingRef": "BKG-RES-19",
+        "paymentStatus": "paid"
+      },
+      {
+        "id": "comp-20",
+        "name": "Valley Sunset Funicular & Alpine Horn Recital",
+        "type": "activity",
+        "day": 4,
+        "time": "05:00 PM",
+        "duration": "2 hours",
+        "location": {
+          "name": "Santorini, Greece Scenic Overlook",
+          "lat": 48.8466,
+          "lng": 2.3672
+        },
+        "cost": 85,
+        "currency": "USD",
+        "vendor": "Twilight Horizons Co.",
+        "vendorRating": 4.9,
+        "dependsOn": [
+          "comp-19"
+        ],
+        "status": "confirmed",
+        "description": "Uncrowded golden hour access tailored for breathtaking viewpoints and photography.",
+        "tags": [
+          "sunset",
+          "sightseeing",
+          "relaxation"
+        ],
+        "bookingRef": "BKG-RES-20",
+        "paymentStatus": "paid"
+      }
+    ],
+    "disruptions": [],
+    "status": "confirmed",
+    "createdAt": "2026-10-09T17:15:13.354Z",
+    "updatedAt": "2026-10-09T17:15:13.367Z"
+  }
+]

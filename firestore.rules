@@ -1,0 +1,62 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    function isOperator() {
+      return isAuthenticated() && 
+        (request.auth.token.role == 'operator' || 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'operator');
+    }
+
+    // User profiles & Trip DNA
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow write: if isOwner(userId) || isOperator();
+    }
+    
+    match /taste_profiles/{userId} {
+      allow read: if isAuthenticated();
+      allow write: if isOwner(userId) || isOperator();
+    }
+
+    // Destinations catalogue (public read, operator write)
+    match /destinations/{destinationId} {
+      allow read: if true;
+      allow write: if isOperator();
+    }
+
+    // Itineraries
+    match /itineraries/{itineraryId} {
+      allow read: if isAuthenticated() && (resource.data.userId == request.auth.uid || isOperator());
+      allow create: if isAuthenticated();
+      allow update, delete: if isAuthenticated() && (resource.data.userId == request.auth.uid || isOperator());
+    }
+
+    // Bookings
+    match /bookings/{bookingId} {
+      allow read: if isAuthenticated() && (resource.data.userId == request.auth.uid || isOperator());
+      allow create: if isAuthenticated();
+      allow update: if isOperator() || (isAuthenticated() && resource.data.userId == request.auth.uid);
+    }
+
+    // Disruptions & Operations monitoring
+    match /disruptions/{disruptionId} {
+      allow read: if isAuthenticated();
+      allow write: if isOperator();
+    }
+    
+    // Vendor inventory
+    match /inventory/{itemId} {
+      allow read: if isAuthenticated();
+      allow write: if isOperator();
+    }
+  }
+}
