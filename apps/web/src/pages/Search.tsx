@@ -109,7 +109,7 @@ interface Destination {
   highlights: string[]
   insiderTip: string
   tags: string[]
-  colorGradient: string
+  photo: string
   accentColor: string
   badgeColor: string
 }
@@ -131,9 +131,9 @@ const DESTINATIONS: Destination[] = [
     highlights: ['Fushimi Inari morning hike', 'Bamboo forest at Arashiyama', 'Gion evening walking tour', 'Zen meditation at Ryoan-ji'],
     insiderTip: 'Visit the Fushimi Inari shrine at dawn before 7:00 AM for an ethereal hike with virtually no crowds.',
     tags: ['#Temples', '#ZenGardens', '#CherryBlossoms', '#TeaCeremony'],
-    colorGradient: 'from-rose-100 via-orange-50 to-amber-100',
+    photo: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&h=500&fit=crop&auto=format&q=80',
     accentColor: 'text-rose-700',
-    badgeColor: 'bg-rose-50 text-rose-700 border-rose-200/80',
+    badgeColor: 'bg-white/90 text-rose-700',
   },
   {
     id: 'santorini',
@@ -151,9 +151,9 @@ const DESTINATIONS: Destination[] = [
     highlights: ['Fira to Oia caldera trek', 'Sunset wine tasting in Pyrgos', 'Akrotiri bronze-age ruins', 'Red Beach catamaran cruise'],
     insiderTip: 'Book sunset dinner in Imerovigli rather than Oia for identical panoramic views with a calmer atmosphere.',
     tags: ['#CalderaViews', '#Sunsets', '#Cyclades', '#WineTasting'],
-    colorGradient: 'from-sky-100 via-blue-50 to-indigo-100',
+    photo: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&h=500&fit=crop&auto=format&q=80',
     accentColor: 'text-sky-700',
-    badgeColor: 'bg-sky-50 text-sky-700 border-sky-200/80',
+    badgeColor: 'bg-white/90 text-sky-700',
   },
   {
     id: 'marrakech',
@@ -171,9 +171,9 @@ const DESTINATIONS: Destination[] = [
     highlights: ['Jemaa el-Fnaa night food stalls', 'Jardin Majorelle & YSL Museum', 'Bahia Palace courtyards', 'Atlas foothills excursion'],
     insiderTip: 'Hire an official local guide on your first morning to effortlessly decode the winding alleys of the historic souks.',
     tags: ['#Medina', '#Riads', '#Souks', '#AtlasMountains'],
-    colorGradient: 'from-amber-100 via-orange-50 to-yellow-100',
+    photo: 'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=800&h=500&fit=crop&auto=format&q=80',
     accentColor: 'text-amber-700',
-    badgeColor: 'bg-amber-50 text-amber-700 border-amber-200/80',
+    badgeColor: 'bg-white/90 text-amber-700',
   },
   {
     id: 'reykjavik',
@@ -191,9 +191,9 @@ const DESTINATIONS: Destination[] = [
     highlights: ['Skógafoss & Seljalandsfoss falls', 'Reynisfjara black sand beach', 'Silfra tectonic fissure snorkel', 'Vatnajökull ice caving'],
     insiderTip: 'Rent a 4x4 camper or SUV for total freedom to chase clear skies when hunting the Aurora Borealis.',
     tags: ['#NorthernLights', '#Glaciers', '#Waterfalls', '#Geothermal'],
-    colorGradient: 'from-teal-100 via-cyan-50 to-blue-100',
+    photo: 'https://images.unsplash.com/photo-1520769945061-0a448c463865?w=800&h=500&fit=crop&auto=format&q=80',
     accentColor: 'text-teal-700',
-    badgeColor: 'bg-teal-50 text-teal-700 border-teal-200/80',
+    badgeColor: 'bg-white/90 text-teal-700',
   },
   {
     id: 'amalfi',
@@ -211,9 +211,9 @@ const DESTINATIONS: Destination[] = [
     highlights: ['Path of the Gods hike', 'Private Capri boat excursion', 'Villa Cimbrone infinity terrace', 'Limoncello tasting in Amalfi'],
     insiderTip: 'Use passenger ferries instead of crowded coastal buses to enjoy effortless travel and unobstructed sea views.',
     tags: ['#CliffsideVillas', '#CapriGrottos', '#Limoncello', '#ScenicCoasts'],
-    colorGradient: 'from-violet-100 via-purple-50 to-indigo-100',
+    photo: 'https://images.unsplash.com/photo-1533587851505-d119e13fa0d7?w=800&h=500&fit=crop&auto=format&q=80',
     accentColor: 'text-violet-700',
-    badgeColor: 'bg-violet-50 text-violet-700 border-violet-200/80',
+    badgeColor: 'bg-white/90 text-violet-700',
   },
   {
     id: 'queenstown',
@@ -231,9 +231,9 @@ const DESTINATIONS: Destination[] = [
     highlights: ['Milford Sound scenic flight & cruise', 'Ben Lomond alpine summit', 'Central Otago Pinot Noir trail', 'Shotover River jet boat'],
     insiderTip: 'Drive over the Crown Range to historic Arrowtown for gold mining history and boutique bakeries.',
     tags: ['#AlpineLakes', '#MilfordSound', '#Hiking', '#Adventure'],
-    colorGradient: 'from-emerald-100 via-teal-50 to-green-100',
+    photo: 'https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=800&h=500&fit=crop&auto=format&q=80',
     accentColor: 'text-emerald-700',
-    badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200/80',
+    badgeColor: 'bg-white/90 text-emerald-700',
   },
   {
     id: 'banff',
@@ -251,9 +251,9 @@ const DESTINATIONS: Destination[] = [
     highlights: ['Moraine Lake sunrise canoe', 'Icefields Parkway scenic drive', 'Peyto Lake panoramic viewpoint', 'Banff Upper Hot Springs'],
     insiderTip: 'Reserve park shuttles for Moraine Lake months in advance as personal vehicle access is restricted.',
     tags: ['#Rockies', '#GlacialLakes', '#Wildlife', '#Canoeing'],
-    colorGradient: 'from-cyan-100 via-sky-50 to-slate-100',
+    photo: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&h=500&fit=crop&auto=format&q=80',
     accentColor: 'text-cyan-700',
-    badgeColor: 'bg-cyan-50 text-cyan-700 border-cyan-200/80',
+    badgeColor: 'bg-white/90 text-cyan-700',
   },
   {
     id: 'oaxaca',
@@ -271,9 +271,9 @@ const DESTINATIONS: Destination[] = [
     highlights: ['Mercado 20 de Noviembre food hall', 'Monte Albán archaeological site', 'Artisanal mezcal distillery tour', 'Hierve el Agua mineral falls'],
     insiderTip: 'Visit the Tlacolula Sunday market for one of the oldest living indigenous trade markets in Mesoamerica.',
     tags: ['#Gastronomy', '#Mezcal', '#ZapotecRuins', '#Artisans'],
-    colorGradient: 'from-orange-100 via-amber-50 to-rose-100',
+    photo: 'https://images.unsplash.com/photo-1518638150340-f706e86654de?w=800&h=500&fit=crop&auto=format&q=80',
     accentColor: 'text-orange-700',
-    badgeColor: 'bg-orange-50 text-orange-700 border-orange-200/80',
+    badgeColor: 'bg-white/90 text-orange-700',
   },
   {
     id: 'zermatt',
@@ -291,9 +291,9 @@ const DESTINATIONS: Destination[] = [
     highlights: ['Gornergrat cogwheel train', 'Matterhorn Glacier Paradise', 'Five Lakes reflective walk', 'Traditional alpine fondue chalet'],
     insiderTip: 'Take the first Gornergrat train at dawn for still waters and the famed mirror reflection of the Matterhorn in Lake Riffelsee.',
     tags: ['#Matterhorn', '#AlpineSkiing', '#GlacierExpress', '#SwissAlps'],
-    colorGradient: 'from-blue-100 via-indigo-50 to-slate-100',
+    photo: 'https://images.unsplash.com/photo-1605555648408-f3f63f15e6b2?w=800&h=500&fit=crop&auto=format&q=80',
     accentColor: 'text-blue-700',
-    badgeColor: 'bg-blue-50 text-blue-700 border-blue-200/80',
+    badgeColor: 'bg-white/90 text-blue-700',
   },
   {
     id: 'capetown',
@@ -311,9 +311,9 @@ const DESTINATIONS: Destination[] = [
     highlights: ['Table Mountain aerial cableway', 'Boulders Beach penguin boardwalk', 'Chapman’s Peak cliffside drive', 'Cape Point nature reserve'],
     insiderTip: 'Hike Lions Head for late afternoon sunset over Camps Bay and the Twelve Apostles peaks.',
     tags: ['#TableMountain', '#Penguins', '#CoastalVistas', '#WineValleys'],
-    colorGradient: 'from-teal-100 via-emerald-50 to-yellow-100',
+    photo: 'https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=800&h=500&fit=crop&auto=format&q=80',
     accentColor: 'text-teal-700',
-    badgeColor: 'bg-teal-50 text-teal-700 border-teal-200/80',
+    badgeColor: 'bg-white/90 text-teal-700',
   },
   {
     id: 'chiangmai',
@@ -331,9 +331,9 @@ const DESTINATIONS: Destination[] = [
     highlights: ['Wat Phra That Doi Suthep at sunset', 'Ethical Elephant Nature Park', 'Sunday Walking Street crafts', 'Khao Soi tasting trail'],
     insiderTip: 'Doi Suthep temple chants in early evening create a deeply peaceful, spiritual atmosphere devoid of tour buses.',
     tags: ['#LannaTemples', '#NightMarkets', '#StreetFood', '#MistyMountains'],
-    colorGradient: 'from-lime-100 via-amber-50 to-orange-100',
+    photo: 'https://images.unsplash.com/photo-1528181304800-259b08848526?w=800&h=500&fit=crop&auto=format&q=80',
     accentColor: 'text-lime-700',
-    badgeColor: 'bg-lime-50 text-lime-700 border-lime-200/80',
+    badgeColor: 'bg-white/90 text-lime-700',
   },
   {
     id: 'bordeaux',
@@ -351,9 +351,9 @@ const DESTINATIONS: Destination[] = [
     highlights: ['Saint-Émilion underground monolith church', 'Cité du Vin immersive museum', 'Place de la Bourse water mirror', 'Arcachon Bay fresh oysters'],
     insiderTip: 'Rent an e-bike in Saint-Émilion to glide between Grand Cru estates across the vineyard trails.',
     tags: ['#GrandCru', '#Chateaux', '#FrenchCuisine', '#Architecture'],
-    colorGradient: 'from-purple-100 via-rose-50 to-pink-100',
+    photo: 'https://images.unsplash.com/photo-1502309282829-4be2dda4eb85?w=800&h=500&fit=crop&auto=format&q=80',
     accentColor: 'text-purple-700',
-    badgeColor: 'bg-purple-50 text-purple-700 border-purple-200/80',
+    badgeColor: 'bg-white/90 text-purple-700',
   },
 ]
 
@@ -484,25 +484,25 @@ export default function Search() {
   return (
     <main className="min-h-screen bg-slate-50/50 pb-24">
       {/* ── Page Header ────────────────────────────────────────────── */}
-      <section className="border-b border-slate-200/70 bg-white px-6 pt-10 pb-12 sm:px-8 sm:pt-14 sm:pb-16">
+      <section className="border-b border-slate-200/70 bg-gradient-to-b from-[#eef8f5]/40 to-white px-6 pt-10 pb-12 sm:px-8 sm:pt-14 sm:pb-16">
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-600 sm:text-sm">
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#1F4D45] sm:text-sm">
                 Explore & Discover
               </p>
-              <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-                Find your next destination
+              <h1 className="mt-2 text-3xl sm:text-5xl font-black tracking-tight text-gray-900 font-display">
+                Discover Curated Destinations
               </h1>
-              <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-500 sm:text-base">
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-gray-600 sm:text-base">
                 Curated global destinations, seasonal highlights, and hand-picked experiences designed for memorable journeys.
               </p>
             </div>
 
             {/* Saved indicator counter */}
-            <div className="flex items-center gap-2 rounded-xl border border-slate-200/80 bg-slate-50 px-3.5 py-2 text-xs font-semibold text-slate-700">
-              <BookmarkIcon filled={true} className="size-4 text-indigo-600" />
-              <span>{savedIds.size} saved to your collection</span>
+            <div className="flex items-center gap-2 rounded-full border border-gray-200/80 bg-white px-4 py-2 text-xs font-semibold text-gray-700 shadow-xs">
+              <BookmarkIcon filled={true} className="size-4 text-[#1F4D45]" />
+              <span>{savedIds.size} saved to collection</span>
             </div>
           </div>
 
@@ -517,7 +517,7 @@ export default function Search() {
                 value={query}
                 onChange={(e) => handleQueryChange(e.target.value)}
                 placeholder="Search by city, country, interest (e.g. temples, waterfalls, wine)..."
-                className="w-full rounded-2xl border border-slate-200 bg-white py-3.5 pr-12 pl-12 text-sm text-slate-900 shadow-sm transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 sm:text-base"
+                className="w-full rounded-2xl border border-slate-200 bg-white py-3.5 pr-12 pl-12 text-sm text-slate-900 shadow-sm transition placeholder:text-slate-400 focus:border-[#1F4D45] focus:ring-4 focus:ring-[#1F4D45]/10 sm:text-base"
               />
               {query && (
                 <button
@@ -547,7 +547,7 @@ export default function Search() {
                   className={[
                     'rounded-xl px-3 py-1.5 font-medium whitespace-nowrap transition-colors',
                     active
-                      ? 'bg-slate-900 text-white shadow-sm'
+                      ? 'bg-[#1F4D45] text-white shadow-sm'
                       : 'border border-slate-200/80 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50',
                   ].join(' ')}
                 >
@@ -560,7 +560,7 @@ export default function Search() {
       </section>
 
       {/* ── Filter & Sort Bar ───────────────────────────────────────── */}
-      <section className="sticky top-20 z-20 border-b border-slate-200/80 bg-white/95 px-6 py-3.5 backdrop-blur-md sm:px-8">
+      <section className="sticky top-16 sm:top-[70px] z-20 border-b border-slate-200/80 bg-white/95 px-6 py-3.5 backdrop-blur-md sm:px-8">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3">
           {/* Category Tabs */}
           <div className="flex items-center gap-1.5 overflow-x-auto text-xs sm:text-sm">
@@ -574,7 +574,7 @@ export default function Search() {
                   className={[
                     'rounded-lg px-2.5 py-1 font-medium whitespace-nowrap transition-colors',
                     active
-                      ? 'bg-indigo-50 text-indigo-700 font-semibold ring-1 ring-indigo-200'
+                      ? 'bg-emerald-50 text-[#1F4D45] font-bold ring-1 ring-emerald-200'
                       : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900',
                   ].join(' ')}
                 >
@@ -615,7 +615,7 @@ export default function Search() {
                 id="search-sort"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="rounded-lg border border-slate-200 bg-white py-1 pr-7 pl-2.5 text-xs font-medium text-slate-700 outline-none transition focus:border-indigo-400"
+                className="rounded-lg border border-slate-200 bg-white py-1 pr-7 pl-2.5 text-xs font-medium text-slate-700 outline-none transition focus:border-[#1F4D45] focus:ring-1 focus:ring-[#1F4D45]"
               >
                 {SORT_OPTIONS.map((opt) => (
                   <option key={opt.id} value={opt.id}>
@@ -641,7 +641,7 @@ export default function Search() {
             <button
               type="button"
               onClick={resetFilters}
-              className="text-xs font-semibold text-indigo-600 transition hover:text-indigo-800"
+              className="text-xs font-semibold text-[#1F4D45] transition hover:text-[#2A6559]"
             >
               Reset all filters
             </button>
@@ -651,7 +651,7 @@ export default function Search() {
         {/* ── Empty State ───────────────────────────────────────────── */}
         {filteredDestinations.length === 0 ? (
           <div className="my-16 rounded-3xl border border-slate-200 bg-white p-12 text-center shadow-xs">
-            <div className="mx-auto flex size-14 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-600">
+            <div className="mx-auto flex size-14 items-center justify-center rounded-2xl bg-emerald-50 text-[#1F4D45]">
               <SearchIcon className="size-7" />
             </div>
             <h3 className="mt-4 text-lg font-bold text-slate-900">No destinations match your search</h3>
@@ -662,7 +662,7 @@ export default function Search() {
               <button
                 type="button"
                 onClick={resetFilters}
-                className="rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-xs transition hover:bg-indigo-700"
+                className="rounded-xl bg-[#1F4D45] px-4 py-2 text-sm font-semibold text-white shadow-xs transition hover:bg-[#2A6559]"
               >
                 Clear all filters
               </button>
@@ -694,14 +694,20 @@ export default function Search() {
                   onClick={() => setActiveDestination(item)}
                   className="group relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white transition duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:border-slate-300"
                 >
-                  {/* Visual Header / Color Swatch Banner */}
-                  <div className={`relative aspect-[16/10] w-full overflow-hidden bg-gradient-to-br ${item.colorGradient}`}>
-                    {/* Atmospheric decorative overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-white/10" />
+                  {/* Photo Header with real travel photography */}
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-200">
+                    <img
+                      src={item.photo}
+                      alt={`${item.name} travel destination`}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    {/* Dark overlay for legibility */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
 
                     {/* Category badge */}
                     <div className="absolute top-3 left-3">
-                      <span className={`inline-flex items-center rounded-lg border px-2.5 py-1 text-xs font-semibold backdrop-blur-md ${item.badgeColor}`}>
+                      <span className="inline-flex items-center rounded-lg bg-white/90 px-2.5 py-1 text-xs font-semibold text-slate-800 shadow-sm backdrop-blur-sm">
                         {item.category}
                       </span>
                     </div>
@@ -713,7 +719,7 @@ export default function Search() {
                       aria-label={isSaved ? `Remove ${item.name} from saved` : `Save ${item.name}`}
                       className="absolute top-3 right-3 flex size-8 items-center justify-center rounded-full bg-white/90 text-slate-600 shadow-sm backdrop-blur-sm transition hover:scale-110 hover:bg-white active:scale-95"
                     >
-                      <BookmarkIcon filled={isSaved} className={`size-4 ${isSaved ? 'text-indigo-600' : 'text-slate-600'}`} />
+                      <BookmarkIcon filled={isSaved} className={`size-4 ${isSaved ? 'text-[#1F4D45]' : 'text-slate-600'}`} />
                     </button>
 
                     {/* Rating badge bottom right */}
@@ -728,7 +734,7 @@ export default function Search() {
                   <div className="flex flex-1 flex-col p-5">
                     <div className="flex items-start justify-between gap-2">
                       <div>
-                        <h2 className="text-lg font-bold tracking-tight text-slate-950 group-hover:text-indigo-600 transition-colors">
+                        <h2 className="text-lg font-bold tracking-tight text-slate-950 group-hover:text-[#1F4D45] transition-colors">
                           {item.name}
                         </h2>
                         <p className="flex items-center gap-1 text-xs font-medium text-slate-500 mt-0.5">
@@ -776,7 +782,7 @@ export default function Search() {
 
                     {/* Card Actions */}
                     <div className="mt-5 flex items-center justify-between pt-2">
-                      <span className="text-xs font-semibold text-indigo-600 group-hover:translate-x-0.5 transition-transform flex items-center gap-1">
+                      <span className="text-xs font-semibold text-[#1F4D45] group-hover:translate-x-0.5 transition-transform flex items-center gap-1">
                         View details
                         <ArrowRightIcon className="size-3.5" />
                       </span>
@@ -784,7 +790,7 @@ export default function Search() {
                       <Link
                         to={`/create?destination=${encodeURIComponent(item.name)}`}
                         onClick={(e) => e.stopPropagation()}
-                        className="rounded-lg bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-indigo-600 active:scale-95"
+                        className="rounded-lg bg-[#1F4D45] px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-[#2A6559] active:scale-95 shadow-xs"
                       >
                         Plan trip
                       </Link>
@@ -812,8 +818,14 @@ export default function Search() {
 
           {/* Modal Container */}
           <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-slate-200 bg-white shadow-2xl">
-            {/* Swatch Header */}
-            <div className={`relative h-44 w-full bg-gradient-to-br ${activeDestination.colorGradient} p-6 sm:h-52`}>
+            {/* Photo Header */}
+            <div className="relative h-44 w-full overflow-hidden bg-slate-800 sm:h-52">
+              <img
+                src={activeDestination.photo}
+                alt={`${activeDestination.name} travel destination`}
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
               <button
                 type="button"
                 onClick={() => setActiveDestination(null)}
@@ -824,13 +836,13 @@ export default function Search() {
               </button>
 
               <div className="absolute bottom-4 left-6">
-                <span className={`inline-flex items-center rounded-lg border px-2.5 py-1 text-xs font-semibold backdrop-blur-md ${activeDestination.badgeColor}`}>
+                <span className="inline-flex items-center rounded-lg bg-white/90 px-2.5 py-1 text-xs font-semibold text-slate-800 shadow-sm backdrop-blur-sm">
                   {activeDestination.category}
                 </span>
-                <h3 className="mt-2 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
+                <h3 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl drop-shadow-md">
                   {activeDestination.name}
                 </h3>
-                <p className="text-xs font-medium text-slate-600">
+                <p className="text-xs font-medium text-white/80">
                   {activeDestination.region} · {activeDestination.continent}
                 </p>
               </div>
@@ -879,7 +891,7 @@ export default function Search() {
                 <ul className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                   {activeDestination.highlights.map((h) => (
                     <li key={h} className="flex items-start gap-2 text-xs font-medium text-slate-700">
-                      <div className="mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-indigo-50 text-indigo-600">
+                      <div className="mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-[#1F4D45]">
                         <CheckIcon className="size-3" />
                       </div>
                       <span>{h}</span>
@@ -889,12 +901,12 @@ export default function Search() {
               </div>
 
               {/* Insider Tip Callout */}
-              <div className="mt-6 rounded-2xl border border-indigo-100 bg-indigo-50/50 p-4">
-                <div className="flex items-center gap-1.5 text-xs font-bold text-indigo-900">
-                  <SparklesIcon className="size-4 text-indigo-600" />
+              <div className="mt-6 rounded-2xl border border-emerald-100 bg-emerald-50/50 p-4">
+                <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-950">
+                  <SparklesIcon className="size-4 text-[#1F4D45]" />
                   <span>ITINERA Insider Tip</span>
                 </div>
-                <p className="mt-1.5 text-xs leading-relaxed text-indigo-950/80">
+                <p className="mt-1.5 text-xs leading-relaxed text-emerald-900/80">
                   {activeDestination.insiderTip}
                 </p>
               </div>
@@ -908,7 +920,7 @@ export default function Search() {
                 >
                   <BookmarkIcon
                     filled={savedIds.has(activeDestination.id)}
-                    className={`size-4 ${savedIds.has(activeDestination.id) ? 'text-indigo-600' : 'text-slate-600'}`}
+                    className={`size-4 ${savedIds.has(activeDestination.id) ? 'text-[#1F4D45]' : 'text-slate-600'}`}
                   />
                   <span>
                     {savedIds.has(activeDestination.id) ? 'Saved in Collection' : 'Save Destination'}
@@ -925,7 +937,7 @@ export default function Search() {
                   </button>
                   <Link
                     to={`/create?destination=${encodeURIComponent(activeDestination.name)}`}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-indigo-600/20 transition hover:bg-indigo-700 active:scale-[0.98] sm:w-auto"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#1F4D45] px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-[#2A6559] active:scale-[0.98] sm:w-auto"
                   >
                     <span>Start Itinerary</span>
                     <ArrowRightIcon className="size-4" />

@@ -1,762 +1,1023 @@
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
+import {
+  Compass,
+  Sparkles,
+  MapPin,
+  Calendar,
+  Clock,
+  ArrowRight,
+  Star,
+  Users,
+  ShieldCheck,
+  CloudSun,
+  ChevronRight,
+  TrendingUp,
+  DollarSign,
+  Mountain,
+  MessageSquare,
+  Route,
+  GitBranch,
+} from 'lucide-react'
 
-/* ── Inline SVG Icons ─────────────────────────────────────────────── */
-
-function CompassIcon({ className = 'size-5' }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-    </svg>
-  )
-}
-
-function SparklesIcon({ className = 'size-5' }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
-    </svg>
-  )
-}
-
-function CurrencyIcon({ className = 'size-5' }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-    </svg>
-  )
-}
-
-function ShieldCheckIcon({ className = 'size-5' }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-    </svg>
-  )
-}
-
-function CalendarCheckIcon({ className = 'size-5' }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
-    </svg>
-  )
-}
-
-function BuildingOfficeIcon({ className = 'size-5' }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
-    </svg>
-  )
-}
-
-function TicketIcon({ className = 'size-5' }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 1 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 0 1 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z" />
-    </svg>
-  )
-}
-
-function RouteIcon({ className = 'size-5' }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" />
-    </svg>
-  )
-}
-
-function MapPinIcon({ className = 'size-4' }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-    </svg>
-  )
-}
-
-function StarIcon({ className = 'size-3.5' }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={className}>
-      <path fillRule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z" clipRule="evenodd" />
-    </svg>
-  )
-}
-
-function ArrowRightIcon({ className = 'size-4' }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={className}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-    </svg>
-  )
-}
-
-function CheckIcon({ className = 'size-4' }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className={className}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-    </svg>
-  )
-}
-
-/* ── Static Structured Data ───────────────────────────────────────── */
-
-interface ValueBenefit {
-  title: string
-  description: string
-  icon: React.ReactNode
-}
-
-const VALUE_BENEFITS: ValueBenefit[] = [
+// Hero background slides
+const HERO_SLIDES = [
   {
-    title: 'Personalized recommendations',
-    description: 'Intelligent curation tailored to your travel style, pace, and passions.',
-    icon: <SparklesIcon className="size-5 text-indigo-600" />,
+    photo: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=1600&auto=format&fit=crop',
+    dest: 'Kyoto, Japan',
   },
   {
-    title: 'Budget-aware planning',
-    description: 'Transparent cost estimates and real-time expense allocation for any trip.',
-    icon: <CurrencyIcon className="size-5 text-indigo-600" />,
+    photo: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?q=80&w=1600&auto=format&fit=crop',
+    dest: 'Santorini, Greece',
   },
   {
-    title: 'Verified travel options',
-    description: 'Authentic stays, vetted activities, and verified local itineraries.',
-    icon: <ShieldCheckIcon className="size-5 text-indigo-600" />,
-  },
-  {
-    title: 'Complete trip planning',
-    description: 'Day-by-day scheduling, route optimization, and notes in one unified space.',
-    icon: <CalendarCheckIcon className="size-5 text-indigo-600" />,
+    photo: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?q=80&w=1600&auto=format&fit=crop',
+    dest: 'Swiss Alps',
   },
 ]
 
-interface Step {
-  stepNumber: string
-  title: string
-  description: string
-  detail: string
-}
-
-const STEPS: Step[] = [
-  {
-    stepNumber: '01',
-    title: 'Tell us what you want',
-    description: 'Select your dream destination, travel dates, companion group, and preferred pace—relaxed, balanced, or fast-tracked.',
-    detail: 'Set duration & travel vibe',
-  },
-  {
-    stepNumber: '02',
-    title: 'Get personalized recommendations',
-    description: 'ITINERA automatically surfaces verified boutique accommodations, authentic culinary spots, and iconic cultural experiences.',
-    detail: 'Budget-aware suggestions',
-  },
-  {
-    stepNumber: '03',
-    title: 'Build your trip',
-    description: 'Fine-tune your intuitive daily timeline, eliminate redundant transit with smart route sequencing, and travel with total clarity.',
-    detail: 'Ready-to-go daily itinerary',
-  },
-]
-
-interface Feature {
-  title: string
-  description: string
-  icon: React.ReactNode
-  tag: string
-}
-
-const FEATURES: Feature[] = [
-  {
-    title: 'Personalized recommendations',
-    description: 'Discover hidden gems and must-see landmarks hand-selected to fit your exact travel rhythm and preferences.',
-    icon: <SparklesIcon className="size-6 text-indigo-600" />,
-    tag: 'Intelligence',
-  },
-  {
-    title: 'Budget-based suggestions',
-    description: 'Stay on budget with transparent tiered pricing ($ to $$$), real-time cost previews, and smart allocation advice.',
-    icon: <CurrencyIcon className="size-6 text-indigo-600" />,
-    tag: 'Cost Control',
-  },
-  {
-    title: 'Hotels and stays',
-    description: 'Browse boutique hotels, traditional ryokans, and cliffside villas verified for quality and prime location.',
-    icon: <BuildingOfficeIcon className="size-6 text-indigo-600" />,
-    tag: 'Accommodations',
-  },
-  {
-    title: 'Curated activities',
-    description: 'Hand-picked local experiences, skip-the-line admissions, guided culinary trails, and outdoor adventures.',
-    icon: <TicketIcon className="size-6 text-indigo-600" />,
-    tag: 'Experiences',
-  },
-  {
-    title: 'Seamless travel planning',
-    description: 'Consolidate travel details, bookings, timing notes, and packing reminders into one elegant, organized dashboard.',
-    icon: <RouteIcon className="size-6 text-indigo-600" />,
-    tag: 'Organization',
-  },
-  {
-    title: 'Smart itinerary creation',
-    description: 'Automatically optimize daily routes to minimize backtracking, reduce fatigue, and maximize memorable hours.',
-    icon: <CalendarCheckIcon className="size-6 text-indigo-600" />,
-    tag: 'Routing',
-  },
-]
-
-interface DestinationCardData {
+// Curated Top Destinations
+interface Destination {
   id: string
   name: string
   region: string
-  continent: string
+  description: string
   rating: number
   reviewCount: number
-  priceEst: string
-  duration: string
+  days: number
+  plannedCount: string
+  photo: string
   tags: string[]
-  gradient: string
 }
 
-const FEATURED_DESTINATIONS: DestinationCardData[] = [
+const TOP_DESTINATIONS: Destination[] = [
   {
     id: 'kyoto',
     name: 'Kyoto',
     region: 'Japan',
-    continent: 'Asia',
+    description: 'Tranquil machiyas, bamboo groves & ancient UNESCO temples',
     rating: 4.97,
-    reviewCount: 342,
-    priceEst: 'From $1,450',
-    duration: '5–7 days',
-    tags: ['#Temples', '#ZenGardens'],
-    gradient: 'from-rose-100 via-orange-50 to-amber-100',
+    reviewCount: 3420,
+    days: 5,
+    plannedCount: '24.2K',
+    photo: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=800&auto=format&fit=crop',
+    tags: ['Culture', 'Temples', 'Culinary'],
   },
   {
     id: 'santorini',
     name: 'Santorini',
     region: 'Greece',
-    continent: 'Europe',
-    rating: 4.93,
-    reviewCount: 288,
-    priceEst: 'From $2,100',
-    duration: '4–6 days',
-    tags: ['#CalderaViews', '#Sunsets'],
-    gradient: 'from-sky-100 via-blue-50 to-indigo-100',
-  },
-  {
-    id: 'marrakech',
-    name: 'Marrakech',
-    region: 'Morocco',
-    continent: 'Africa',
-    rating: 4.88,
-    reviewCount: 215,
-    priceEst: 'From $850',
-    duration: '4–6 days',
-    tags: ['#Medina', '#Riads'],
-    gradient: 'from-amber-100 via-orange-50 to-yellow-100',
-  },
-  {
-    id: 'reykjavik',
-    name: 'Reykjavík',
-    region: 'Iceland',
-    continent: 'Europe',
+    description: 'Caldera cliffside cave suites & sunset catamaran sails',
     rating: 4.95,
-    reviewCount: 394,
-    priceEst: 'From $2,450',
-    duration: '6–9 days',
-    tags: ['#Auroras', '#Glaciers'],
-    gradient: 'from-teal-100 via-cyan-50 to-blue-100',
+    reviewCount: 4120,
+    days: 4,
+    plannedCount: '31.8K',
+    photo: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?q=80&w=800&auto=format&fit=crop',
+    tags: ['Coastal', 'Romance', 'Sailing'],
+  },
+  {
+    id: 'swiss-alps',
+    name: 'Swiss Alps & Jungfrau',
+    region: 'Switzerland',
+    description: 'Top of Europe cogwheel railway & high-alpine glacier walks',
+    rating: 4.96,
+    reviewCount: 2890,
+    days: 5,
+    plannedCount: '19.5K',
+    photo: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?q=80&w=800&auto=format&fit=crop',
+    tags: ['Alpine', 'Railways', 'Nature'],
   },
   {
     id: 'amalfi',
     name: 'Amalfi Coast',
     region: 'Italy',
-    continent: 'Europe',
+    description: 'Pastel cliffside villages, lemon groves & Mediterranean azure',
     rating: 4.92,
-    reviewCount: 318,
-    priceEst: 'From $2,600',
-    duration: '5–8 days',
-    tags: ['#CliffsideVillas', '#Capri'],
-    gradient: 'from-violet-100 via-purple-50 to-indigo-100',
+    reviewCount: 2540,
+    days: 6,
+    plannedCount: '22.1K',
+    photo: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=800&auto=format&fit=crop',
+    tags: ['Coastal', 'Gastronomy', 'Scenic'],
   },
   {
-    id: 'queenstown',
-    name: 'Queenstown',
-    region: 'New Zealand',
-    continent: 'Oceania',
-    rating: 4.96,
-    reviewCount: 250,
-    priceEst: 'From $1,850',
-    duration: '7–10 days',
-    tags: ['#AlpineLakes', '#MilfordSound'],
-    gradient: 'from-emerald-100 via-teal-50 to-green-100',
+    id: 'patagonia',
+    name: 'Patagonia & Torres',
+    region: 'Chile & Argentina',
+    description: 'Granite horns, blue calving glaciers & wild southern trails',
+    rating: 4.98,
+    reviewCount: 1890,
+    days: 8,
+    plannedCount: '14.7K',
+    photo: 'https://images.unsplash.com/photo-1527004013197-933c4bb611b3?q=80&w=800&auto=format&fit=crop',
+    tags: ['Trekking', 'Wildlife', 'Expedition'],
+  },
+  {
+    id: 'iceland',
+    name: 'South Coast & Aurora',
+    region: 'Iceland',
+    description: 'Geothermal Blue Lagoon, black sand beaches & glacier waterfalls',
+    rating: 4.94,
+    reviewCount: 3110,
+    days: 5,
+    plannedCount: '18.9K',
+    photo: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67?q=80&w=800&auto=format&fit=crop',
+    tags: ['Aurora', 'Geothermal', 'Glaciers'],
   },
 ]
 
-/* ── Main Component ───────────────────────────────────────────────── */
+// Iconic Treks
+interface Trek {
+  id: string
+  title: string
+  region: string
+  category: 'himalayan' | 'alpine' | 'americas' | 'iconic'
+  subtitle: string
+  days: number
+  altitude: string
+  difficulty: 'Moderate' | 'Difficult' | 'Challenging'
+  photo: string
+  promptPreset: string
+}
+
+const WORLD_TREKS: Trek[] = [
+  {
+    id: 'everest-base-camp',
+    title: 'Everest Base Camp',
+    region: 'Khumbu, Nepal',
+    category: 'himalayan',
+    subtitle: 'Walk in the shadow of the world’s highest peak through Sherpa villages',
+    days: 14,
+    altitude: '5,364m',
+    difficulty: 'Challenging',
+    photo: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop',
+    promptPreset: 'Everest Base Camp 14-day trekking route with acclimatization days, tea house lodges, and Kala Patthar sunrise.',
+  },
+  {
+    id: 'annapurna-circuit',
+    title: 'Annapurna Circuit',
+    region: 'Gandaki, Nepal',
+    category: 'himalayan',
+    subtitle: 'The legendary full circuit crossing Thorong La Pass at sunrise',
+    days: 15,
+    altitude: '5,416m',
+    difficulty: 'Challenging',
+    photo: 'https://images.unsplash.com/photo-1585409677983-0f6c41ca0c33?q=80&w=800&auto=format&fit=crop',
+    promptPreset: 'Annapurna Circuit 15-day trek with Thorong La pass crossing, mountain tea houses, and Tatopani hot springs.',
+  },
+  {
+    id: 'jungfrau-alpine-trail',
+    title: 'Jungfrau Alpine Traverse',
+    region: 'Bernese Oberland, Switzerland',
+    category: 'alpine',
+    subtitle: 'First-class cogwheel rail, North Face views & pristine glacier walks',
+    days: 5,
+    altitude: '3,454m',
+    difficulty: 'Moderate',
+    photo: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?q=80&w=800&auto=format&fit=crop',
+    promptPreset: 'Jungfrau 5-day alpine itinerary with Top of Europe rail, Eiger trail hike, and traditional Swiss fondue chalet.',
+  },
+  {
+    id: 'torres-w-trek',
+    title: 'Torres del Paine W-Trek',
+    region: 'Patagonia, Chile',
+    category: 'americas',
+    subtitle: 'Grey Glacier icebergs, French Valley amphitheatre & granite towers',
+    days: 5,
+    altitude: '1,200m',
+    difficulty: 'Moderate',
+    photo: 'https://images.unsplash.com/photo-1527004013197-933c4bb611b3?q=80&w=800&auto=format&fit=crop',
+    promptPreset: 'Torres del Paine 5-day W-Trek with refuge stays, Grey Glacier catamaran, and sunrise at the Base of the Towers.',
+  },
+  {
+    id: 'tour-du-mont-blanc',
+    title: 'Tour du Mont Blanc',
+    region: 'France, Italy & Switzerland',
+    category: 'alpine',
+    subtitle: 'Trek through three European nations around western Europe’s roof',
+    days: 10,
+    altitude: '2,665m',
+    difficulty: 'Difficult',
+    photo: 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?q=80&w=800&auto=format&fit=crop',
+    promptPreset: 'Tour du Mont Blanc 10-day circuit crossing France, Italy, and Switzerland with alpine refuges and luggage transfers.',
+  },
+  {
+    id: 'inca-trail',
+    title: 'Classic Inca Trail to Machu Picchu',
+    region: 'Cusco, Peru',
+    category: 'americas',
+    subtitle: 'Ancient stone staircases, cloud forests & the legendary Sun Gate',
+    days: 4,
+    altitude: '4,215m',
+    difficulty: 'Moderate',
+    photo: 'https://images.unsplash.com/photo-1526392060635-9d6019884377?q=80&w=800&auto=format&fit=crop',
+    promptPreset: '4-day classic Inca Trail with licensed Quechua guides, Dead Woman’s Pass, and sunrise entrance at Intipunku.',
+  },
+]
 
 export default function Home() {
   const navigate = useNavigate()
-  const [destinationQuery, setDestinationQuery] = useState('')
-  const [activePreviewDay, setActivePreviewDay] = useState<number>(2)
 
-  const handleSearchSubmit = (e?: React.FormEvent) => {
-    e?.preventDefault()
-    const trimmed = destinationQuery.trim()
-    navigate(trimmed ? `/search?q=${encodeURIComponent(trimmed)}` : '/search')
+  const [heroDestination, setHeroDestination] = useState('Kyoto, Japan')
+  const [heroDays, setHeroDays] = useState(4)
+  const [heroBudget, setHeroBudget] = useState('moderate')
+  const [heroSlide, setHeroSlide] = useState(0)
+  const [activeDemoTab, setActiveDemoTab] = useState<'prompt' | 'graph' | 'itinerary'>('itinerary')
+  const [activeTrekCategory, setActiveTrekCategory] = useState<string>('all')
+
+  // Auto-advance hero slides
+  useEffect(() => {
+    const timer = setInterval(() => setHeroSlide((s) => (s + 1) % HERO_SLIDES.length), 6000)
+    return () => clearInterval(timer)
+  }, [])
+
+  const handleHeroSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    navigate(
+      `/create?destination=${encodeURIComponent(heroDestination)}&days=${heroDays}&budget=${heroBudget}`
+    )
   }
+
+  const filteredTreks =
+    activeTrekCategory === 'all'
+      ? WORLD_TREKS
+      : WORLD_TREKS.filter((t) => t.category === activeTrekCategory)
 
   return (
     <main className="min-h-screen bg-white">
-      {/* ── 1. HERO SECTION ────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-white px-6 pt-8 pb-16 sm:px-8 sm:pt-14 sm:pb-24 lg:pt-16">
-        {/* Subtle decorative glow */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-32 right-1/2 translate-x-1/2 h-[520px] w-[780px] rounded-full bg-gradient-to-b from-indigo-100/50 via-slate-50/40 to-transparent blur-3xl"
-        />
+      {/* ═════════════════════════════════════════════════════════════════
+          1. IMMERSIVE HERO — FULL-BLEED PHOTOGRAPHY + SEARCH FORM
+          ═════════════════════════════════════════════════════════════════ */}
+      <section className="relative pt-12 pb-20 sm:pt-16 sm:pb-28 lg:pt-20 lg:pb-32 overflow-hidden bg-[#0D1A15]">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(31,77,69,0.5),transparent)] pointer-events-none" />
 
-        <div className="relative mx-auto max-w-6xl">
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Hero Header Content */}
-          <div className="mx-auto max-w-3xl text-center animate-fade-in-up">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200/80 bg-indigo-50/70 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700">
-              <SparklesIcon className="size-3.5 text-indigo-600" />
-              Intelligent Travel Platform
-            </span>
+          <div className="relative z-10 text-center max-w-4xl mx-auto space-y-6 sm:space-y-8">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-emerald-200 text-xs font-semibold shadow-xs">
+              <span className="size-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>AI-Powered Travel Architect & Resilient Graph Engine</span>
+            </div>
 
-            <h1 className="mt-5 text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl md:text-6xl md:leading-[1.12]">
-              Intelligent travel planning, crafted for how you wander.
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#FAF7F2] leading-[1.15] sm:leading-[1.12] tracking-tight">
+              Plan Your{' '}
+              <span className="font-display italic font-normal bg-gradient-to-r from-[#FDE68A] via-[#FBBF24] to-[#FF8A65] bg-clip-text text-transparent pr-2">
+                Dream Trip
+              </span>{' '}
+              with AI
             </h1>
 
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              From personalized destination discovery and budget-aware recommendations to seamless day-by-day itineraries—ITINERA builds trips that reflect your personal travel style.
+            <p className="text-base sm:text-lg md:text-xl text-stone-300 leading-relaxed max-w-2xl mx-auto font-normal">
+              Tell ITINERA where you want to go. Get a full day-by-day itinerary with boutique partner stays, DAG graph routes, and real-time weather adaptability — in under 60 seconds.
             </p>
 
-            {/* CTAs */}
-            <div className="mt-8 flex flex-col items-center justify-center gap-3.5 sm:flex-row sm:gap-4">
-              <Link
-                to="/create"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition hover:bg-indigo-700 active:scale-[0.98] sm:w-auto"
-              >
-                <span>Plan Your Trip</span>
-                <ArrowRightIcon className="size-4" />
-              </Link>
-
-              <Link
-                to="/search"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 active:scale-[0.98] sm:w-auto"
-              >
-                <span>Explore Destinations</span>
-              </Link>
-            </div>
-          </div>
-
-          {/* Quick Destination Search Input */}
-          <form
-            onSubmit={handleSearchSubmit}
-            className="mx-auto mt-10 max-w-2xl rounded-2xl border border-slate-200/90 bg-white p-2 shadow-sm transition focus-within:border-indigo-400 focus-within:ring-4 focus-within:ring-indigo-100 sm:p-2.5 animate-fade-in"
-          >
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-              <div className="relative flex-1">
-                <div className="pointer-events-none absolute inset-y-0 left-3.5 flex items-center text-slate-400">
-                  <MapPinIcon className="size-5" />
+            {/* Fast Entry Point Planner Pill */}
+            <form
+              onSubmit={handleHeroSubmit}
+              className="max-w-4xl mx-auto bg-white p-2.5 sm:p-3 rounded-3xl sm:rounded-full border border-white/20 shadow-2xl shadow-black/30 flex flex-col sm:flex-row items-center gap-2 transition hover:border-white/40"
+            >
+              {/* Destination Input */}
+              <div className="flex items-center gap-3 px-4 sm:px-5 py-2.5 w-full sm:flex-1 border-b sm:border-b-0 sm:border-r border-gray-100">
+                <MapPin className="size-4 text-[#1F4D45] shrink-0" />
+                <div className="text-left w-full">
+                  <span className="block text-[10px] font-bold uppercase tracking-wider text-gray-400">
+                    Destination
+                  </span>
+                  <input
+                    type="text"
+                    value={heroDestination}
+                    onChange={(e) => setHeroDestination(e.target.value)}
+                    placeholder="Where to? (e.g. Kyoto, Swiss Alps)"
+                    className="w-full text-xs sm:text-sm font-semibold text-gray-900 outline-none bg-transparent placeholder:text-gray-400"
+                  />
                 </div>
-                <input
-                  type="text"
-                  value={destinationQuery}
-                  onChange={(e) => setDestinationQuery(e.target.value)}
-                  placeholder="Where do you want to travel? (e.g. Kyoto, Amalfi, Iceland)..."
-                  className="w-full rounded-xl bg-slate-50/70 py-2.5 pr-4 pl-10 text-sm text-slate-900 outline-none placeholder:text-slate-400 focus:bg-white sm:text-base"
-                />
               </div>
+
+              {/* Days Selector */}
+              <div className="flex items-center gap-2.5 px-4 sm:px-5 py-2.5 w-full sm:w-44 border-b sm:border-b-0 sm:border-r border-gray-100">
+                <Calendar className="size-4 text-[#1F4D45] shrink-0" />
+                <div className="text-left w-full">
+                  <span className="block text-[10px] font-bold uppercase tracking-wider text-gray-400">
+                    Duration
+                  </span>
+                  <select
+                    value={heroDays}
+                    onChange={(e) => setHeroDays(Number(e.target.value))}
+                    className="w-full text-xs sm:text-sm font-semibold text-gray-900 outline-none bg-transparent cursor-pointer"
+                  >
+                    <option value={3}>3 Days</option>
+                    <option value={4}>4 Days</option>
+                    <option value={5}>5 Days</option>
+                    <option value={7}>7 Days</option>
+                    <option value={10}>10 Days</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Budget Selector */}
+              <div className="flex items-center gap-2.5 px-4 sm:px-5 py-2.5 w-full sm:w-40">
+                <DollarSign className="size-4 text-[#1F4D45] shrink-0" />
+                <div className="text-left w-full">
+                  <span className="block text-[10px] font-bold uppercase tracking-wider text-gray-400">
+                    Budget
+                  </span>
+                  <select
+                    value={heroBudget}
+                    onChange={(e) => setHeroBudget(e.target.value)}
+                    className="w-full text-xs sm:text-sm font-semibold text-gray-900 outline-none bg-transparent cursor-pointer"
+                  >
+                    <option value="economy">Economy ($)</option>
+                    <option value="moderate">Moderate ($$)</option>
+                    <option value="luxury">Luxury ($$$)</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Submit CTA */}
               <button
                 type="submit"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700 active:scale-[0.98]"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-2xl sm:rounded-full bg-[#1F4D45] hover:bg-[#2A6559] text-white text-xs sm:text-sm font-bold shadow-md transition-all hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap flex items-center justify-center gap-2 shrink-0"
               >
-                <CompassIcon className="size-4" />
-                <span>Search</span>
+                <Sparkles className="size-4 text-amber-300" />
+                <span>Start Planning Free</span>
               </button>
-            </div>
-          </form>
+            </form>
 
-          {/* ── Travel Visual Area: Interactive Itinerary Snapshot ── */}
-          <div className="mx-auto mt-12 max-w-4xl animate-fade-in-up">
-            <div className="overflow-hidden rounded-3xl border border-slate-200/90 bg-white shadow-xl shadow-slate-200/60">
-              {/* Card Window Bar */}
-              <div className="flex items-center justify-between border-b border-slate-100 bg-slate-50/90 px-5 py-3 sm:px-6">
+            {/* Social Proof & Traveler Trust Counter */}
+            <div className="flex items-center justify-center gap-3 pt-2">
+              <div className="flex -space-x-2">
+                <img
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&q=80"
+                  alt="Explorer"
+                  className="size-8 rounded-full border-2 border-white object-cover shadow-xs"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80"
+                  alt="Explorer"
+                  className="size-8 rounded-full border-2 border-white object-cover shadow-xs"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80"
+                  alt="Explorer"
+                  className="size-8 rounded-full border-2 border-white object-cover shadow-xs"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80"
+                  alt="Explorer"
+                  className="size-8 rounded-full border-2 border-white object-cover shadow-xs"
+                />
+              </div>
+              <p className="text-xs sm:text-sm text-stone-300 font-medium">
+                <strong className="text-white font-bold">120+</strong> curated journeys synthesized this week •{' '}
+                <span className="text-amber-300 font-semibold">4.9★</span> community satisfaction
+              </p>
+            </div>
+          </div>
+
+          {/* ═════════════════════════════════════════════════════════════
+              INTERACTIVE PRODUCT DEMONSTRATION WINDOW (MAC CHROME MOCKUP)
+              ═════════════════════════════════════════════════════════════ */}
+          <div className="relative z-10 mt-16 sm:mt-20 max-w-5xl mx-auto">
+            <div className="rounded-3xl overflow-hidden border border-gray-200/90 shadow-[0_30px_90px_rgba(15,23,42,0.12)] bg-white transition hover:shadow-[0_40px_100px_rgba(15,23,42,0.18)]">
+              {/* Browser Chrome Header */}
+              <div className="bg-gray-100/90 border-b border-gray-200 px-4 py-3 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="size-2.5 rounded-full bg-slate-300" />
-                  <span className="size-2.5 rounded-full bg-slate-300" />
-                  <span className="size-2.5 rounded-full bg-slate-300" />
-                  <span className="ml-2 text-xs font-semibold text-slate-600">
-                    ITINERA Smart Itinerary Preview
-                  </span>
+                  <div className="size-3 rounded-full bg-[#FF5F57]" />
+                  <div className="size-3 rounded-full bg-[#FFBD2E]" />
+                  <div className="size-3 rounded-full bg-[#28C840]" />
                 </div>
-                <div className="flex items-center gap-2 text-xs font-semibold text-indigo-700 bg-indigo-50 border border-indigo-200/60 rounded-full px-3 py-0.5">
-                  <CheckIcon className="size-3 text-indigo-600" />
-                  <span>Route Optimized</span>
+
+                <div className="bg-white/90 rounded-full px-4 py-1 text-[11px] font-medium text-gray-500 border border-gray-200/80 flex items-center gap-1.5 shadow-2xs">
+                  <Compass className="size-3 text-[#1F4D45]" />
+                  <span>itinera.ai/planner/kyoto-machiya-journey</span>
+                </div>
+
+                <div className="flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                  <ShieldCheck className="size-3" />
+                  Live Sync
                 </div>
               </div>
 
-              {/* Itinerary Header */}
-              <div className="p-6 sm:p-8">
-                <div className="flex flex-col justify-between gap-4 border-b border-slate-100 pb-6 sm:flex-row sm:items-center">
-                  <div>
-                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-indigo-600">
-                      <span>Curated Journey</span>
-                      <span>·</span>
-                      <span>Japan</span>
+              {/* Demo Mode Tabs */}
+              <div className="bg-slate-50 border-b border-gray-100 px-6 py-2.5 flex items-center gap-3 overflow-x-auto">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                  Workflow Preview:
+                </span>
+                <button
+                  onClick={() => setActiveDemoTab('prompt')}
+                  className={`px-3 py-1 rounded-full text-xs font-semibold transition ${
+                    activeDemoTab === 'prompt'
+                      ? 'bg-white text-gray-900 shadow-xs border border-gray-200'
+                      : 'text-gray-500 hover:text-gray-900'
+                  }`}
+                >
+                  1. AI Synthesis & DNA
+                </button>
+                <button
+                  onClick={() => setActiveDemoTab('graph')}
+                  className={`px-3 py-1 rounded-full text-xs font-semibold transition ${
+                    activeDemoTab === 'graph'
+                      ? 'bg-white text-gray-900 shadow-xs border border-gray-200'
+                      : 'text-gray-500 hover:text-gray-900'
+                  }`}
+                >
+                  2. Weather Twin & DAG Graph
+                </button>
+                <button
+                  onClick={() => setActiveDemoTab('itinerary')}
+                  className={`px-3 py-1 rounded-full text-xs font-semibold transition ${
+                    activeDemoTab === 'itinerary'
+                      ? 'bg-white text-gray-900 shadow-xs border border-gray-200'
+                      : 'text-gray-500 hover:text-gray-900'
+                  }`}
+                >
+                  3. Day-by-Day Timeline & Vouchers
+                </button>
+              </div>
+
+              {/* Demo Window Content Body */}
+              <div className="p-6 sm:p-8 bg-white min-h-[380px]">
+                {activeDemoTab === 'itinerary' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="space-y-6"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-gray-100">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold border border-emerald-200">
+                            DAG Dependencies Verified
+                          </span>
+                          <span className="text-xs text-gray-400 font-medium">4 Days • 12 Components</span>
+                        </div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">
+                          Kyoto Imperial Machiya & Zen Shrines
+                        </h3>
+                      </div>
+
+                      <div className="flex items-center gap-3">
+                        <div className="text-right">
+                          <span className="text-[10px] text-gray-400 uppercase tracking-wider block font-semibold">
+                            Total Investment
+                          </span>
+                          <span className="text-xl font-black text-gray-900">$2,450 USD</span>
+                        </div>
+                        <Link
+                          to="/trip/kyoto-trip-01"
+                          className="px-4 py-2 rounded-xl bg-[#1F4D45] hover:bg-[#2A6559] text-white text-xs font-bold transition shadow-xs"
+                        >
+                          Open Full Trip
+                        </Link>
+                      </div>
                     </div>
-                    <h2 className="mt-1 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
-                      Autumn in Kyoto & Arashiyama
-                    </h2>
-                    <p className="mt-1 flex items-center gap-2 text-xs text-slate-500">
-                      <span>6 Days / 5 Nights</span>
-                      <span>·</span>
-                      <span>2 Travelers</span>
-                      <span>·</span>
-                      <span>Moderate Pace</span>
+
+                    {/* Timeline Component Demo Preview */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      {/* Component 1 */}
+                      <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2 hover:bg-slate-100/70 transition">
+                        <div className="flex justify-between items-center text-xs">
+                          <span className="font-bold text-[#1F4D45] px-2 py-0.5 rounded bg-white border border-gray-200">
+                            Day 1 • 08:30 AM
+                          </span>
+                          <span className="text-emerald-600 font-bold">$335</span>
+                        </div>
+                        <h4 className="text-sm font-bold text-gray-900">Gion Machiya Heritage Boutique Hotel</h4>
+                        <p className="text-xs text-gray-500 leading-relaxed">
+                          Selected for tranquil acoustic isolation and walking distance to historic temples.
+                        </p>
+                        <div className="pt-1 flex items-center justify-between text-[11px] text-gray-400 font-medium">
+                          <span>Kiyomizu Stays (4.95★)</span>
+                          <span className="text-emerald-700 font-bold">Voucher Locked</span>
+                        </div>
+                      </div>
+
+                      {/* Component 2 */}
+                      <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2 hover:bg-slate-100/70 transition">
+                        <div className="flex justify-between items-center text-xs">
+                          <span className="font-bold text-[#1F4D45] px-2 py-0.5 rounded bg-white border border-gray-200">
+                            Day 1 • 11:00 AM
+                          </span>
+                          <span className="text-emerald-600 font-bold">$75</span>
+                        </div>
+                        <h4 className="text-sm font-bold text-gray-900">Private Zen Garden Meditation</h4>
+                        <p className="text-xs text-gray-500 leading-relaxed">
+                          Exclusive docent access before general admission gates open to public.
+                        </p>
+                        <div className="pt-1 flex items-center justify-between text-[11px] text-gray-400 font-medium">
+                          <span>Kyoto Heritage Masters</span>
+                          <span className="text-emerald-700 font-bold">Voucher Locked</span>
+                        </div>
+                      </div>
+
+                      {/* Component 3 - Adaptive Weather Replacement Demonstration */}
+                      <div className="p-4 rounded-2xl bg-amber-50/60 border border-amber-200 space-y-2">
+                        <div className="flex justify-between items-center text-xs">
+                          <span className="font-bold text-amber-800 px-2 py-0.5 rounded bg-white border border-amber-200">
+                            Day 1 • 02:30 PM (Adaptive)
+                          </span>
+                          <span className="text-amber-800 font-bold">$60</span>
+                        </div>
+                        <h4 className="text-sm font-bold text-gray-900">Uji Matcha Tea Ceremony Workshop</h4>
+                        <p className="text-xs text-gray-600 leading-relaxed">
+                          Automatic weather reroute: replaced outdoor river punting during localized rain.
+                        </p>
+                        <div className="pt-1 flex items-center justify-between text-[11px] text-amber-700 font-semibold">
+                          <span>Adapt Engine Active</span>
+                          <span>Score: 92/100</span>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
+                {activeDemoTab === 'graph' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="space-y-4"
+                  >
+                    <div className="p-4 rounded-2xl bg-[#0D1A15] text-white">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
+                          Digital Twin Weather & Graph Pipeline
+                        </span>
+                        <span className="text-xs text-gray-400">OpenMeteo Live API Synced</span>
+                      </div>
+                      <p className="text-sm text-gray-300 mt-1">
+                        ITINERA models each trip as a Directed Acyclic Graph (DAG). If upstream delays or severe rain occurs, downstream dependent components adapt automatically.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                      <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
+                        <strong className="block text-gray-900 font-bold mb-1">Weather Forecast</strong>
+                        <span className="text-gray-500">Kyoto: 18°C, Rain expected 02:00 PM (85% probability)</span>
+                      </div>
+                      <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
+                        <strong className="block text-gray-900 font-bold mb-1">Cascade Traversal</strong>
+                        <span className="text-gray-500">Component [kyoto-comp-3] suspended; [kyoto-comp-4] alerted</span>
+                      </div>
+                      <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
+                        <strong className="block text-gray-900 font-bold mb-1">Top Alternative Ranked</strong>
+                        <span className="text-emerald-700 font-semibold">Indoor Uji Matcha Masterclass (+$0 cost delta)</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
+                {activeDemoTab === 'prompt' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-6 rounded-2xl bg-gray-50 border border-gray-200 space-y-4"
+                  >
+                    <h4 className="text-sm font-bold text-gray-900">Natural-Language Synthesis Matrix</h4>
+                    <p className="text-xs text-gray-600 leading-relaxed">
+                      "I want an immersive 4-day trip to Kyoto emphasizing uncrowded temple docents, authentic tea masters, boutique accommodations, and high culinary craftsmanship."
                     </p>
-                  </div>
-
-                  {/* Live Budget Counter Preview */}
-                  <div className="flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-slate-50 p-3 sm:p-3.5">
-                    <div className="flex size-10 items-center justify-center rounded-xl bg-white text-indigo-600 shadow-xs">
-                      <CurrencyIcon className="size-5" />
+                    <div className="pt-2 flex flex-wrap gap-2 text-xs">
+                      <span className="px-3 py-1 rounded-full bg-[#1F4D45]/10 text-[#1F4D45] font-semibold">Culture 92%</span>
+                      <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-semibold">Mindful Relaxation 68%</span>
+                      <span className="px-3 py-1 rounded-full bg-sky-50 text-sky-700 font-semibold">Adventure 75%</span>
+                      <span className="px-3 py-1 rounded-full bg-amber-50 text-amber-700 font-semibold">Budget Optimization 60%</span>
                     </div>
-                    <div>
-                      <p className="text-[11px] font-medium text-slate-500">Estimated Budget</p>
-                      <p className="text-base font-bold text-slate-950">$1,450 <span className="text-xs font-normal text-slate-400">/ target $1,600</span></p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Day selector tabs */}
-                <div className="mt-6 flex items-center gap-2 overflow-x-auto pb-1 text-xs sm:text-sm">
-                  {[1, 2, 3].map((dayNum) => (
-                    <button
-                      key={dayNum}
-                      type="button"
-                      onClick={() => setActivePreviewDay(dayNum)}
-                      className={[
-                        'rounded-xl px-4 py-2 font-semibold transition',
-                        activePreviewDay === dayNum
-                          ? 'bg-slate-900 text-white shadow-sm'
-                          : 'border border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50',
-                      ].join(' ')}
-                    >
-                      Day 0{dayNum}: {dayNum === 1 ? 'Arrival & Gion' : dayNum === 2 ? 'Fushimi & Zen Temples' : 'Arashiyama Bamboo'}
-                    </button>
-                  ))}
-                </div>
-
-                {/* Day Timeline Activities */}
-                <div className="mt-6 space-y-3">
-                  {activePreviewDay === 2 ? (
-                    <>
-                      <div className="flex items-start gap-3 rounded-xl border border-slate-100 bg-slate-50/70 p-3.5 transition hover:bg-slate-50 sm:items-center">
-                        <span className="rounded-lg bg-white px-2 py-1 text-xs font-bold text-slate-700 shadow-xs border border-slate-200/60">
-                          07:00 AM
-                        </span>
-                        <div className="flex-1">
-                          <p className="text-sm font-semibold text-slate-900">
-                            Fushimi Inari Taisha Dawn Ascent
-                          </p>
-                          <p className="text-xs text-slate-500">
-                            Beat the mid-day crowds through the iconic thousand vermilion torii gates.
-                          </p>
-                        </div>
-                        <span className="hidden sm:inline-flex rounded-md bg-indigo-50 px-2 py-0.5 text-[11px] font-semibold text-indigo-700 border border-indigo-200/60">
-                          #Highlight
-                        </span>
-                      </div>
-
-                      <div className="flex items-start gap-3 rounded-xl border border-slate-100 bg-slate-50/70 p-3.5 transition hover:bg-slate-50 sm:items-center">
-                        <span className="rounded-lg bg-white px-2 py-1 text-xs font-bold text-slate-700 shadow-xs border border-slate-200/60">
-                          12:30 PM
-                        </span>
-                        <div className="flex-1">
-                          <p className="text-sm font-semibold text-slate-900">
-                            Nishiki Market Artisan Culinary Tasting
-                          </p>
-                          <p className="text-xs text-slate-500">
-                            Curated 5-course street-food walk featuring fresh matcha, skewers, and yuba.
-                          </p>
-                        </div>
-                        <span className="hidden sm:inline-flex rounded-md bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-700 border border-amber-200/60">
-                          #Gastronomy
-                        </span>
-                      </div>
-
-                      <div className="flex items-start gap-3 rounded-xl border border-slate-100 bg-slate-50/70 p-3.5 transition hover:bg-slate-50 sm:items-center">
-                        <span className="rounded-lg bg-white px-2 py-1 text-xs font-bold text-slate-700 shadow-xs border border-slate-200/60">
-                          03:30 PM
-                        </span>
-                        <div className="flex-1">
-                          <p className="text-sm font-semibold text-slate-900">
-                            Ryoan-ji Zen Meditation & Rock Garden Walk
-                          </p>
-                          <p className="text-xs text-slate-500">
-                            Quiet contemplative garden visit scheduled before temple closing.
-                          </p>
-                        </div>
-                        <span className="hidden sm:inline-flex rounded-md bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700 border border-emerald-200/60">
-                          #Culture
-                        </span>
-                      </div>
-                    </>
-                  ) : activePreviewDay === 1 ? (
-                    <div className="rounded-xl border border-slate-100 bg-slate-50/70 p-4 text-xs text-slate-600">
-                      <p className="font-semibold text-slate-900">Day 01 Highlights</p>
-                      <p className="mt-1">Airport express transfer to central Kyoto · Check-in at boutique machiya stay · Evening twilight stroll through historic Gion.</p>
-                    </div>
-                  ) : (
-                    <div className="rounded-xl border border-slate-100 bg-slate-50/70 p-4 text-xs text-slate-600">
-                      <p className="font-semibold text-slate-900">Day 03 Highlights</p>
-                      <p className="mt-1">Sagano scenic railway · Arashiyama bamboo grove morning walk · Traditional Hozu river wooden boat drift.</p>
-                    </div>
-                  )}
-                </div>
+                  </motion.div>
+                )}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── 2. TRUST / VALUE STRIP ──────────────────────────────────── */}
-      <section className="border-y border-slate-100 bg-slate-50/60 px-6 py-12 sm:px-8 sm:py-16">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {VALUE_BENEFITS.map((b) => (
-              <div
-                key={b.title}
-                className="flex items-start gap-4 rounded-2xl border border-slate-200/70 bg-white p-5 shadow-xs transition hover:shadow-sm"
-              >
-                <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-indigo-50 border border-indigo-100/60">
-                  {b.icon}
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-slate-950">{b.title}</h3>
-                  <p className="mt-1 text-xs leading-relaxed text-slate-500">{b.description}</p>
-                </div>
+      {/* TRUST STAT BAR */}
+      <section className="bg-[#1F4D45] text-white py-5">
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-0 sm:divide-x divide-white/15">
+            {[
+              { label: 'Trips Synthesized', value: '14,800+' },
+              { label: 'Avg. Plan Time', value: '< 60 sec' },
+              { label: 'Verified Partners', value: '340+' },
+              { label: 'Community Rating', value: '4.9 / 5.0 ★' },
+            ].map(({ label, value }) => (
+              <div key={label} className="text-center sm:px-6">
+                <div className="text-xl sm:text-2xl font-black text-amber-300">{value}</div>
+                <div className="text-[11px] text-white/70 font-medium mt-0.5">{label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── 3. HOW IT WORKS ────────────────────────────────────────── */}
-      <section className="bg-white px-6 py-20 sm:px-8 sm:py-28">
-        <div className="mx-auto max-w-6xl">
-          <div className="text-center">
-            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-600">
-              Simple 3-Step Process
-            </span>
-            <h2 className="mt-2.5 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-              How ITINERA plans your journey
-            </h2>
-            <p className="mx-auto mt-3.5 max-w-xl text-sm leading-relaxed text-slate-500 sm:text-base">
-              Turn scattered ideas, bookmarks, and wishlists into an effortless, personalized itinerary in minutes.
+      {/* ═════════════════════════════════════════════════════════════════
+          2. FEATURE PILLARS IN RICH DARK SECTION
+          ═════════════════════════════════════════════════════════════════ */}
+      <section className="bg-gray-950 text-white pt-20 pb-16">
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#FF7A59] mb-3">
+              Intelligent Travel Infrastructure
             </p>
-          </div>
-
-          <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
-            {STEPS.map((s) => (
-              <div
-                key={s.stepNumber}
-                className="group relative flex flex-col rounded-3xl border border-slate-200/80 bg-white p-7 transition duration-200 hover:-translate-y-1 hover:border-slate-300 hover:shadow-lg"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-3xl font-extrabold tracking-tight text-indigo-600">
-                    {s.stepNumber}
-                  </span>
-                  <span className="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold text-slate-600">
-                    {s.detail}
-                  </span>
-                </div>
-
-                <h3 className="mt-6 text-lg font-bold tracking-tight text-slate-950 group-hover:text-indigo-600 transition-colors">
-                  {s.title}
-                </h3>
-
-                <p className="mt-3 text-sm leading-relaxed text-slate-500">
-                  {s.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 4. FEATURE SECTION ──────────────────────────────────────── */}
-      <section className="bg-slate-50/60 px-6 py-20 sm:px-8 sm:py-28">
-        <div className="mx-auto max-w-6xl">
-          <div className="text-center">
-            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-600">
-              Core Capabilities
-            </span>
-            <h2 className="mt-2.5 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-              Everything required for extraordinary trips
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white">
+              Everything You Need for Resilient, Smarter Travel
             </h2>
-            <p className="mx-auto mt-3.5 max-w-2xl text-sm leading-relaxed text-slate-500 sm:text-base">
-              Powerful tools designed to simplify every dimension of your journey—from inspiration to booking and on-the-ground exploration.
-            </p>
           </div>
 
-          <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {FEATURES.map((f) => (
-              <div
-                key={f.title}
-                className="group flex flex-col rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xs transition duration-200 hover:border-slate-300 hover:shadow-md"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex size-12 items-center justify-center rounded-xl bg-indigo-50 border border-indigo-100/70 transition-colors group-hover:bg-indigo-100/70">
-                    {f.icon}
-                  </div>
-                  <span className="rounded-md bg-slate-100 px-2 py-0.5 text-[11px] font-semibold text-slate-600">
-                    {f.tag}
-                  </span>
-                </div>
-
-                <h3 className="mt-5 text-base font-bold text-slate-950 group-hover:text-indigo-600 transition-colors">
-                  {f.title}
-                </h3>
-
-                <p className="mt-2 text-sm leading-relaxed text-slate-500">
-                  {f.description}
-                </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="p-6 rounded-2xl bg-gray-900 border border-gray-800 space-y-4 hover:border-emerald-900/50 transition">
+              <div className="size-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                <Sparkles className="size-6" />
               </div>
-            ))}
+              <h3 className="text-base font-bold text-white">AI Graph Architect</h3>
+              <p className="text-xs text-gray-400 leading-relaxed">
+                Day-by-day itineraries compiled with DAG dependency intelligence, verified stays, and zero transit backtracking.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-gray-900 border border-gray-800 space-y-4 hover:border-amber-900/50 transition">
+              <div className="size-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+                <Mountain className="size-6" />
+              </div>
+              <h3 className="text-base font-bold text-white">World Trek Discovery</h3>
+              <p className="text-xs text-gray-400 leading-relaxed">
+                500+ curated treks and expeditions across the Himalayas, European Alps, Andes, and dramatic coastal ridges.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-gray-900 border border-gray-800 space-y-4 hover:border-sky-900/50 transition">
+              <div className="size-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
+                <Compass className="size-6" />
+              </div>
+              <h3 className="text-base font-bold text-white">Interactive Maps &amp; Routing</h3>
+              <p className="text-xs text-gray-400 leading-relaxed">
+                Detailed waypoint routes with elevation metrics, transit vectors, and geo-referenced coordinates for every activity.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-gray-900 border border-gray-800 space-y-4 hover:border-orange-900/50 transition">
+              <div className="size-12 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-[#FF7A59]">
+                <CloudSun className="size-6" />
+              </div>
+              <h3 className="text-base font-bold text-white">Weather Digital Twin</h3>
+              <p className="text-xs text-gray-400 leading-relaxed">
+                Real hyper-local forecasts with continuous cascade monitoring and ranked alternative replacement during storms.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── 5. DESTINATION / DISCOVERY SECTION ──────────────────────── */}
-      <section className="bg-white px-6 py-20 sm:px-8 sm:py-28">
-        <div className="mx-auto max-w-6xl">
-          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+      {/* ═════════════════════════════════════════════════════════════════
+          3. TOP DESTINATIONS DIRECTORY SECTION
+          ═════════════════════════════════════════════════════════════════ */}
+
+      <section id="destinations" className="py-20 bg-white">
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+          {/* Section Header */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <div>
-              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-600">
-                Trending Destinations
-              </span>
-              <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-                Where travelers are heading next
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#1F4D45] mb-2">
+                Handpicked Escapes
+              </p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+                Top Destinations Worldwide
               </h2>
-              <p className="mt-2 text-sm text-slate-500">
-                Explore hand-curated itineraries, seasonal highlights, and verified local experiences.
+              <p className="text-sm text-gray-500 mt-1">
+                Click any destination to architect your personalized AI itinerary in seconds
               </p>
             </div>
 
             <Link
               to="/search"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-600 transition hover:text-indigo-800"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1F4D45] hover:text-[#2A6559] transition self-start sm:self-end"
             >
-              <span>Explore all destinations</span>
-              <ArrowRightIcon className="size-4" />
+              <span>Explore All Destinations</span>
+              <ArrowRight className="size-4" />
             </Link>
           </div>
 
-          {/* Cards Grid */}
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {FEATURED_DESTINATIONS.map((d) => (
-              <Link
-                key={d.id}
-                to={`/search?q=${encodeURIComponent(d.name)}`}
-                className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white transition duration-200 hover:-translate-y-1 hover:border-slate-300 hover:shadow-lg"
+          {/* Destination Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {TOP_DESTINATIONS.map((dest) => (
+              <motion.div
+                key={dest.id}
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.2 }}
+                className="group bg-white rounded-3xl border border-gray-200/90 overflow-hidden shadow-xs hover:shadow-xl transition-all flex flex-col justify-between"
               >
-                {/* Visual Swatch */}
-                <div className={`relative aspect-[16/10] w-full bg-gradient-to-br ${d.gradient} p-4`}>
-                  <div className="absolute top-3 left-3">
-                    <span className="rounded-lg bg-white/90 px-2.5 py-1 text-xs font-semibold text-slate-800 shadow-xs backdrop-blur-sm">
-                      {d.continent}
-                    </span>
-                  </div>
+                <div>
+                  {/* Photo Header */}
+                  <div className="relative h-56 w-full overflow-hidden bg-gray-900">
+                    <img
+                      src={dest.photo}
+                      alt={dest.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-950/20 to-transparent" />
 
-                  <div className="absolute right-3 bottom-3 flex items-center gap-1 rounded-lg bg-white/90 px-2 py-0.5 text-xs font-semibold text-slate-900 shadow-xs backdrop-blur-sm">
-                    <StarIcon className="size-3.5 text-amber-500" />
-                    <span>{d.rating.toFixed(2)}</span>
-                    <span className="text-[11px] font-normal text-slate-500">({d.reviewCount})</span>
-                  </div>
-                </div>
+                    {/* Floating Badges */}
+                    <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between">
+                      <span className="px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md text-gray-900 text-[11px] font-bold shadow-xs">
+                        {dest.days} Days Recommended
+                      </span>
 
-                {/* Content */}
-                <div className="flex flex-1 flex-col p-5">
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <h3 className="text-lg font-bold tracking-tight text-slate-950 group-hover:text-indigo-600 transition-colors">
-                        {d.name}
-                      </h3>
-                      <p className="flex items-center gap-1 text-xs text-slate-500 mt-0.5">
-                        <MapPinIcon className="size-3.5 text-slate-400" />
-                        <span>{d.region}</span>
-                      </p>
+                      <div className="flex items-center gap-1 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-full text-white text-[11px] font-semibold">
+                        <Users className="size-3 text-emerald-400" />
+                        <span>{dest.plannedCount}</span>
+                      </div>
                     </div>
-                    <span className="text-xs font-bold text-slate-900 bg-slate-50 border border-slate-200/80 rounded-md px-2 py-0.5">
-                      {d.priceEst}
-                    </span>
+
+                    <div className="absolute bottom-3 left-3.5 right-3.5 text-white">
+                      <span className="text-[11px] font-semibold text-amber-300 block">
+                        {dest.region}
+                      </span>
+                      <h3 className="text-xl font-bold text-white drop-shadow-xs">
+                        {dest.name}
+                      </h3>
+                    </div>
                   </div>
 
-                  <div className="mt-4 flex items-center justify-between border-t border-slate-100 pt-3 text-xs text-slate-500">
-                    <span>Pace: {d.duration}</span>
-                    <div className="flex gap-1.5">
-                      {d.tags.map((t) => (
-                        <span key={t} className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-600">
-                          {t}
+                  {/* Body Content */}
+                  <div className="p-5 space-y-3">
+                    <p className="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                      {dest.description}
+                    </p>
+
+                    <div className="flex items-center gap-1 text-xs">
+                      <div className="flex text-amber-400">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="size-3.5 fill-amber-400 text-amber-400" />
+                        ))}
+                      </div>
+                      <span className="font-bold text-gray-800 ml-1">{dest.rating}</span>
+                      <span className="text-gray-400 text-[11px]">({dest.reviewCount.toLocaleString()})</span>
+                    </div>
+
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {dest.tags.map((tag, i) => (
+                        <span
+                          key={i}
+                          className="px-2 py-0.5 rounded-md bg-gray-100 text-gray-600 text-[10px] font-semibold"
+                        >
+                          #{tag}
                         </span>
                       ))}
                     </div>
                   </div>
                 </div>
-              </Link>
+
+                {/* Card CTA */}
+                <div className="p-5 pt-3 border-t border-gray-100 flex items-center justify-between bg-gray-50/50">
+                  <span className="text-xs text-gray-500 font-medium">Ready to customize</span>
+                  <Link
+                    to={`/create?destination=${encodeURIComponent(`${dest.name}, ${dest.region}`)}&days=${dest.days}`}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#1F4D45] hover:bg-[#2A6559] text-white text-xs font-bold transition shadow-xs hover:scale-105"
+                  >
+                    <span>Plan Trip</span>
+                    <ArrowRight className="size-3.5" />
+                  </Link>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── 6. FINAL CTA ───────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-slate-950 px-6 py-20 text-white sm:px-8 sm:py-28">
-        {/* Subtle background glow */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-40 right-1/4 h-[380px] w-[500px] rounded-full bg-indigo-500/20 blur-3xl"
-        />
+      {/* ═════════════════════════════════════════════════════════════════
+          4. WORLD'S GREATEST TREKS SHOWCASE (RICH DARK FOREST SECTION)
+          ═════════════════════════════════════════════════════════════════ */}
+      <section id="treks" className="py-24 bg-[#0D1A15] text-white">
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#FF7A59] mb-2">
+                TRAVELLER'S CHOICE
+              </p>
+              <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+                World’s Greatest Treks
+              </h2>
+              <p className="text-sm sm:text-base text-gray-400 mt-2 max-w-2xl leading-relaxed">
+                From Himalayan giants to Alpine classics — iconic multi-day trails every explorer dreams of completing. Modeled with elevation, camps, and safety checkpoints.
+              </p>
+            </div>
 
-        <div className="relative mx-auto max-w-3xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-400">
-            Start Your Journey
-          </span>
-
-          <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-            Ready to plan your next unforgettable trip?
-          </h2>
-
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-slate-400 sm:text-lg">
-            Join modern travelers who plan smarter, explore deeper, and enjoy frictionless itineraries with ITINERA.
-          </p>
-
-          <div className="mt-9 flex flex-col items-center justify-center gap-3.5 sm:flex-row sm:gap-4">
-            <Link
-              to="/create"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/30 transition hover:bg-indigo-500 active:scale-[0.98] sm:w-auto"
-            >
-              <span>Plan Your Trip</span>
-              <ArrowRightIcon className="size-4" />
-            </Link>
-
-            <Link
-              to="/search"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/15 active:scale-[0.98] sm:w-auto"
-            >
-              <span>Explore Destinations</span>
-            </Link>
+            {/* Category Filter Pills */}
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 self-start md:self-end">
+              {[
+                { id: 'all', label: 'All Treks' },
+                { id: 'himalayan', label: 'Himalayan' },
+                { id: 'alpine', label: 'Alpine & Europe' },
+                { id: 'americas', label: 'Americas & Andes' },
+              ].map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveTrekCategory(cat.id)}
+                  className={`px-4 py-2 rounded-full text-xs font-bold transition whitespace-nowrap border ${
+                    activeTrekCategory === cat.id
+                      ? 'bg-white text-[#0D1A15] border-white shadow-xs'
+                      : 'bg-transparent text-gray-400 border-white/15 hover:text-white hover:border-white/30'
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
           </div>
 
-          <p className="mt-6 text-xs text-slate-400">
-            Free to plan · No credit card required · Instant personalized results
-          </p>
+          {/* Full-Bleed Trek Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredTreks.map((trek) => (
+              <motion.div
+                key={trek.id}
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.2 }}
+                className="group relative rounded-3xl overflow-hidden border border-white/10 shadow-lg flex flex-col justify-end min-h-[420px]"
+              >
+                {/* Background Photo */}
+                <img
+                  src={trek.photo}
+                  alt={trek.title}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10" />
+
+                {/* Floating Top Pill */}
+                <div className="absolute top-4 right-4 z-10">
+                  <span
+                    className={`px-3 py-1 rounded-full text-[11px] font-bold shadow-md ${
+                      trek.difficulty === 'Challenging'
+                        ? 'bg-rose-500 text-white'
+                        : trek.difficulty === 'Difficult'
+                        ? 'bg-amber-400 text-gray-950'
+                        : 'bg-sky-400 text-gray-950'
+                    }`}
+                  >
+                    {trek.difficulty}
+                  </span>
+                </div>
+
+                {/* Overlay Content */}
+                <div className="relative z-10 p-6 space-y-3">
+                  <p className="text-xs text-gray-300 font-medium line-clamp-1">
+                    {trek.subtitle}
+                  </p>
+
+                  <h3 className="text-xl font-bold text-white group-hover:text-amber-300 transition-colors">
+                    {trek.title}
+                  </h3>
+
+                  <div className="flex items-center gap-1.5 text-xs text-gray-300">
+                    <MapPin className="size-3.5 text-[#FF7A59]" />
+                    <span>{trek.region}</span>
+                  </div>
+
+                  {/* Metrics Bar */}
+                  <div className="flex items-center gap-4 pt-2 border-t border-white/15 text-xs text-gray-200">
+                    <div className="flex items-center gap-1.5 font-bold">
+                      <Clock className="size-3.5 text-gray-400" />
+                      <span>{trek.days} Days</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 font-bold">
+                      <TrendingUp className="size-3.5 text-emerald-400" />
+                      <span>Max {trek.altitude}</span>
+                    </div>
+                  </div>
+
+                  <Link
+                    to={`/create?destination=${encodeURIComponent(trek.region)}&days=${trek.days}&prompt=${encodeURIComponent(trek.promptPreset)}`}
+                    className="w-full mt-3 py-3 rounded-2xl bg-white/15 hover:bg-white text-white hover:text-gray-950 text-xs font-bold backdrop-blur-md transition-all flex items-center justify-center gap-2"
+                  >
+                    <span>Architect Trek Itinerary</span>
+                    <ArrowRight className="size-3.5" />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═════════════════════════════════════════════════════════════════
+          5. FOUR-STEP HOW IT WORKS
+          ═════════════════════════════════════════════════════════════════ */}
+      <section id="how-it-works" className="py-20 sm:py-28 bg-[#f7fdf9]">
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#1F4D45] block mb-2">
+              Intuitive Planning Process
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+              How ITINERA Works
+            </h2>
+            <p className="text-sm text-gray-500 mt-2">
+              From your initial travel vision to a resilient, weather-adaptive itinerary ready for departure.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {/* Step 1 */}
+            <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm space-y-4 hover:shadow-md hover:-translate-y-0.5 transition-all text-center">
+              <div className="flex flex-col items-center gap-3">
+                <div className="size-14 rounded-2xl bg-[#1F4D45] text-white flex items-center justify-center shadow-md">
+                  <MapPin className="size-6" />
+                </div>
+                <span className="text-[11px] font-black tracking-widest text-gray-300">STEP 01</span>
+              </div>
+              <h3 className="text-base font-bold text-gray-900">Tell Us Your Vision</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">
+                Share your destination, dates, pacing, and budget. Speak naturally — ITINERA reads your intent.
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm space-y-4 hover:shadow-md hover:-translate-y-0.5 transition-all text-center">
+              <div className="flex flex-col items-center gap-3">
+                <div className="size-14 rounded-2xl bg-[#1F4D45] text-white flex items-center justify-center shadow-md">
+                  <Sparkles className="size-6" />
+                </div>
+                <span className="text-[11px] font-black tracking-widest text-gray-300">STEP 02</span>
+              </div>
+              <h3 className="text-base font-bold text-gray-900">AI Compiles the Graph</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">
+                Gemini intelligence pairs verified stays, activities, and transit into a Directed Acyclic Graph.
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm space-y-4 hover:shadow-md hover:-translate-y-0.5 transition-all text-center">
+              <div className="flex flex-col items-center gap-3">
+                <div className="size-14 rounded-2xl bg-amber-500 text-white flex items-center justify-center shadow-md">
+                  <CloudSun className="size-6" />
+                </div>
+                <span className="text-[11px] font-black tracking-widest text-gray-300">STEP 03</span>
+              </div>
+              <h3 className="text-base font-bold text-gray-900">Weather & Alternatives</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">
+                Simulate disruptions in the Digital Twin. The Adapt Engine ranks and scores alternatives in real time.
+              </p>
+            </div>
+
+            {/* Step 4 */}
+            <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm space-y-4 hover:shadow-md hover:-translate-y-0.5 transition-all text-center">
+              <div className="flex flex-col items-center gap-3">
+                <div className="size-14 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shadow-md">
+                  <ShieldCheck className="size-6" />
+                </div>
+                <span className="text-[11px] font-black tracking-widest text-gray-300">STEP 04</span>
+              </div>
+              <h3 className="text-base font-bold text-gray-900">Travel with Confidence</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">
+                Locked partner vouchers, smart escrow, and continuous operator support throughout your journey.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═════════════════════════════════════════════════════════════════
+          6. REFINED FINAL CTA SECTION
+          ═════════════════════════════════════════════════════════════════ */}
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1F4D45] via-[#163832] to-[#0D1A15] p-10 sm:p-16 text-center text-white shadow-2xl">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-amber-400/20 via-transparent to-transparent pointer-events-none" />
+
+            <div className="relative z-10 max-w-2xl mx-auto space-y-6">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-amber-300 text-xs font-semibold">
+                <Sparkles className="size-3.5" />
+                Begin Your Next Chapter
+              </span>
+
+              <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
+                Ready to Experience Truly Adaptive Travel?
+              </h2>
+
+              <p className="text-sm sm:text-base text-gray-200 leading-relaxed">
+                No rigid spreadsheets. No disrupted plans with zero backup. Architect your first journey with Gemini and ITINERA in under 60 seconds.
+              </p>
+
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Link
+                  to="/create"
+                  className="w-full sm:w-auto px-8 py-4 rounded-full bg-amber-400 hover:bg-amber-300 text-gray-950 text-sm font-bold shadow-lg transition-all hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2"
+                >
+                  <Sparkles className="size-4" />
+                  <span>Start Planning Free with AI</span>
+                </Link>
+                <Link
+                  to="/search"
+                  className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-semibold backdrop-blur-md transition border border-white/20 inline-flex items-center justify-center gap-2"
+                >
+                  <span>Explore Destination Catalog</span>
+                  <ChevronRight className="size-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
   )
 }
-

@@ -133,10 +133,10 @@ export default function TripDetail() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF8F5]">
         <div className="flex flex-col items-center gap-3">
-          <div className="size-10 rounded-full border-4 border-[#1F4E79] border-t-transparent animate-spin" />
-          <p className="text-sm font-semibold text-slate-600">Loading tour operations graph...</p>
+          <div className="size-10 rounded-full border-4 border-[#1F4D45] border-t-transparent animate-spin" />
+          <p className="text-sm font-semibold text-stone-600">Loading tour operations graph...</p>
         </div>
       </div>
     );
@@ -144,15 +144,15 @@ export default function TripDetail() {
 
   if (!trip) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
-        <div className="text-center max-w-md bg-white p-8 rounded-3xl border border-slate-200">
-          <h2 className="text-lg font-bold text-slate-800">Trip Not Found</h2>
-          <p className="text-xs text-slate-500 mt-2 mb-6">
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF8F5] p-4">
+        <div className="text-center max-w-md bg-white p-8 rounded-3xl border border-stone-200/90 shadow-sm">
+          <h2 className="text-lg font-bold text-stone-900">Trip Not Found</h2>
+          <p className="text-xs text-stone-500 mt-2 mb-6">
             The requested itinerary does not exist or has expired.
           </p>
           <Link
             to="/create"
-            className="px-5 py-2.5 rounded-xl bg-[#1F4E79] text-white text-xs font-bold"
+            className="px-5 py-2.5 rounded-xl bg-[#1F4D45] hover:bg-[#2A6559] text-white text-xs font-bold transition shadow-sm"
           >
             Create New Trip
           </Link>
@@ -173,33 +173,33 @@ export default function TripDetail() {
     : trip.components.filter((c) => c.day === selectedDay);
 
   return (
-    <main className="min-h-screen bg-slate-50/60 pb-20">
+    <main className="min-h-screen bg-[#FAF8F5] pb-20">
       {/* Top Breadcrumb & Controls Bar */}
-      <div className="bg-white border-b border-slate-200 sticky top-0 z-30 px-4 sm:px-8 py-3.5 shadow-xs">
+      <div className="bg-white border-b border-stone-200/90 sticky top-0 z-30 px-4 sm:px-8 py-3.5 shadow-xs">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 flex-wrap">
           <div className="flex items-center gap-3">
             <Link
               to="/saved"
-              className="p-2 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition"
+              className="p-2 rounded-xl text-stone-500 hover:text-stone-900 hover:bg-stone-100 transition"
             >
               <ArrowLeft className="size-4" />
             </Link>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-slate-900">{trip.title}</span>
+                <span className="text-xs font-bold text-stone-900">{trip.title}</span>
                 <span
                   className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${
                     hasDisruptions
                       ? 'bg-rose-100 text-rose-800'
                       : trip.status === 'confirmed'
                       ? 'bg-emerald-100 text-emerald-800'
-                      : 'bg-indigo-100 text-indigo-800'
+                      : 'bg-[#1F4D45]/10 text-[#1F4D45]'
                   }`}
                 >
                   {hasDisruptions ? 'Disruption Active' : trip.status}
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500">
+              <p className="text-[11px] text-stone-500">
                 {trip.destination} • {trip.startDate} to {trip.endDate} ({trip.durationDays} Days)
               </p>
             </div>
@@ -208,16 +208,16 @@ export default function TripDetail() {
           <div className="flex items-center gap-2.5">
             <button
               onClick={() => setIsWhatIfOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-stone-700 bg-stone-100 hover:bg-stone-200 transition"
             >
-              <CloudRain className="size-3.5 text-indigo-600" />
+              <CloudRain className="size-3.5 text-[#1F4D45]" />
               Weather What-If
             </button>
 
             <button
               onClick={handleBookTrip}
               disabled={isBooking}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-[#1F4E79] text-white hover:bg-[#183e60] transition shadow-sm"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-[#1F4D45] text-white hover:bg-[#2A6559] transition shadow-sm"
             >
               <CreditCard className="size-3.5" />
               {isBooking ? 'Processing...' : 'Confirm Booking'}
@@ -349,11 +349,11 @@ export default function TripDetail() {
         {/* Geospatial Map Section */}
         <div>
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-              <Layers className="size-4 text-[#1F4E79]" />
+            <h3 className="text-base font-bold text-stone-900 flex items-center gap-2">
+              <Layers className="size-4 text-[#1F4D45]" />
               Geospatial Route & Real-Time Weather Overlay
             </h3>
-            <span className="text-xs text-slate-500">
+            <span className="text-xs text-stone-500">
               Interactive Leaflet Map • {trip.components.length} Waypoints
             </span>
           </div>
@@ -366,13 +366,13 @@ export default function TripDetail() {
         {/* Day-by-Day Schedule Timeline */}
         <div className="space-y-6">
           {/* Day Filter Pills */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 border-b border-slate-200">
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 border-b border-stone-200/90">
             <button
               onClick={() => setSelectedDay('all')}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition shrink-0 ${
                 selectedDay === 'all'
-                  ? 'bg-[#1F4E79] text-white shadow-sm'
-                  : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                  ? 'bg-[#1F4D45] text-white shadow-sm'
+                  : 'bg-white text-stone-600 hover:bg-stone-100 border border-stone-200/90'
               }`}
             >
               All Days ({trip.components.length})
@@ -387,8 +387,8 @@ export default function TripDetail() {
                   onClick={() => setSelectedDay(d)}
                   className={`px-4 py-2 rounded-xl text-xs font-bold transition shrink-0 flex items-center gap-2 ${
                     selectedDay === d
-                      ? 'bg-[#1F4E79] text-white shadow-sm'
-                      : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                      ? 'bg-[#1F4D45] text-white shadow-sm'
+                      : 'bg-white text-stone-600 hover:bg-stone-100 border border-stone-200/90'
                   }`}
                 >
                   <span>Day {d}</span>

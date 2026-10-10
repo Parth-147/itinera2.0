@@ -43,7 +43,7 @@ export const AlternativesDrawer: React.FC<AlternativesDrawerProps> = ({
           className="relative w-full max-w-xl bg-white shadow-2xl h-full flex flex-col z-10 overflow-hidden"
         >
           {/* Header */}
-          <div className="p-6 border-b border-slate-200 bg-gradient-to-r from-slate-900 to-[#1F4E79] text-white">
+          <div className="p-6 border-b border-[#163832] bg-gradient-to-r from-[#0D1A15] via-[#163832] to-[#1F4D45] text-white">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="p-1.5 rounded-lg bg-amber-400/20 text-amber-300">
@@ -51,14 +51,14 @@ export const AlternativesDrawer: React.FC<AlternativesDrawerProps> = ({
                 </span>
                 <div>
                   <h3 className="text-lg font-bold">Adapt Engine Solutions</h3>
-                  <p className="text-xs text-slate-300">
+                  <p className="text-xs text-stone-300">
                     Disruption resolution & multi-criteria alternative ranking
                   </p>
                 </div>
               </div>
               <button
                 onClick={onClose}
-                className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 transition"
+                className="p-2 rounded-xl text-stone-300 hover:text-white hover:bg-white/10 transition"
               >
                 <X className="size-5" />
               </button>
@@ -70,7 +70,7 @@ export const AlternativesDrawer: React.FC<AlternativesDrawerProps> = ({
                 <span>Disrupted:</span>
                 <span className="text-white">{originalComponent.name}</span>
               </div>
-              <p className="mt-1 text-slate-300 leading-relaxed">
+              <p className="mt-1 text-stone-300 leading-relaxed">
                 {adaptation.disruptionDescription}
               </p>
               {adaptation.impactedComponents.length > 0 && (
@@ -83,12 +83,12 @@ export const AlternativesDrawer: React.FC<AlternativesDrawerProps> = ({
 
           {/* Recommendation Overview */}
           <div className="p-6 overflow-y-auto flex-1 space-y-5">
-            <div className="p-4 rounded-xl bg-indigo-50/70 border border-indigo-100 text-xs text-indigo-900">
-              <strong className="font-semibold block mb-1">AI Recommendation:</strong>
+            <div className="p-4 rounded-xl bg-[#1F4D45]/10 border border-[#1F4D45]/20 text-xs text-stone-900">
+              <strong className="font-semibold block mb-1 text-[#1F4D45]">AI Recommendation:</strong>
               {adaptation.systemRecommendation}
             </div>
 
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-stone-500">
               Ranked Alternatives ({adaptation.rankedAlternatives.length})
             </h4>
 
@@ -100,15 +100,15 @@ export const AlternativesDrawer: React.FC<AlternativesDrawerProps> = ({
                   key={alt.component.id}
                   className={`rounded-2xl p-5 border transition-all ${
                     isTop
-                      ? 'bg-slate-50/80 border-[#1F4E79]/40 ring-2 ring-[#1F4E79]/15 shadow-md'
-                      : 'bg-white border-slate-200 hover:border-slate-300'
+                      ? 'bg-[#FAF8F5] border-[#1F4D45]/40 ring-2 ring-[#1F4D45]/15 shadow-md'
+                      : 'bg-white border-stone-200 hover:border-stone-300'
                   }`}
                 >
                   {/* Top Bar with Score */}
                   <div className="flex items-center justify-between gap-3 flex-wrap">
                     <div className="flex items-center gap-2">
                       {isTop && (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#1F4E79] text-white">
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#1F4D45] text-white">
                           Top Match
                         </span>
                       )}
@@ -187,8 +187,8 @@ export const AlternativesDrawer: React.FC<AlternativesDrawerProps> = ({
                       onClick={() => onApplyAlternative(alt.component)}
                       className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition shadow-sm ${
                         isTop
-                          ? 'bg-[#1F4E79] text-white hover:bg-[#183e60]'
-                          : 'bg-slate-900 text-white hover:bg-slate-800'
+                          ? 'bg-[#1F4D45] text-white hover:bg-[#2A6559]'
+                          : 'bg-stone-900 text-white hover:bg-stone-800'
                       }`}
                     >
                       <CheckCircle2 className="size-3.5 text-emerald-300" />

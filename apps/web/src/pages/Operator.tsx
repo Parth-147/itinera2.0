@@ -218,20 +218,20 @@ export default function Operator() {
   // 1. Role-based authorization gate
   if (!isOperator) {
     return (
-      <main className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
-        <div className="max-w-md w-full bg-white rounded-3xl p-8 border border-slate-200/90 shadow-xl text-center space-y-5">
-          <div className="size-16 rounded-2xl bg-amber-50 text-amber-600 border border-amber-200 flex items-center justify-center mx-auto shadow-sm">
+      <main className="min-h-screen bg-[#FAF8F5] flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-white rounded-3xl p-8 border border-stone-200/90 shadow-xl text-center space-y-5">
+          <div className="size-16 rounded-2xl bg-amber-50 text-amber-700 border border-amber-200/80 flex items-center justify-center mx-auto shadow-sm">
             <Lock className="size-8" />
           </div>
 
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800">
+            <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900">
               Role Authorization Required
             </span>
-            <h2 className="text-xl font-bold text-slate-900 mt-2">
+            <h2 className="text-xl font-bold text-gray-900 mt-2 font-display">
               Operator Access Restricted
             </h2>
-            <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+            <p className="text-xs text-stone-600 mt-2 leading-relaxed">
               This console provides fleet management, live disruption overrides, financial escrow releases, and vendor inventory pricing. You are currently in <strong>{role.toUpperCase()}</strong> mode.
             </p>
           </div>
@@ -239,7 +239,7 @@ export default function Operator() {
           <div className="pt-2 space-y-2.5">
             <button
               onClick={() => switchRole('operator')}
-              className="w-full py-3 rounded-xl bg-[#1F4E79] hover:bg-[#183e60] text-white text-xs font-bold transition shadow-md flex items-center justify-center gap-2"
+              className="w-full py-3 rounded-xl bg-[#1F4D45] hover:bg-[#2A6559] text-white text-xs font-bold transition shadow-md flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.99]"
             >
               <ShieldCheck className="size-4 text-emerald-300" />
               Authenticate as Operator (Elena Rostova - Ops Alpha)
@@ -247,7 +247,7 @@ export default function Operator() {
 
             <Link
               to="/"
-              className="block w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition"
+              className="block w-full py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold transition"
             >
               Return to Traveler Portal
             </Link>
@@ -258,7 +258,7 @@ export default function Operator() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50/70 pb-24">
+    <main className="min-h-screen bg-[#FAF8F5] pb-24">
       {/* Toast notification */}
       <AnimatePresence>
         {toastMessage && (
@@ -266,7 +266,7 @@ export default function Operator() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-5 right-5 z-[3000] bg-slate-900 text-white text-xs font-semibold px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 border border-slate-700"
+            className="fixed top-5 right-5 z-[3000] bg-gray-950 text-white text-xs font-semibold px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 border border-stone-800"
           >
             <CheckCircle2 className="size-4 text-emerald-400" />
             <span>{toastMessage}</span>
@@ -275,25 +275,27 @@ export default function Operator() {
       </AnimatePresence>
 
       {/* Top Operations Header */}
-      <div className="bg-[#1F4E79] text-white px-4 sm:px-8 py-8 shadow-sm">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-6 flex-wrap">
+      <div className="relative overflow-hidden bg-gradient-to-br from-[#1F4D45] via-[#163832] to-[#0D1A15] text-white px-4 sm:px-8 py-8 sm:py-10 shadow-lg">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-amber-400/15 via-transparent to-transparent pointer-events-none" />
+
+        <div className="relative z-10 max-w-7xl mx-auto flex items-center justify-between gap-6 flex-wrap">
           <div>
-            <div className="flex items-center gap-3">
-              <span className="p-2 rounded-xl bg-white/10 text-amber-300 shadow-xs">
+            <div className="flex items-center gap-3.5">
+              <span className="p-2.5 rounded-2xl bg-white/10 text-amber-300 border border-white/10 shadow-xs backdrop-blur-sm">
                 <Briefcase className="size-5" />
               </span>
               <div>
-                <div className="flex items-center gap-2.5">
-                  <h1 className="text-2xl font-extrabold tracking-tight">
-                    Tour Operations Center
+                <div className="flex items-center gap-2.5 flex-wrap">
+                  <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-display">
+                    Tour Operations Mission Control
                   </h1>
-                  <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
+                  <span className="flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-semibold bg-emerald-400/20 text-emerald-300 border border-emerald-400/30 backdrop-blur-sm">
                     <Radio className="size-3 animate-pulse" />
                     Live Telemetry
                   </span>
                 </div>
-                <p className="mt-1 text-xs text-slate-200">
-                  Fleet itinerary oversight, vendor contracts & SLAs, bookings & simulated escrow clearance.
+                <p className="mt-1 text-xs text-stone-200 leading-relaxed max-w-xl">
+                  Fleet itinerary oversight, partner SLA health, graph disruption overrides & simulated escrow clearance.
                 </p>
               </div>
             </div>
@@ -301,14 +303,14 @@ export default function Operator() {
 
           {/* Quick Demo Role Switcher & Refresh */}
           <div className="flex items-center gap-3">
-            <div className="text-right hidden sm:block">
-              <span className="text-[11px] text-slate-300 block">Logged In As</span>
+            <div className="text-right hidden sm:block bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/10">
+              <span className="text-[10px] text-stone-300 block uppercase font-medium">Operator Identity</span>
               <span className="text-xs font-bold text-white">{user?.displayName || 'Elena Rostova (Ops Alpha)'}</span>
             </div>
 
             <button
               onClick={() => switchRole('traveler')}
-              className="px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-xs font-semibold text-white border border-white/20 transition"
+              className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white border border-white/15 backdrop-blur-sm transition hover:scale-105 active:scale-95"
               title="Test Traveler view"
             >
               Switch to Traveler View
@@ -320,7 +322,7 @@ export default function Operator() {
                 loadVendors();
                 showToast('Telemetry refreshed.');
               }}
-              className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition"
+              className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/15 backdrop-blur-sm transition hover:scale-105 active:scale-95"
               title="Refresh Telemetry"
             >
               <RefreshCw className="size-4" />
@@ -332,80 +334,92 @@ export default function Operator() {
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 space-y-8">
         {/* KPI Metrics Summary Strip */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+          <div className="bg-white p-5 rounded-2xl border border-stone-200/90 hover:border-[#1F4D45]/40 shadow-xs hover:shadow-md transition-all">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+              <span className="text-xs font-bold text-stone-500 uppercase tracking-wider">
                 Active Fleet Tours
               </span>
-              <Users className="size-4 text-indigo-600" />
+              <div className="size-8 rounded-lg bg-emerald-50 text-[#1F4D45] flex items-center justify-center">
+                <Users className="size-4" />
+              </div>
             </div>
-            <div className="mt-2 text-2xl font-black text-slate-900">
+            <div className="mt-2 text-2xl sm:text-3xl font-black text-gray-900">
               {tours.length}
             </div>
-            <span className="text-[11px] text-slate-500 mt-1 block">
-              100% persistent synchronized
+            <span className="text-[11px] text-emerald-700 font-semibold mt-1 block">
+              100% Persistent Synchronized
             </span>
           </div>
 
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+          <div className="bg-white p-5 rounded-2xl border border-stone-200/90 hover:border-rose-300 shadow-xs hover:shadow-md transition-all">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+              <span className="text-xs font-bold text-stone-500 uppercase tracking-wider">
                 Active Disruptions
               </span>
-              <AlertTriangle className="size-4 text-rose-600" />
+              <div className="size-8 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center">
+                <AlertTriangle className="size-4" />
+              </div>
             </div>
-            <div className="mt-2 text-2xl font-black text-rose-600 flex items-center gap-2">
+            <div className="mt-2 text-2xl sm:text-3xl font-black text-rose-600 flex items-center gap-2">
               <span>{activeDisruptionCount}</span>
-              {activeDisruptionCount > 0 && (
-                <span className="text-xs font-semibold px-2 py-0.5 rounded bg-rose-100 text-rose-800">
+              {activeDisruptionCount > 0 ? (
+                <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-rose-100 text-rose-800">
                   Action Required
+                </span>
+              ) : (
+                <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  Nominal
                 </span>
               )}
             </div>
-            <span className="text-[11px] text-slate-500 mt-1 block">
-              Adapt Engine resolving
+            <span className="text-[11px] text-stone-500 mt-1 block">
+              {activeDisruptionCount > 0 ? 'Adapt Engine ready' : 'Zero unresolved faults'}
             </span>
           </div>
 
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+          <div className="bg-white p-5 rounded-2xl border border-stone-200/90 hover:border-amber-300 shadow-xs hover:shadow-md transition-all">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+              <span className="text-xs font-bold text-stone-500 uppercase tracking-wider">
                 Simulated Escrow Balance
               </span>
-              <DollarSign className="size-4 text-amber-600" />
+              <div className="size-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center">
+                <DollarSign className="size-4" />
+              </div>
             </div>
-            <div className="mt-2 text-2xl font-black text-slate-900">
+            <div className="mt-2 text-2xl sm:text-3xl font-black text-gray-900">
               ${totalEscrow.toLocaleString()}
             </div>
-            <span className="text-[11px] text-amber-600 font-semibold mt-1 block">
+            <span className="text-[11px] text-amber-700 font-semibold mt-1 block">
               Pending Tour Completion
             </span>
           </div>
 
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+          <div className="bg-white p-5 rounded-2xl border border-stone-200/90 hover:border-[#1F4D45]/40 shadow-xs hover:shadow-md transition-all">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+              <span className="text-xs font-bold text-stone-500 uppercase tracking-wider">
                 Vendor SLA Health
               </span>
-              <CheckCircle className="size-4 text-emerald-600" />
+              <div className="size-8 rounded-lg bg-[#1F4D45]/10 text-[#1F4D45] flex items-center justify-center">
+                <CheckCircle className="size-4" />
+              </div>
             </div>
-            <div className="mt-2 text-2xl font-black text-slate-900">
+            <div className="mt-2 text-2xl sm:text-3xl font-black text-gray-900">
               {slaCompliance}%
             </div>
-            <span className="text-[11px] text-slate-500 mt-1 block">
+            <span className="text-[11px] text-stone-500 mt-1 block">
               {vendors.length} Partner contracts active
             </span>
           </div>
         </div>
 
         {/* View Tabs */}
-        <div className="flex items-center gap-3 border-b border-slate-200 pb-3">
+        <div className="flex items-center gap-2 p-1.5 bg-stone-200/60 rounded-2xl w-fit">
           <button
             onClick={() => setActiveTab('tours')}
             className={`px-5 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 ${
               activeTab === 'tours'
-                ? 'bg-[#1F4E79] text-white shadow-sm'
-                : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                ? 'bg-[#1F4D45] text-white shadow-sm'
+                : 'text-stone-700 hover:text-stone-900 hover:bg-white/60'
             }`}
           >
             <Users className="size-3.5" />
@@ -415,8 +429,8 @@ export default function Operator() {
             onClick={() => setActiveTab('vendors')}
             className={`px-5 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 ${
               activeTab === 'vendors'
-                ? 'bg-[#1F4E79] text-white shadow-sm'
-                : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                ? 'bg-[#1F4D45] text-white shadow-sm'
+                : 'text-stone-700 hover:text-stone-900 hover:bg-white/60'
             }`}
           >
             <Building2 className="size-3.5" />
@@ -426,38 +440,38 @@ export default function Operator() {
 
         {/* TAB 1: TOURS MANIFEST */}
         {activeTab === 'tours' && (
-          <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm overflow-hidden space-y-0">
+          <div className="bg-white rounded-3xl border border-stone-200/90 shadow-sm overflow-hidden space-y-0">
             {/* Table Filters Header */}
-            <div className="p-5 border-b border-slate-200 flex items-center justify-between gap-4 flex-wrap">
+            <div className="p-5 border-b border-stone-200/80 flex items-center justify-between gap-4 flex-wrap bg-[#FAF8F5]/60">
               <div className="flex items-center gap-3">
-                <h3 className="font-bold text-slate-900 text-base">
+                <h3 className="font-bold text-gray-900 text-base font-display">
                   Operational Tour Manifest
                 </h3>
-                <span className="text-xs text-slate-500">
-                  ({filteredTours.length} tours displayed)
+                <span className="text-xs text-stone-500 px-2 py-0.5 rounded-md bg-stone-100">
+                  {filteredTours.length} tours displayed
                 </span>
               </div>
 
               <div className="flex items-center gap-3 flex-wrap">
                 <div className="relative">
-                  <Search className="absolute left-3 top-2.5 size-3.5 text-slate-400" />
+                  <Search className="absolute left-3 top-2.5 size-3.5 text-stone-400" />
                   <input
                     type="text"
                     placeholder="Search traveler, destination, ID..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="pl-8 pr-3 py-1.5 rounded-xl border border-slate-200 text-xs focus:border-[#1F4E79] outline-none"
+                    className="pl-8 pr-3 py-1.5 rounded-xl border border-stone-200 text-xs focus:border-[#1F4D45] focus:ring-2 focus:ring-[#1F4D45]/15 outline-none bg-white transition"
                   />
                 </div>
 
                 {/* Status Filter */}
-                <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl text-xs">
+                <div className="flex items-center gap-1 bg-stone-100 p-1 rounded-xl text-xs">
                   <button
                     onClick={() => setStatusFilter('all')}
                     className={`px-3 py-1 rounded-lg font-semibold transition ${
                       statusFilter === 'all'
-                        ? 'bg-white text-slate-900 shadow-xs'
-                        : 'text-slate-600 hover:text-slate-900'
+                        ? 'bg-white text-stone-900 shadow-xs'
+                        : 'text-stone-600 hover:text-stone-900'
                     }`}
                   >
                     All
@@ -467,7 +481,7 @@ export default function Operator() {
                     className={`px-3 py-1 rounded-lg font-semibold transition ${
                       statusFilter === 'disrupted'
                         ? 'bg-rose-600 text-white shadow-xs'
-                        : 'text-slate-600 hover:text-slate-900'
+                        : 'text-stone-600 hover:text-stone-900'
                     }`}
                   >
                     Disrupted ({tours.filter((t) => t.hasActiveDisruption).length})
@@ -476,8 +490,8 @@ export default function Operator() {
                     onClick={() => setStatusFilter('confirmed')}
                     className={`px-3 py-1 rounded-lg font-semibold transition ${
                       statusFilter === 'confirmed'
-                        ? 'bg-white text-slate-900 shadow-xs'
-                        : 'text-slate-600 hover:text-slate-900'
+                        ? 'bg-[#1F4D45] text-white shadow-xs'
+                        : 'text-stone-600 hover:text-stone-900'
                     }`}
                   >
                     Confirmed
@@ -485,13 +499,13 @@ export default function Operator() {
                 </div>
 
                 {/* Payment Filter */}
-                <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl text-xs">
+                <div className="flex items-center gap-1 bg-stone-100 p-1 rounded-xl text-xs">
                   <button
                     onClick={() => setPaymentFilter('all')}
                     className={`px-2.5 py-1 rounded-lg font-semibold transition ${
                       paymentFilter === 'all'
-                        ? 'bg-white text-slate-900 shadow-xs'
-                        : 'text-slate-600 hover:text-slate-900'
+                        ? 'bg-white text-stone-900 shadow-xs'
+                        : 'text-stone-600 hover:text-stone-900'
                     }`}
                   >
                     Any Escrow
@@ -501,7 +515,7 @@ export default function Operator() {
                     className={`px-2.5 py-1 rounded-lg font-semibold transition ${
                       paymentFilter === 'has_escrow'
                         ? 'bg-amber-600 text-white shadow-xs'
-                        : 'text-slate-600 hover:text-slate-900'
+                        : 'text-stone-600 hover:text-stone-900'
                     }`}
                   >
                     Escrow Active
@@ -513,7 +527,7 @@ export default function Operator() {
             {/* Tours Table */}
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-slate-50/80 text-slate-500 uppercase tracking-wider font-semibold border-b border-slate-200">
+                <thead className="bg-[#FAF8F5] text-stone-600 uppercase tracking-wider font-bold border-b border-stone-200/80">
                   <tr>
                     <th className="py-3.5 px-6">Traveler & Tour ID</th>
                     <th className="py-3.5 px-6">Destination</th>
@@ -525,30 +539,30 @@ export default function Operator() {
                     <th className="py-3.5 px-6 text-right">Operational Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-stone-100">
                   {filteredTours.map((tour) => (
                     <tr
                       key={tour.id}
-                      className="hover:bg-slate-50/80 transition"
+                      className="hover:bg-stone-50/80 transition"
                     >
-                      <td className="py-4 px-6 font-semibold text-slate-900">
+                      <td className="py-4 px-6 font-semibold text-gray-900">
                         <div>
                           <span>{tour.travelerName}</span>
-                          <span className="text-[11px] text-slate-400 block font-normal">
+                          <span className="text-[11px] text-stone-400 block font-normal">
                             {tour.tripId} • {tour.travelerEmail}
                           </span>
                         </div>
                       </td>
-                      <td className="py-4 px-6 text-slate-700 font-medium">
+                      <td className="py-4 px-6 text-stone-700 font-medium">
                         {tour.destination}
                       </td>
-                      <td className="py-4 px-6 text-slate-500">
+                      <td className="py-4 px-6 text-stone-500">
                         {tour.startDate} → {tour.endDate}
-                        <span className="block text-[10px] text-slate-400">
+                        <span className="block text-[10px] text-stone-400">
                           {tour.durationDays} Days
                         </span>
                       </td>
-                      <td className="py-4 px-6 font-semibold text-slate-700">
+                      <td className="py-4 px-6 font-semibold text-stone-700">
                         {tour.componentCount || 0} nodes
                       </td>
                       <td className="py-4 px-6">
@@ -566,30 +580,30 @@ export default function Operator() {
                       </td>
                       <td className="py-4 px-6">
                         {tour.escrowTotal > 0 ? (
-                          <span className="font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                          <span className="font-semibold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200 text-[11px]">
                             ${tour.escrowTotal} in Escrow
                           </span>
                         ) : (
-                          <span className="text-slate-400 text-[11px]">
+                          <span className="text-stone-400 text-[11px]">
                             Cleared
                           </span>
                         )}
                       </td>
-                      <td className="py-4 px-6 font-bold text-slate-900">
+                      <td className="py-4 px-6 font-black text-gray-900">
                         ${tour.totalCost}
                       </td>
                       <td className="py-4 px-6 text-right">
                         <div className="inline-flex items-center gap-2">
                           <button
                             onClick={() => openTourDetail(tour.tripId)}
-                            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#1F4E79] text-white hover:bg-[#183e60] font-semibold transition shadow-xs text-xs"
+                            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#1F4D45] text-white hover:bg-[#2A6559] font-bold transition shadow-xs text-xs hover:scale-105 active:scale-95"
                           >
                             <SlidersHorizontal className="size-3" />
                             Manage Tour
                           </button>
                           <Link
                             to={`/trip/${tour.tripId}`}
-                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition text-xs"
+                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium transition text-xs"
                             title="Traveler View"
                           >
                             <ArrowUpRight className="size-3" />
@@ -603,7 +617,7 @@ export default function Operator() {
                     <tr>
                       <td
                         colSpan={8}
-                        className="py-12 text-center text-xs text-slate-500"
+                        className="py-12 text-center text-xs text-stone-500"
                       >
                         {loadingTours ? 'Loading tours manifest...' : 'No tours match your current filter criteria.'}
                       </td>
@@ -617,14 +631,14 @@ export default function Operator() {
 
         {/* TAB 2: VENDOR INVENTORY & SLAS */}
         {activeTab === 'vendors' && (
-          <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm overflow-hidden space-y-0">
+          <div className="bg-white rounded-3xl border border-stone-200/90 shadow-sm overflow-hidden space-y-0">
             {/* Header Bar */}
-            <div className="p-5 border-b border-slate-200 flex items-center justify-between gap-4 flex-wrap">
+            <div className="p-5 border-b border-stone-200/80 flex items-center justify-between gap-4 flex-wrap bg-[#FAF8F5]/60">
               <div>
-                <h3 className="font-bold text-slate-900 text-base">
+                <h3 className="font-bold text-gray-900 text-base font-display">
                   Partner Vendor Inventory & SLAs
                 </h3>
-                <p className="text-xs text-slate-500 mt-0.5">
+                <p className="text-xs text-stone-500 mt-0.5">
                   Manage vendor capacity limits, service catalog pricing, and SLA health ratings.
                 </p>
               </div>
@@ -645,7 +659,7 @@ export default function Operator() {
                   setIsNewVendorModal(true);
                   setEditingVendor(null);
                 }}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#1F4E79] text-white text-xs font-bold hover:bg-[#183e60] transition shadow-xs"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#1F4D45] text-white text-xs font-bold hover:bg-[#2A6559] transition shadow-xs hover:scale-105 active:scale-95"
               >
                 <Plus className="size-3.5" />
                 Add Partner Vendor
@@ -655,7 +669,7 @@ export default function Operator() {
             {/* Vendor Table */}
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-slate-50/80 text-slate-500 uppercase tracking-wider font-semibold border-b border-slate-200">
+                <thead className="bg-[#FAF8F5] text-stone-600 uppercase tracking-wider font-bold border-b border-stone-200/80">
                   <tr>
                     <th className="py-3.5 px-6">Vendor Name & Contact</th>
                     <th className="py-3.5 px-6">Category</th>
@@ -667,33 +681,33 @@ export default function Operator() {
                     <th className="py-3.5 px-6 text-right">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-stone-100">
                   {vendors.map((v) => (
-                    <tr key={v.id} className="hover:bg-slate-50/80 transition">
-                      <td className="py-4 px-6 font-semibold text-slate-900">
+                    <tr key={v.id} className="hover:bg-stone-50/80 transition">
+                      <td className="py-4 px-6 font-semibold text-gray-900">
                         <div>
                           <span>{v.vendorName}</span>
-                          <span className="text-[11px] text-slate-400 block font-normal">
+                          <span className="text-[11px] text-stone-400 block font-normal">
                             {v.contactEmail} • {v.rating}★
                           </span>
                         </div>
                       </td>
                       <td className="py-4 px-6">
-                        <span className="px-2 py-0.5 rounded uppercase tracking-wider font-bold text-[10px] bg-slate-100 text-slate-700 border border-slate-200">
+                        <span className="px-2 py-0.5 rounded uppercase tracking-wider font-bold text-[10px] bg-stone-100 text-stone-700 border border-stone-200">
                           {v.category}
                         </span>
                       </td>
-                      <td className="py-4 px-6 text-slate-700">
+                      <td className="py-4 px-6 text-stone-700">
                         <span className="font-medium block">{v.serviceTitle}</span>
-                        <span className="text-[11px] text-slate-400">{v.location}</span>
+                        <span className="text-[11px] text-stone-400">{v.location}</span>
                       </td>
-                      <td className="py-4 px-6 font-bold text-slate-900">
+                      <td className="py-4 px-6 font-bold text-gray-900">
                         ${v.unitCost} {v.currency}
                       </td>
-                      <td className="py-4 px-6 text-slate-700">
+                      <td className="py-4 px-6 text-stone-700">
                         <div className="flex items-center gap-2">
                           <span className="font-semibold">{v.bookedSlots} / {v.capacityPerDay}</span>
-                          <span className="text-[10px] text-slate-400">
+                          <span className="text-[10px] text-stone-400">
                             ({Math.round((v.bookedSlots / v.capacityPerDay) * 100)}% used)
                           </span>
                         </div>
@@ -714,7 +728,7 @@ export default function Operator() {
                         </span>
                       </td>
                       <td className="py-4 px-6">
-                        <span className="capitalize font-medium text-slate-600">
+                        <span className="capitalize font-medium text-stone-600">
                           {v.contractStatus}
                         </span>
                       </td>
@@ -734,7 +748,7 @@ export default function Operator() {
                               contractStatus: v.contractStatus,
                             });
                           }}
-                          className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-[#1F4E79] hover:text-white text-slate-700 font-semibold transition"
+                          className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-stone-100 hover:bg-[#1F4D45] hover:text-white text-stone-700 font-semibold transition"
                         >
                           <Edit3 className="size-3" />
                           Edit Inventory
@@ -758,7 +772,7 @@ export default function Operator() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedTripId(null)}
-              className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs"
+              className="fixed inset-0 bg-stone-950/40 backdrop-blur-xs"
             />
 
             <motion.div
@@ -770,28 +784,28 @@ export default function Operator() {
             >
               {loadingDetail || !tourDetail ? (
                 <div className="p-12 text-center flex-1 flex flex-col items-center justify-center">
-                  <div className="size-10 rounded-full border-4 border-[#1F4E79] border-t-transparent animate-spin mb-3" />
-                  <p className="text-xs font-semibold text-slate-600">Loading tour operational breakdown...</p>
+                  <div className="size-10 rounded-full border-4 border-[#1F4D45] border-t-transparent animate-spin mb-3" />
+                  <p className="text-xs font-semibold text-stone-600">Loading tour operational breakdown...</p>
                 </div>
               ) : (
                 <>
                   {/* Drawer Header */}
-                  <div className="p-6 border-b border-slate-200 bg-gradient-to-r from-slate-900 to-[#1F4E79] text-white">
+                  <div className="p-6 border-b border-stone-800 bg-gradient-to-r from-stone-950 via-[#163832] to-[#1F4D45] text-white">
                     <div className="flex items-center justify-between">
                       <div>
                         <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-white/20 text-white">
                           Tour Operations Detail
                         </span>
-                        <h3 className="text-lg font-bold mt-1.5">
+                        <h3 className="text-lg font-bold mt-1.5 font-display">
                           {tourDetail.title}
                         </h3>
-                        <p className="text-xs text-slate-300">
+                        <p className="text-xs text-stone-300">
                           Traveler: {tourDetail.travelerName} ({tourDetail.travelerEmail}) • {tourDetail.destination}
                         </p>
                       </div>
                       <button
                         onClick={() => setSelectedTripId(null)}
-                        className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 transition"
+                        className="p-2 rounded-xl text-stone-300 hover:text-white hover:bg-white/10 transition"
                       >
                         <X className="size-5" />
                       </button>
@@ -800,15 +814,15 @@ export default function Operator() {
                     {/* Financial Escrow Status Strip */}
                     <div className="mt-4 grid grid-cols-3 gap-2.5 p-3 rounded-2xl bg-white/10 backdrop-blur border border-white/10 text-xs">
                       <div>
-                        <span className="text-slate-300 block text-[10px]">Total Tour Cost</span>
+                        <span className="text-stone-300 block text-[10px]">Total Tour Cost</span>
                         <strong className="text-white text-sm font-black">${tourDetail.totalCost}</strong>
                       </div>
                       <div>
-                        <span className="text-slate-300 block text-[10px]">Simulated Escrow</span>
+                        <span className="text-stone-300 block text-[10px]">Simulated Escrow</span>
                         <strong className="text-amber-300 text-sm font-black">${tourDetail.escrowTotal}</strong>
                       </div>
                       <div>
-                        <span className="text-slate-300 block text-[10px]">Settled / Paid</span>
+                        <span className="text-stone-300 block text-[10px]">Settled / Paid</span>
                         <strong className="text-emerald-300 text-sm font-black">${tourDetail.paidTotal}</strong>
                       </div>
                     </div>
@@ -840,10 +854,10 @@ export default function Operator() {
                     {/* Bookings & Itinerary Components Breakdown */}
                     <div>
                       <div className="flex items-center justify-between mb-3">
-                        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-stone-700 font-display">
                           Itinerary Components, Vendors & Simulated Payments ({tourDetail.bookings.length})
                         </h4>
-                        <span className="text-[11px] text-slate-500">
+                        <span className="text-[11px] text-stone-500">
                           Click status to toggle payment state
                         </span>
                       </div>
@@ -858,30 +872,30 @@ export default function Operator() {
                               className={`p-4 rounded-2xl border transition-all ${
                                 isDisrupted
                                   ? 'bg-rose-50/50 border-rose-200'
-                                  : 'bg-white border-slate-200 hover:border-slate-300 shadow-xs'
+                                  : 'bg-white border-stone-200 hover:border-stone-300 shadow-xs'
                               }`}
                             >
                               <div className="flex items-start justify-between gap-3 flex-wrap">
                                 <div>
                                   <div className="flex items-center gap-2">
-                                    <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-slate-100 text-slate-700">
+                                    <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-stone-100 text-stone-700">
                                       Day {booking.day} • {booking.componentType}
                                     </span>
-                                    <span className="text-xs font-semibold text-slate-500">
+                                    <span className="text-xs font-semibold text-stone-500">
                                       {booking.time} ({booking.duration})
                                     </span>
                                   </div>
-                                  <h5 className="font-bold text-slate-900 text-sm mt-1">
+                                  <h5 className="font-bold text-gray-900 text-sm mt-1">
                                     {booking.componentName}
                                   </h5>
-                                  <div className="flex items-center gap-3 text-xs text-slate-500 mt-1">
-                                    <span>Vendor: <strong className="text-slate-800">{booking.vendor}</strong> ({booking.vendorRating}★)</span>
-                                    <span>Ref: <strong className="font-mono text-slate-700">{booking.bookingRef}</strong></span>
+                                  <div className="flex items-center gap-3 text-xs text-stone-500 mt-1">
+                                    <span>Vendor: <strong className="text-stone-800">{booking.vendor}</strong> ({booking.vendorRating}★)</span>
+                                    <span>Ref: <strong className="font-mono text-stone-700">{booking.bookingRef}</strong></span>
                                   </div>
                                 </div>
 
                                 <div className="text-right">
-                                  <span className="text-sm font-black text-slate-900 block">
+                                  <span className="text-sm font-black text-gray-900 block">
                                     ${booking.cost}
                                   </span>
 
@@ -900,10 +914,10 @@ export default function Operator() {
                                         booking.paymentStatus === 'paid'
                                           ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
                                           : booking.paymentStatus === 'escrow'
-                                          ? 'bg-sky-50 text-sky-800 border-sky-200'
+                                          ? 'bg-amber-50 text-amber-800 border-amber-200'
                                           : booking.paymentStatus === 'refunded'
                                           ? 'bg-purple-50 text-purple-800 border-purple-200'
-                                          : 'bg-amber-50 text-amber-800 border-amber-200'
+                                          : 'bg-stone-50 text-stone-800 border-stone-200'
                                       }`}
                                     >
                                       <option value="paid">✓ Paid</option>
@@ -922,13 +936,13 @@ export default function Operator() {
                   </div>
 
                   {/* Drawer Footer */}
-                  <div className="p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between">
-                    <span className="text-xs text-slate-500">
+                  <div className="p-4 border-t border-stone-200 bg-[#FAF8F5] flex items-center justify-between">
+                    <span className="text-xs text-stone-500">
                       Assigned Operator: <strong>{tourDetail.assignedOperator}</strong>
                     </span>
                     <Link
                       to={`/trip/${tourDetail.tripId}`}
-                      className="px-4 py-2 rounded-xl bg-[#1F4E79] text-white text-xs font-bold hover:bg-[#183e60] transition"
+                      className="px-4 py-2 rounded-xl bg-[#1F4D45] text-white text-xs font-bold hover:bg-[#2A6559] transition shadow-xs"
                     >
                       Open Full DAG Inspector
                     </Link>
@@ -952,17 +966,17 @@ export default function Operator() {
                 setEditingVendor(null);
                 setIsNewVendorModal(false);
               }}
-              className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs"
+              className="fixed inset-0 bg-stone-950/50 backdrop-blur-xs"
             />
 
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-slate-200 p-6 z-10 space-y-5"
+              className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-stone-200 p-6 z-10 space-y-5"
             >
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                <h3 className="font-bold text-slate-900 text-base">
+              <div className="flex items-center justify-between border-b border-stone-100 pb-3">
+                <h3 className="font-bold text-gray-900 text-base font-display">
                   {editingVendor ? `Edit Inventory: ${editingVendor.vendorName}` : 'Add New Partner Vendor'}
                 </h3>
                 <button
@@ -970,7 +984,7 @@ export default function Operator() {
                     setEditingVendor(null);
                     setIsNewVendorModal(false);
                   }}
-                  className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700"
+                  className="p-1.5 rounded-xl text-stone-400 hover:text-stone-700"
                 >
                   <X className="size-4" />
                 </button>
@@ -978,7 +992,7 @@ export default function Operator() {
 
               <form onSubmit={handleSaveVendor} className="space-y-4 text-xs">
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">
+                  <label className="block font-bold text-stone-700 mb-1">
                     Vendor Business Name
                   </label>
                   <input
@@ -987,19 +1001,19 @@ export default function Operator() {
                     value={vendorForm.vendorName}
                     disabled={Boolean(editingVendor)}
                     onChange={(e) => setVendorForm({ ...vendorForm, vendorName: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-200 outline-none focus:border-[#1F4E79]"
+                    className="w-full px-3 py-2 rounded-xl border border-stone-200 outline-none focus:border-[#1F4D45] focus:ring-2 focus:ring-[#1F4D45]/15"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">
+                    <label className="block font-bold text-stone-700 mb-1">
                       Category
                     </label>
                     <select
                       value={vendorForm.category}
                       onChange={(e) => setVendorForm({ ...vendorForm, category: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl border border-slate-200 outline-none bg-white"
+                      className="w-full px-3 py-2 rounded-xl border border-stone-200 outline-none bg-white focus:border-[#1F4D45]"
                     >
                       <option value="stay">Stay</option>
                       <option value="transport">Transport</option>
@@ -1008,7 +1022,7 @@ export default function Operator() {
                     </select>
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">
+                    <label className="block font-bold text-stone-700 mb-1">
                       Unit Base Price ($)
                     </label>
                     <input
@@ -1017,13 +1031,13 @@ export default function Operator() {
                       min="1"
                       value={vendorForm.unitCost}
                       onChange={(e) => setVendorForm({ ...vendorForm, unitCost: Number(e.target.value) })}
-                      className="w-full px-3 py-2 rounded-xl border border-slate-200 outline-none"
+                      className="w-full px-3 py-2 rounded-xl border border-stone-200 outline-none focus:border-[#1F4D45]"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">
+                  <label className="block font-bold text-stone-700 mb-1">
                     Service Catalog Title
                   </label>
                   <input
@@ -1031,13 +1045,13 @@ export default function Operator() {
                     required
                     value={vendorForm.serviceTitle}
                     onChange={(e) => setVendorForm({ ...vendorForm, serviceTitle: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-200 outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-stone-200 outline-none focus:border-[#1F4D45]"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">
+                    <label className="block font-bold text-stone-700 mb-1">
                       Daily Capacity Slots
                     </label>
                     <input
@@ -1046,17 +1060,17 @@ export default function Operator() {
                       min="1"
                       value={vendorForm.capacityPerDay}
                       onChange={(e) => setVendorForm({ ...vendorForm, capacityPerDay: Number(e.target.value) })}
-                      className="w-full px-3 py-2 rounded-xl border border-slate-200 outline-none"
+                      className="w-full px-3 py-2 rounded-xl border border-stone-200 outline-none focus:border-[#1F4D45]"
                     />
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">
+                    <label className="block font-bold text-stone-700 mb-1">
                       SLA Health Status
                     </label>
                     <select
                       value={vendorForm.slaStatus}
                       onChange={(e) => setVendorForm({ ...vendorForm, slaStatus: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl border border-slate-200 outline-none bg-white"
+                      className="w-full px-3 py-2 rounded-xl border border-stone-200 outline-none bg-white focus:border-[#1F4D45]"
                     >
                       <option value="healthy">Healthy (Optimal SLA)</option>
                       <option value="warning">Warning (Delayed Telemetry)</option>
@@ -1072,13 +1086,13 @@ export default function Operator() {
                       setEditingVendor(null);
                       setIsNewVendorModal(false);
                     }}
-                    className="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 font-semibold"
+                    className="px-4 py-2 rounded-xl bg-stone-100 text-stone-700 font-semibold"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="px-4 py-2 rounded-xl bg-[#1F4E79] text-white font-bold hover:bg-[#183e60] transition shadow-xs"
+                    className="px-5 py-2 rounded-xl bg-[#1F4D45] text-white font-bold hover:bg-[#2A6559] transition shadow-xs"
                   >
                     Save Changes
                   </button>

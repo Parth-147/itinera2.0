@@ -147,7 +147,7 @@ export default function Login() {
               <h1 className="text-[28px] leading-tight font-semibold text-white">
                 Your journey<br />begins here.
               </h1>
-              <p className="mt-4 text-[15px] leading-relaxed text-indigo-100/80">
+              <p className="mt-4 text-[15px] leading-relaxed text-emerald-100/80">
                 Intelligent travel planning crafted for modern explorers. Discover curated destinations and build unforgettable itineraries.
               </p>
             </div>
@@ -161,7 +161,7 @@ export default function Login() {
               </div>
               <div>
                 <p className="text-[13px] font-medium text-white">500+ Curated Destinations</p>
-                <p className="text-[11px] text-indigo-200/60">Handpicked locations worldwide</p>
+                <p className="text-[11px] text-emerald-200/70">Handpicked locations worldwide</p>
               </div>
             </div>
             <div className="flex items-center gap-3 rounded-xl bg-white/[0.08] px-4 py-3 backdrop-blur-sm">
@@ -170,7 +170,7 @@ export default function Login() {
               </div>
               <div>
                 <p className="text-[13px] font-medium text-white">AI-Powered Itineraries</p>
-                <p className="text-[11px] text-indigo-200/60">Personalized to your travel style</p>
+                <p className="text-[11px] text-emerald-200/70">Personalized to your travel style</p>
               </div>
             </div>
           </div>
@@ -180,7 +180,7 @@ export default function Login() {
         <div className="flex w-full flex-col justify-center bg-white px-6 py-10 sm:px-10 lg:w-[55%] lg:px-14 lg:py-12">
           {/* Mobile-only brand */}
           <div className="mb-8 flex items-center gap-2 lg:hidden">
-            <div className="flex size-9 items-center justify-center rounded-xl bg-indigo-600">
+            <div className="flex size-9 items-center justify-center rounded-xl bg-[#1F4D45]">
               <GlobeIcon className="size-4.5 text-white" />
             </div>
             <span className="text-base font-bold tracking-[0.18em] text-slate-900">ITINERA</span>
@@ -267,7 +267,7 @@ export default function Login() {
                   />
                   <span className="text-[13px] text-slate-600">Remember me</span>
                 </label>
-                <button type="button" className="text-[13px] font-medium text-indigo-600 transition-colors hover:text-indigo-700">
+                <button type="button" className="text-[13px] font-medium text-[#1F4D45] transition-colors hover:text-[#2A6559]">
                   Forgot password?
                 </button>
               </div>
@@ -292,7 +292,7 @@ export default function Login() {
             {/* ── Signup link ─────────────────────────────────────── */}
             <p className="mt-8 text-center text-[13px] text-slate-500">
               Don&apos;t have an account?{' '}
-              <Link to="/signup" className="font-semibold text-indigo-600 transition-colors hover:text-indigo-700">
+              <Link to="/signup" className="font-semibold text-[#1F4D45] transition-colors hover:text-[#2A6559]">
                 Create one
               </Link>
             </p>

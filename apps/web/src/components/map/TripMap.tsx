@@ -53,7 +53,7 @@ export const TripMap: React.FC<TripMapProps> = ({
           <div>
             <div className="text-xs font-semibold text-slate-900 flex items-center gap-1.5">
               <span>{weather.location}</span>
-              <span className="text-indigo-600 font-bold">{weather.temperatureC}°C</span>
+              <span className="text-[#1F4D45] font-bold">{weather.temperatureC}°C</span>
             </div>
             <div className="text-[11px] text-slate-500">
               {weather.condition} • Wind {weather.windSpeedKmh}km/h
@@ -76,9 +76,9 @@ export const TripMap: React.FC<TripMapProps> = ({
         {polylineCoords.length > 1 && (
           <Polyline
             positions={polylineCoords}
-            color="#1F4E79"
+            color="#1F4D45"
             weight={3}
-            opacity={0.7}
+            opacity={0.8}
             dashArray="6, 8"
           />
         )}
@@ -111,7 +111,7 @@ export const TripMap: React.FC<TripMapProps> = ({
                   <p className="text-xs text-slate-500 mt-1 line-clamp-2">
                     {comp.description}
                   </p>
-                  <div className="mt-2 text-[11px] font-medium text-indigo-600 flex items-center justify-between">
+                  <div className="mt-2 text-[11px] font-medium text-[#1F4D45] flex items-center justify-between">
                     <span>{comp.time} ({comp.duration})</span>
                     <span>★ {comp.vendorRating}</span>
                   </div>

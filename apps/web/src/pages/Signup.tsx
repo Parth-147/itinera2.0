@@ -227,7 +227,7 @@ export default function Signup() {
               <h1 className="text-[26px] leading-tight font-semibold text-white">
                 Start your travel<br />story today.
               </h1>
-              <p className="mt-4 text-[15px] leading-relaxed text-indigo-100/80">
+              <p className="mt-4 text-[15px] leading-relaxed text-emerald-100/80">
                 Join thousands of travelers who plan smarter, discover more, and create unforgettable memories with ITINERA.
               </p>
             </div>
@@ -241,7 +241,7 @@ export default function Signup() {
               </div>
               <div>
                 <p className="text-[13px] font-medium text-white">Secure & Private</p>
-                <p className="text-[11px] text-indigo-200/60">Your data is encrypted end-to-end</p>
+                <p className="text-[11px] text-emerald-200/70">Your data is encrypted end-to-end</p>
               </div>
             </div>
             <div className="flex items-center gap-3 rounded-xl bg-white/[0.08] px-4 py-3 backdrop-blur-sm">
@@ -250,7 +250,7 @@ export default function Signup() {
               </div>
               <div>
                 <p className="text-[13px] font-medium text-white">Free to Get Started</p>
-                <p className="text-[11px] text-indigo-200/60">No credit card required</p>
+                <p className="text-[11px] text-emerald-200/70">No credit card required</p>
               </div>
             </div>
           </div>
@@ -260,7 +260,7 @@ export default function Signup() {
         <div className="flex w-full flex-col justify-center bg-white px-6 py-8 sm:px-10 lg:w-[58%] lg:px-14 lg:py-10">
           {/* Mobile-only brand */}
           <div className="mb-6 flex items-center gap-2 lg:hidden">
-            <div className="flex size-9 items-center justify-center rounded-xl bg-indigo-600">
+            <div className="flex size-9 items-center justify-center rounded-xl bg-[#1F4D45]">
               <GlobeIcon className="size-4.5 text-white" />
             </div>
             <span className="text-base font-bold tracking-[0.18em] text-slate-900">ITINERA</span>
@@ -444,9 +444,9 @@ export default function Signup() {
                   />
                   <span className="text-[13px] leading-relaxed text-slate-600">
                     I agree to ITINERA&apos;s{' '}
-                    <button type="button" className="font-medium text-indigo-600 hover:text-indigo-700">Terms of Service</button>
+                    <button type="button" className="font-medium text-[#1F4D45] hover:text-[#2A6559]">Terms of Service</button>
                     {' '}and{' '}
-                    <button type="button" className="font-medium text-indigo-600 hover:text-indigo-700">Privacy Policy</button>
+                    <button type="button" className="font-medium text-[#1F4D45] hover:text-[#2A6559]">Privacy Policy</button>
                   </span>
                 </label>
                 {fieldErrors.terms && (
@@ -474,7 +474,7 @@ export default function Signup() {
             {/* ── Login link ──────────────────────────────────────── */}
             <p className="mt-6 text-center text-[13px] text-slate-500">
               Already have an account?{' '}
-              <Link to="/login" className="font-semibold text-indigo-600 transition-colors hover:text-indigo-700">
+              <Link to="/login" className="font-semibold text-[#1F4D45] transition-colors hover:text-[#2A6559]">
                 Sign in
               </Link>
             </p>

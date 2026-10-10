@@ -144,7 +144,7 @@ export const ComponentCard: React.FC<ComponentCardProps> = ({
       {/* DAG Dependency Indicators */}
       {prerequisiteNames.length > 0 && (
         <div className="mt-3 flex items-center gap-2 text-[11px] text-slate-500 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200/60">
-          <GitBranch className="size-3.5 text-indigo-500 shrink-0" />
+          <GitBranch className="size-3.5 text-[#1F4D45] shrink-0" />
           <span>Depends on: <strong className="text-slate-700">{prerequisiteNames.join(', ')}</strong></span>
         </div>
       )}
@@ -154,7 +154,7 @@ export const ComponentCard: React.FC<ComponentCardProps> = ({
         {isDisrupted || component.status === 'disrupted' ? (
           <button
             onClick={() => onExploreAlternatives(component.id)}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-[#1F4E79] text-white hover:bg-[#183e60] transition shadow-sm"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-[#1F4D45] text-white hover:bg-[#2A6559] transition shadow-sm"
           >
             <Zap className="size-3.5 text-amber-300" />
             Resolve with Adapt Engine

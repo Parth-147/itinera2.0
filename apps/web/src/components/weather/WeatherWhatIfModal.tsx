@@ -55,23 +55,23 @@ export const WeatherWhatIfModal: React.FC<WeatherWhatIfModalProps> = ({
           className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden z-10 flex flex-col max-h-[90vh]"
         >
           {/* Header */}
-          <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+          <div className="p-6 border-b border-stone-200/90 flex items-center justify-between bg-[#FAF8F5]">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-2xl bg-indigo-50 text-indigo-600">
+              <div className="p-2.5 rounded-2xl bg-[#1F4D45]/10 text-[#1F4D45]">
                 <CloudRain className="size-6" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-slate-900">
+                <h3 className="text-lg font-bold text-stone-900">
                   Weather What-If Simulator
                 </h3>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-stone-500">
                   Stress-test itinerary resilience against hypothetical climate shocks
                 </p>
               </div>
             </div>
             <button
               onClick={onClose}
-              className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-200/50 transition"
+              className="p-2 rounded-xl text-stone-400 hover:text-stone-700 hover:bg-stone-200/50 transition"
             >
               <X className="size-5" />
             </button>
@@ -80,7 +80,7 @@ export const WeatherWhatIfModal: React.FC<WeatherWhatIfModalProps> = ({
           <div className="p-6 overflow-y-auto space-y-6">
             {/* Condition selector buttons */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-2.5">
                 Simulated Climate Shock
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
@@ -98,11 +98,11 @@ export const WeatherWhatIfModal: React.FC<WeatherWhatIfModalProps> = ({
                       onClick={() => setCondition(item.name)}
                       className={`p-3 rounded-2xl border text-left transition flex flex-col items-start gap-2 ${
                         isSelected
-                          ? 'border-[#1F4E79] bg-[#1F4E79]/5 ring-2 ring-[#1F4E79]/20 text-[#1F4E79]'
-                          : 'border-slate-200 bg-white hover:border-slate-300 text-slate-700'
+                          ? 'border-[#1F4D45] bg-[#1F4D45]/5 ring-2 ring-[#1F4D45]/20 text-[#1F4D45]'
+                          : 'border-stone-200 bg-white hover:border-stone-300 text-stone-700'
                       }`}
                     >
-                      <Icon className="size-4 text-slate-600" />
+                      <Icon className="size-4 text-stone-600" />
                       <span className="text-xs font-semibold">{item.name}</span>
                     </button>
                   );
@@ -113,10 +113,10 @@ export const WeatherWhatIfModal: React.FC<WeatherWhatIfModalProps> = ({
             {/* Intensity Slider */}
             <div>
               <div className="flex items-center justify-between text-xs mb-2">
-                <span className="font-bold uppercase tracking-wider text-slate-500">
+                <span className="font-bold uppercase tracking-wider text-stone-500">
                   Shock Intensity Level
                 </span>
-                <span className="font-bold text-[#1F4E79] bg-indigo-50 px-2 py-0.5 rounded-md">
+                <span className="font-bold text-[#1F4D45] bg-[#1F4D45]/10 px-2 py-0.5 rounded-md">
                   Category {intensity} / 5
                 </span>
               </div>
@@ -126,9 +126,9 @@ export const WeatherWhatIfModal: React.FC<WeatherWhatIfModalProps> = ({
                 max="5"
                 value={intensity}
                 onChange={(e) => setIntensity(Number(e.target.value))}
-                className="w-full accent-[#1F4E79] cursor-pointer"
+                className="w-full accent-[#1F4D45] cursor-pointer"
               />
-              <div className="flex justify-between text-[10px] text-slate-400 mt-1">
+              <div className="flex justify-between text-[10px] text-stone-400 mt-1">
                 <span>Cat 1 (Mild)</span>
                 <span>Cat 3 (Operational Hazard)</span>
                 <span>Cat 5 (Full Emergency)</span>
@@ -139,7 +139,7 @@ export const WeatherWhatIfModal: React.FC<WeatherWhatIfModalProps> = ({
             <button
               onClick={runSimulation}
               disabled={loading}
-              className="w-full py-3 rounded-xl bg-[#1F4E79] text-white font-bold text-sm hover:bg-[#183e60] transition flex items-center justify-center gap-2 shadow-sm"
+              className="w-full py-3 rounded-xl bg-[#1F4D45] text-white font-bold text-sm hover:bg-[#2A6559] transition flex items-center justify-center gap-2 shadow-sm"
             >
               <Play className="size-4 fill-white" />
               {loading ? 'Evaluating Resilience...' : 'Run Simulation'}
@@ -184,7 +184,7 @@ export const WeatherWhatIfModal: React.FC<WeatherWhatIfModalProps> = ({
                           {risk.name}
                         </div>
                         <div className="text-slate-500">{risk.riskReason}</div>
-                        <div className="text-indigo-600 font-medium">
+                        <div className="text-[#1F4D45] font-medium">
                           Suggested Action: {risk.suggestedAction}
                         </div>
                       </div>
