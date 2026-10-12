@@ -13,7 +13,7 @@ import {
   ChevronRight,
   LogOut,
 } from 'lucide-react'
-import { useAuth } from '../../context/authContext'
+import { useAuth } from '../../context/AuthContext'
 
 export default function ITINERANav() {
   const navigate = useNavigate()

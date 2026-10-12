@@ -7,7 +7,7 @@ import {
   setActiveSessionUser,
   loginAsDemo as serviceLoginAsDemo,
 } from '../services/auth'
-import { AuthContext, type AuthContextType, type AppUser } from './authContext'
+import { AuthContext, type AuthContextType, type AppUser } from './AuthContext'
 
 function mapSupabaseUserToAppUser(user: User | null, currentRole: UserRole): AppUser {
   if (!user) return null

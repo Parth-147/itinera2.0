@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes, Navigate, Outlet, useLocation } from 'react-router-dom'
-import { AuthProvider } from './context/AuthProvider'
-import { useAuth } from './context/authContext'
+import { AuthProvider, useAuth } from './context/AuthContext'
 import AppLayout from './layouts/AppLayout'
 import Home from './pages/Home'
 import Search from './pages/Search'
