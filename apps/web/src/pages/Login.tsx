@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react'
-import { Link } from 'react-router-dom'
-import { login } from '../services/auth'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { login, resetPassword } from '../services/auth'
 
 /* ── Inline SVG icons ──────────────────────────────────────────────── */
 
@@ -74,6 +74,8 @@ function PlaneIcon({ className = 'size-5' }: { className?: string }) {
 /* ── Component ─────────────────────────────────────────────────────── */
 
 export default function Login() {
+  const navigate = useNavigate()
+  const location = useLocation()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -81,6 +83,8 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [fieldErrors, setFieldErrors] = useState<{ email?: string; password?: string }>({})
+  const [resetSent, setResetSent] = useState(false)
+  const [isResetting, setIsResetting] = useState(false)
 
   /* ── Validation ──────────────────────────────────────────────────── */
   function validate(): boolean {
@@ -105,7 +109,9 @@ export default function Login() {
   /* ── Submit ──────────────────────────────────────────────────────── */
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
+    if (isLoading) return
     setError(null)
+    setResetSent(false)
 
     if (!validate()) return
 
@@ -114,12 +120,44 @@ export default function Login() {
       const result = await login({ email, password, rememberMe })
       if (result.error) {
         setError(result.error.message)
+      } else {
+        const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/'
+        navigate(from, { replace: true })
       }
-      // On success the service would redirect or set session
     } catch {
       setError('An unexpected error occurred. Please try again.')
     } finally {
       setIsLoading(false)
+    }
+  }
+
+  /* ── Forgot Password ─────────────────────────────────────────────── */
+  async function handleForgotPassword() {
+    if (isResetting || isLoading) return
+    setError(null)
+    setResetSent(false)
+
+    if (!email.trim()) {
+      setFieldErrors((prev) => ({ ...prev, email: 'Enter your email address to receive a reset link' }))
+      return
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setFieldErrors((prev) => ({ ...prev, email: 'Please enter a valid email address' }))
+      return
+    }
+
+    setIsResetting(true)
+    try {
+      const result = await resetPassword(email)
+      if (result.error) {
+        setError(result.error.message)
+      } else {
+        setResetSent(true)
+      }
+    } catch {
+      setError('An unexpected error occurred while requesting password reset.')
+    } finally {
+      setIsResetting(false)
     }
   }
 
@@ -202,6 +240,16 @@ export default function Login() {
               </div>
             )}
 
+            {/* ── Password Reset Success ──────────────────────────── */}
+            {resetSent && (
+              <div className="mt-5 flex items-start gap-2.5 rounded-xl border border-emerald-100 bg-emerald-50 px-4 py-3 text-[13px] text-emerald-800 animate-auth-fade-in">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="mt-0.5 size-4 shrink-0 text-emerald-600">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clipRule="evenodd" />
+                </svg>
+                <span>Password recovery email sent! Please check your inbox for instructions.</span>
+              </div>
+            )}
+
             {/* ── Form ────────────────────────────────────────────── */}
             <form onSubmit={handleSubmit} noValidate className="mt-8 space-y-5">
               {/* Email */}
@@ -267,8 +315,13 @@ export default function Login() {
                   />
                   <span className="text-[13px] text-slate-600">Remember me</span>
                 </label>
-                <button type="button" className="text-[13px] font-medium text-indigo-600 transition-colors hover:text-indigo-700">
-                  Forgot password?
+                <button
+                  type="button"
+                  disabled={isResetting || isLoading}
+                  onClick={handleForgotPassword}
+                  className="text-[13px] font-medium text-indigo-600 transition-colors hover:text-indigo-700 disabled:opacity-50"
+                >
+                  {isResetting ? 'Sending link…' : 'Forgot password?'}
                 </button>
               </div>
 
