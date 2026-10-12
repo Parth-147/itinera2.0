@@ -1,41 +1,120 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import AppLayout from './layouts/AppLayout';
-import Home from './pages/Home';
-import Search from './pages/Search';
-import Create from './pages/Create';
-import Inbox from './pages/Inbox';
-import Saved from './pages/Saved';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import TripDetail from './pages/TripDetail';
-import Operator from './pages/Operator';
-import Profile from './pages/Profile';
-import { AuthProvider } from './context/AuthContext';
+import { BrowserRouter, Route, Routes, Navigate, Outlet, useLocation } from 'react-router-dom'
+import { AuthProvider } from './context/AuthProvider'
+import { useAuth } from './context/authContext'
+import AppLayout from './layouts/AppLayout'
+import Home from './pages/Home'
+import Search from './pages/Search'
+import Create from './pages/Create'
+import Inbox from './pages/Inbox'
+import Saved from './pages/Saved'
+import Login from './pages/Login'
+import Signup from './pages/Signup'
+import TripDetail from './pages/TripDetail'
+import Operator from './pages/Operator'
+import Profile from './pages/Profile'
+
+/**
+ * Route guard for genuinely private pages (/create, /inbox, /saved, /profile).
+ * - Avoids flash-of-unauthenticated by waiting until session check completes.
+ * - Stores the attempted URL in location.state so Login redirects back after sign in.
+ */
+function ProtectedRoute() {
+  const { user, isLoading } = useAuth()
+  const location = useLocation()
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <div className="flex flex-col items-center gap-3">
+          <div className="size-8 animate-spin rounded-full border-2 border-[#1F4D45] border-t-transparent" />
+          <span className="text-xs font-medium tracking-wider text-slate-400 uppercase">
+            Verifying session…
+          </span>
+        </div>
+      </div>
+    )
+  }
+
+  if (!user) {
+    return <Navigate to="/login" state={{ from: location }} replace />
+  }
+
+  return <Outlet />
+}
+
+/**
+ * Route guard for public auth pages (/login, /signup).
+ * Redirects already-authenticated users back to their intended route or home.
+ */
+function PublicAuthRoute({ children }: { children: React.ReactNode }) {
+  const { user, isLoading } = useAuth()
+  const location = useLocation()
+
+  if (isLoading) {
+    return (
+      <div className="auth-page-bg flex min-h-screen items-center justify-center">
+        <div className="size-8 animate-spin rounded-full border-2 border-white/60 border-t-transparent" />
+      </div>
+    )
+  }
+
+  if (user) {
+    const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/'
+    return <Navigate to={from} replace />
+  }
+
+  return <>{children}</>
+}
+
+function AppRoutes() {
+  return (
+    <Routes>
+      {/* Auth pages — no nav / footer; redirects if already logged in */}
+      <Route
+        path="/login"
+        element={
+          <PublicAuthRoute>
+            <Login />
+          </PublicAuthRoute>
+        }
+      />
+      <Route
+        path="/signup"
+        element={
+          <PublicAuthRoute>
+            <Signup />
+          </PublicAuthRoute>
+        }
+      />
+
+      {/* App pages — wrapped in AppLayout (nav + footer) */}
+      <Route element={<AppLayout />}>
+        {/* Public routes */}
+        <Route path="/" element={<Home />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/trip/:id" element={<TripDetail />} />
+        <Route path="/operator" element={<Operator />} />
+
+        {/* Protected routes */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/create" element={<Create />} />
+          <Route path="/inbox" element={<Inbox />} />
+          <Route path="/saved" element={<Saved />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route>
+      </Route>
+    </Routes>
+  )
+}
 
 function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          {/* Auth pages — no nav / footer */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-
-          {/* App pages — wrapped in AppLayout (nav + footer) */}
-          <Route element={<AppLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/create" element={<Create />} />
-            <Route path="/trip/:id" element={<TripDetail />} />
-            <Route path="/operator" element={<Operator />} />
-            <Route path="/inbox" element={<Inbox />} />
-            <Route path="/saved" element={<Saved />} />
-            <Route path="/profile" element={<Profile />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
-  );
+    <BrowserRouter>
+      <AuthProvider>
+        <AppRoutes />
+      </AuthProvider>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App

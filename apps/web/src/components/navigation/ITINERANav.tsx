@@ -10,17 +10,15 @@ import {
   User,
   Menu,
   X,
-  MapPin,
   ChevronRight,
-  ShieldCheck,
-  TrendingUp,
+  LogOut,
 } from 'lucide-react'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../context/authContext'
 
 export default function ITINERANav() {
   const navigate = useNavigate()
   const location = useLocation()
-  const { user, role, switchRole } = useAuth()
+  const { user, role, switchRole, signOut } = useAuth()
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
@@ -194,16 +192,40 @@ export default function ITINERANav() {
               <span className="capitalize">{role}</span>
             </button>
 
-            {/* Profile Avatar Button */}
-            <Link
-              to="/profile"
-              className="p-1.5 text-gray-700 hover:text-[#1F4D45] hover:bg-gray-100 rounded-full transition"
-              title="Profile & DNA Preferences"
-            >
-              <div className="size-7 rounded-full bg-slate-100 border border-gray-300 flex items-center justify-center text-xs font-bold text-gray-800">
-                {user?.displayName ? user.displayName.charAt(0) : <User className="size-3.5 text-gray-600" />}
+            {/* Profile Avatar / Auth Button */}
+            {user ? (
+              <div className="flex items-center gap-1.5">
+                <Link
+                  to="/profile"
+                  className="p-1.5 text-gray-700 hover:text-[#1F4D45] hover:bg-gray-100 rounded-full transition"
+                  title={`Signed in as ${user.email || user.displayName || 'Traveler'}`}
+                >
+                  <div className="size-7 rounded-full bg-slate-100 border border-gray-300 flex items-center justify-center text-xs font-bold text-gray-800">
+                    {user?.displayName ? user.displayName.charAt(0) : <User className="size-3.5 text-gray-600" />}
+                  </div>
+                </Link>
+                <button
+                  type="button"
+                  onClick={async () => {
+                    await signOut()
+                    navigate('/')
+                  }}
+                  title="Sign out"
+                  aria-label="Sign out"
+                  className="p-1.5 text-gray-500 hover:text-rose-600 hover:bg-rose-50 rounded-full transition-colors"
+                >
+                  <LogOut className="size-3.5" />
+                </button>
               </div>
-            </Link>
+            ) : (
+              <Link
+                to="/login"
+                className="px-3 py-1.5 rounded-full text-xs font-semibold text-gray-700 hover:text-[#1F4D45] hover:bg-gray-100 transition-colors"
+                title="Sign in to your account"
+              >
+                Sign In
+              </Link>
+            )}
 
             {/* Primary Action CTA */}
             <Link
@@ -267,12 +289,32 @@ export default function ITINERANav() {
             </Link>
           </div>
 
-          <div className="pt-2 border-t border-gray-100">
+          <div className="pt-2 border-t border-gray-100 flex items-center justify-between">
+            {user ? (
+              <button
+                type="button"
+                onClick={async () => {
+                  await signOut()
+                  navigate('/')
+                }}
+                className="text-xs font-semibold text-rose-600 hover:text-rose-700 flex items-center gap-1.5 p-1"
+              >
+                <LogOut className="size-3.5" />
+                Sign Out ({user.email || user.displayName || 'User'})
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className="text-xs font-semibold text-[#1F4D45] hover:underline"
+              >
+                Sign In to ITINERA
+              </Link>
+            )}
             <Link
               to="/create"
-              className="w-full py-3 rounded-full bg-[#1F4D45] text-white text-xs font-bold text-center block shadow-sm"
+              className="py-2 px-4 rounded-full bg-[#1F4D45] text-white text-xs font-bold shadow-sm"
             >
-              Start Planning Free with AI
+              Plan Free
             </Link>
           </div>
         </div>

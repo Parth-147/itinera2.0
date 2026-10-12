@@ -1,5 +1,5 @@
 import { useState, useMemo, type FormEvent } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { signup } from '../services/auth'
 
 /* ── Inline SVG icons ──────────────────────────────────────────────── */
@@ -110,6 +110,7 @@ const PASSWORD_RULES: PasswordRule[] = [
 /* ── Component ─────────────────────────────────────────────────────── */
 
 export default function Signup() {
+  const navigate = useNavigate()
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -119,6 +120,7 @@ export default function Signup() {
   const [agreedToTerms, setAgreedToTerms] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [confirmationNotice, setConfirmationNotice] = useState<{ email: string } | null>(null)
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
 
   /* ── Password strength ───────────────────────────────────────────── */
@@ -177,7 +179,9 @@ export default function Signup() {
   /* ── Submit ──────────────────────────────────────────────────────── */
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
+    if (isLoading) return
     setError(null)
+    setConfirmationNotice(null)
 
     if (!validate()) return
 
@@ -186,6 +190,11 @@ export default function Signup() {
       const result = await signup({ fullName: fullName.trim(), email, password })
       if (result.error) {
         setError(result.error.message)
+      } else if (result.data?.needsEmailConfirmation) {
+        setConfirmationNotice({ email })
+      } else {
+        // Direct session established (email confirmation disabled in Supabase)
+        navigate('/', { replace: true })
       }
     } catch {
       setError('An unexpected error occurred. Please try again.')
@@ -279,6 +288,26 @@ export default function Signup() {
                   <path fillRule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-8-5a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-1.5 0v-4.5A.75.75 0 0 1 10 5Zm0 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clipRule="evenodd" />
                 </svg>
                 <span>{error}</span>
+              </div>
+            )}
+
+            {/* ── Email Confirmation Notice ───────────────────────── */}
+            {confirmationNotice && (
+              <div className="mt-4 flex items-start gap-2.5 rounded-xl border border-emerald-100 bg-emerald-50 px-4 py-3.5 text-[13px] text-emerald-800 animate-auth-fade-in">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="mt-0.5 size-4 shrink-0 text-emerald-600">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clipRule="evenodd" />
+                </svg>
+                <div className="space-y-1">
+                  <p className="font-semibold text-emerald-900">Check your email to confirm your account</p>
+                  <p className="leading-relaxed text-emerald-700">
+                    We sent a verification link to <span className="font-semibold text-emerald-900">{confirmationNotice.email}</span>. Please verify your email before signing in.
+                  </p>
+                  <div className="pt-1">
+                    <Link to="/login" className="font-semibold text-emerald-900 underline hover:text-emerald-950">
+                      Go to Sign in →
+                    </Link>
+                  </div>
+                </div>
               </div>
             )}
 
